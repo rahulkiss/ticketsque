@@ -1,0 +1,18 @@
+export const icons ={
+    searchicon: require('./Vector.png'),
+    locationicon:require('./Frame.png'),
+    ArrowRight: require('./RightArrow.png'),
+    GoArrow: require('./GoArrow.png'),
+    Support:require('./OBJECTS.png'),
+    insta: require('./insta.png'),
+    facebook:require('./facebook.png'),
+    linkedin:require('./linkedin.png'),
+    twitter:require('./tiwter.png'),
+    profile:require('./profile.png'),
+    Event:require('./Event.png'),
+    Threedot:require('./Dot.png'),
+    ticket:require('./Ticket.png'),
+    Line:require('./Line.png'),
+    Qr:require('./qr-code.png'),
+    down:require('./DownIcons.png'),
+}
