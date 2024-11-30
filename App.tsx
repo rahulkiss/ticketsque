@@ -100,7 +100,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
         
-        <Stack.Navigator initialRouteName="homescreen">
+        <Stack.Navigator initialRouteName="choose Ticket">
           <Stack.Screen
             name="Loginscreen"
             component={LogInScreen}

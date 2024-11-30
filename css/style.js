@@ -7,7 +7,9 @@ const styles = StyleSheet.create({
     borderRadius:8,
     minHeight:36,
     gap:16,
-    padding:10
+    padding:10,
+    borderWidth:1,
+    borderColor:'rgba(255, 255, 255, 0.25)'
 },
 package:{
   justifyContent:'space-between',
