@@ -1,6 +1,8 @@
 import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { icons } from '../assert/image/image'
+import TabBar from '../provider/TabBar'
+import TopNavBar from '../provider/TopNavBar'
 type Profileprops={
     navigation: any;
 }
@@ -11,6 +13,8 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             navigation.navigate(value);
         };
   return (
+    <>
+    <TopNavBar/>
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1 }}>
         <View style={{margin:20,gap:15,marginTop:'10%'}}>
             <View style={styles.container}>
@@ -88,6 +92,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             </View>
         </View>
     </View>
+    </>
   )
 }
 

@@ -24,7 +24,9 @@ import ArtistScreen from './Screens/ArtistScreen';
 import ArtistDetailScreen from './Screens/ArtistDetailScreen';
 import SingleEventDetail from './Screens/SingleEventDetail';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import Booking from './Screens/BookingDetailScreen';
+import EventBookingScreen from './Screens/EventBookingScreen';
+import TicketChooseScreen from './Screens/TicketChooseScreen';
 
 
 const Stack = createStackNavigator();
@@ -124,7 +126,7 @@ export default function App() {
             component={SingleEventDetail}
             options={{ headerShown: false }}
           />
-          <Stack.Screen name="Notifications" component={NotificationScreen} />
+        <Stack.Screen name="Notifications" component={NotificationScreen}  />
         <Stack.Screen name="Select City" component={SelectCity}/>
         <Stack.Screen name="Search" component={SearchScreen}/>
         <Stack.Screen name="Profile" component={Profile}/>
@@ -133,7 +135,10 @@ export default function App() {
         <Stack.Screen name="My Tickets" component={MyTickets}/>
         <Stack.Screen name="Tickets Details" component={TicketDetailsScreen}/>
         <Stack.Screen name="Reservation" component={ReservationScreen}/>
-        
+        <Stack.Screen name="booking" component={Booking}/>
+        <Stack.Screen name='EventBooking' component={EventBookingScreen}/>
+        <Stack.Screen name='choose Ticket' component={TicketChooseScreen}/>
+
           <Stack.Screen name="homescreen" component={Screens}   options={{ headerShown: false }}/>
         </Stack.Navigator>
       </NavigationContainer>

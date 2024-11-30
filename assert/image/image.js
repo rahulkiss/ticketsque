@@ -15,4 +15,9 @@ export const icons ={
     Line:require('./Line.png'),
     Qr:require('./qr-code.png'),
     down:require('./DownIcons.png'),
+    Calender:require('./Calender.png'),
+    UpArrow:require('./UpArrow.png'),
+    CheckBox:require('./CheckBox.png'),
+    BackArrow:require('./Arrowback.png'),
+    Iicon:require('./Iicon.png'),
 }

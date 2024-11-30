@@ -2,7 +2,12 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
 import { Imageassets } from '../assets/images/image';
- 
+import NotificationScreen from "../Screens/NotificationScreen";
+
+type TopNavBarprops ={
+  navigation: any;
+}
+
 const TopNavBar = () => {
   return (
     <View style={styles.container}>
@@ -26,8 +31,8 @@ const TopNavBar = () => {
         <TouchableOpacity style={styles.iconButton}>
         <Image source={Imageassets.Search} style={{width:20,height:20}} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}>
-        <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
+        <TouchableOpacity style={styles.iconButton} >
+            <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
         </TouchableOpacity>
       </View>
     </View>

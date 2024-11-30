@@ -48,8 +48,9 @@ type  EnterDetailScreenProps= {
 
       
 
-      
+      <View style={{paddingTop:20}}>
       < CustomButton onPress={handleButtonPress} buttontitle="Continue" />
+      </View>
 
     </View>
     </View>
