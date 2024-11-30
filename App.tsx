@@ -27,6 +27,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Booking from './Screens/BookingDetailScreen';
 import EventBookingScreen from './Screens/EventBookingScreen';
 import TicketChooseScreen from './Screens/TicketChooseScreen';
+import EventPaymentScreen from './Screens/EventPaymentScreen';
 
 
 const Stack = createStackNavigator();
@@ -138,6 +139,7 @@ export default function App() {
         <Stack.Screen name="booking" component={Booking}/>
         <Stack.Screen name='EventBooking' component={EventBookingScreen}/>
         <Stack.Screen name='choose Ticket' component={TicketChooseScreen}/>
+        <Stack.Screen name='eventpayment' component={EventPaymentScreen} options={{ headerShown: false }}/>
 
           <Stack.Screen name="homescreen" component={Screens}   options={{ headerShown: false }}/>
         </Stack.Navigator>

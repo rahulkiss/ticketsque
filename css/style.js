@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     gap:16,
     padding:10,
     borderWidth:1,
-    borderColor:'rgba(255, 255, 255, 0.25)'
+    borderColor:'rgba(255, 255, 255, 0.25)',
 },
 package:{
   justifyContent:'space-between',
