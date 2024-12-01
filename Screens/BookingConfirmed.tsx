@@ -1,9 +1,8 @@
-import { StyleSheet, Text, View,ScrollView,Image } from 'react-native'
+import { Text, View,ScrollView,Image } from 'react-native'
 import React, { useState } from 'react'
 import styles from '../css/style'
 import { gif } from '../assert/gif/gifs'
 import { icons } from '../assert/image/image'
-import CustomButton from '../Components/CustomButton'
 
 const  BookingConfirmed = () => {
     const [Animation,setAnimation] =useState(true)

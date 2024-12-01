@@ -23,4 +23,5 @@ export const icons ={
     confirm:require('./confirm.png'),
     calender2:require('./calender2.png'),
     location2:require('./location2.png'),
+    pending:require('./pending.png'),
 }
