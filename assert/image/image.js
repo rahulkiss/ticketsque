@@ -24,5 +24,6 @@ export const icons ={
     calender2:require('./calender2.png'),
     location2:require('./location2.png'),
     pending:require('./pending.png'),
-    wrong:require('./wrong.png')
+    wrong:require('./wrong.png'),
+    expaired:require('./expaired.png'),
 }
