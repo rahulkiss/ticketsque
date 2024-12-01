@@ -27,6 +27,11 @@ Text:{
   fontWeight:500,
   color:'rgba(245, 237, 253, 1)',
 },
+pinkText:{
+  fontSize:14,
+  fontWeight:400,
+  color:'rgba(208, 162, 247, 1)',
+},
  maincontainer:{
   margin:20,
   gap:12
@@ -35,7 +40,7 @@ Text:{
   backgroundColor:'rgba(13, 13, 13, 1)',
   borderColor:'rgba(71, 71, 71, 1)',
   borderWidth:1,
-  height:28,
+  minHeight:28,
   borderRadius:14,
   paddingHorizontal:10,
   justifyContent:'center'
