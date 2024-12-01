@@ -9,7 +9,7 @@ type TicketChooseScreenprops = {
 };
 const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
     const handler = () => {
-        navigation.navigate('payment pending')
+        navigation.navigate('went wrong')
     };
   return (
     <View style={{backgroundColor:'black',flex:1}}>

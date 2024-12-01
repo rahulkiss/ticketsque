@@ -30,6 +30,7 @@ import TicketChooseScreen from './Screens/TicketChooseScreen';
 import EventPaymentScreen from './Screens/EventPaymentScreen';
 import BookingConfirmed from './Screens/BookingConfirmed';
 import PaymentPending from './Screens/PaymentPending';
+import SomethingWentWrong from './Screens/SomethingWentWrong';
 
 
 const Stack = createStackNavigator();
@@ -144,6 +145,7 @@ export default function App() {
         <Stack.Screen name='eventpayment' component={EventPaymentScreen} options={{ headerShown: false }}/>
         <Stack.Screen name='bookingConfirmed' component={BookingConfirmed}/>
         <Stack.Screen name='payment pending' component={PaymentPending}/>
+        <Stack.Screen name='went wrong' component={SomethingWentWrong}/>
 
           <Stack.Screen name="homescreen" component={Screens}   options={{ headerShown: false }}/>
         </Stack.Navigator>
