@@ -1,34 +1,40 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Imageassets } from '../assets/images/image';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useNavigation } from '@react-navigation/native';
 
 type  VenueScrollBoxProps = {
-   
+      text?:any;
+      color?:any;
   };
 
 
-  const VenueScrollBox: React.FC<VenueScrollBoxProps> = () => {
+  const VenueScrollBox: React.FC<VenueScrollBoxProps> = ({text,color}) => {
     // Sample data for rendering items
+    const navigation = useNavigation();
     const items = [1, 2, 3, 4]; // Array to repeat the item 4 times
+    const GoToDetails =()=>{
+        navigation.navigate('venudetailscreen')
+    }
 
     return (
-        <View style={styles.container}>
+        <View  style={styles.container}>
             {/* Horizontal Scrollable Box */}
             <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
-                    <Text style={{color:'#F5EDFD',fontSize:18,fontWeight:700}}>Top Venues</Text>
+                   <View><Text style={[styles.title, { color }]}>{text}</Text></View> 
                     {/* <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>View All</Text> */}
                 </View>
                 <SafeAreaView>
             <ScrollView
                 horizontal={true}
-                showsHorizontalScrollIndicator={true}
+                showsHorizontalScrollIndicator={false}
                 style={styles.VenuescrollBox}
                 contentContainerStyle={styles.scrollContent}
             >
                 
                 {items.map((_, index) => (
-                    <View key={index} style={styles.item}>
+                    <TouchableOpacity onPress={GoToDetails} key={index} style={styles.item}>
                         <View
                             style={{
                                 justifyContent: 'center',
@@ -55,11 +61,12 @@ type  VenueScrollBoxProps = {
                                 </Text>
                             </View>
                         </View>
-                    </View>
+                    </TouchableOpacity>
                 ))}
             </ScrollView>
             </SafeAreaView>
         </View>
+        
     );
 };
 
@@ -77,7 +84,8 @@ const styles = StyleSheet.create({
     scrollContent: {
         flexDirection: 'row', // Ensures items are laid out horizontally
         alignItems: 'center',
-        paddingHorizontal: 10, // Adds padding inside the scroll container
+        // Adds padding inside the scroll container
+        backgroundColor:'black'
     },
     item: {
         width: 176, // Fixed width for each item
@@ -93,6 +101,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#fff',
     },
+    title: {
+        fontSize: 18,
+        fontWeight: '700',
+      },
 });
 
 export default VenueScrollBox;

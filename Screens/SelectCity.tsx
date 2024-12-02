@@ -1,19 +1,30 @@
-import { StyleSheet, Text, View,Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import Search from '../Components/Search'
 import { icons } from '../assert/image/image'
+import { Imageassets } from '../assets/images/image'
 
 const SelectCity = () => {
+    const [ShowNotFount,setShowNotFount]=useState(false)
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1}}>
         <Search SearchTitle="Search  your City" />
     <View style={styles.container}>
-       <View style={styles.Location}>
+
+       <TouchableOpacity onPress={()=>setShowNotFount(true)} style={styles.Location}>
         <View style={{margin:10}}>
         <Image source={icons.locationicon} />
         </View>
         <Text style={{color:'#D0A2F7', fontSize:12}}>Detect My Location</Text>
-       </View>
+       </TouchableOpacity>
+         {ShowNotFount&&
+         <View style={{gap:16}}>
+            <Image style={{height:150,width:150,marginHorizontal:'auto'}} source={Imageassets.EventNotFount}/>
+            <Text style={{color:'rgba(208, 162, 247, 1)',fontSize:18,fontWeight:800,textAlign:'center'}}>No Event Fount in Your Location</Text>
+            <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:12,fontWeight:400,textAlign:'center'}}>It looks like there aren’t any events happening near you right now. But don’t miss out—explore exciting events in the following cities and discover something new!
+            </Text>
+         </View>}
+
        <View style={{height:285,gap:12}}>
         <Text style={{height:25, fontWeight:700, fontSize:18,color:'#F5EDFD'}}>All Available Cities</Text>
         <View style={styles.Cites}>

@@ -4,9 +4,10 @@ import { Imageassets } from '../assets/images/image';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type  ArtistScrollBoxProps = {
-    Title: string;
-    Color: string;
-    onPress:any;
+    Title?: string;
+    Color?: string;
+    onPress?:any;
+    view?:any;
    
     
   };
@@ -27,21 +28,21 @@ type  ArtistScrollBoxProps = {
   ];
  
 
-  const ArtistScrollBox: React.FC<ArtistScrollBoxProps> = ({Title, Color,onPress}) => {
+  const ArtistScrollBox: React.FC<ArtistScrollBoxProps> = ({Title, Color,onPress,view}) => {
   
        
 
     return (
         <View style={styles.container}>
             {/* Horizontal Scrollable Box */}
-            <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
+            {Title && <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
                     <Text style={{color:Color,fontSize:18,fontWeight:700}}>{Title}</Text>
-                    <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>View All</Text>
-                </View>
+                    <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>{view}</Text>
+                </View> }
                 <SafeAreaView>
             <ScrollView
                 horizontal={true}
-                showsHorizontalScrollIndicator={true}
+                showsHorizontalScrollIndicator={false}
                 style={styles.scrollBox}
                 contentContainerStyle={styles.scrollContent}
             >
@@ -93,10 +94,10 @@ const styles = StyleSheet.create({
     scrollContent: {
         flexDirection: 'row', // Ensures items are laid out horizontally
         alignItems: 'center',
-        paddingHorizontal: 10, // Adds padding inside the scroll container
+      // Adds padding inside the scroll container
     },
     item: {
-        width: 177, // Fixed width for each item
+        width: 176, // Fixed width for each item
         height: 235, // Fixed height for each item
         marginRight: 10, // Spacing between items
         backgroundColor: '#1B1B1B',

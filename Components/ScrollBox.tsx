@@ -4,12 +4,13 @@ import { Imageassets } from '../assets/images/image';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 type  ScrollBoxProps = {
-    Title: string;
-    Color: string;
+    Title?: string;
+    Color?: string;
+    view?: any
   };
 
 
-  const ScrollBox: React.FC<ScrollBoxProps> = ({ Title, Color }) => {
+  const ScrollBox: React.FC<ScrollBoxProps> = ({ Title, Color,view }) => {
     // Sample data for rendering items
     const items = [1, 2, 3, 4]; // Array to repeat the item 4 times
     
@@ -19,12 +20,12 @@ type  ScrollBoxProps = {
             {/* Horizontal Scrollable Box */}
             <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
                     <Text style={{color:Color,fontSize:18,fontWeight:700}}>{Title}</Text>
-                    <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>View All</Text>
+                    <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>{view}</Text>
                 </View>
                 <SafeAreaView>
             <ScrollView
                 horizontal={true}
-                showsHorizontalScrollIndicator={true}
+                showsHorizontalScrollIndicator={false}
                 style={styles.scrollBox}
                 contentContainerStyle={styles.scrollContent}
             >
@@ -46,7 +47,7 @@ type  ScrollBoxProps = {
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
-                                <Text style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
+                                <Text  numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
                                     ElectroGroove Fusion Night Geater fun unlimited bre...
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
@@ -110,10 +111,11 @@ const styles = StyleSheet.create({
     scrollContent: {
         flexDirection: 'row', // Ensures items are laid out horizontally
         alignItems: 'center',
-        paddingHorizontal: 10, // Adds padding inside the scroll container
+         // Adds padding inside the scroll container
+        backgroundColor:'black'
     },
     item: {
-        width: 177, // Fixed width for each item
+        width: 176, // Fixed width for each item
         height: 285, // Fixed height for each item
         marginRight: 10, // Spacing between items
         backgroundColor: '#1B1B1B',

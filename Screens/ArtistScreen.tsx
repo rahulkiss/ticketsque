@@ -16,12 +16,12 @@ const ArtistScreen: React.FC<ArtistScreenProps> = ({ navigation }) => {
         };
   return (
     <>
-    <TopNavBar/> 
-    <ScrollView  style={{ flex: 1,  backgroundColor: "#0D0D0D",height:'auto',paddingTop:10 }}>
-     <ArtistScrollBox onPress={handleNavication}   Title='Top Artists' Color='#F5EDFD'/>
-     <ArtistScrollBox onPress={handleNavication}     Title='DJ' Color='#F5EDFD'/>
-     <ArtistScrollBox onPress={handleNavication}     Title='Band' Color='#F5EDFD'/>
-     <ArtistScrollBox onPress={handleNavication}     Title='Musicians' Color='#F5EDFD'/>
+    <TopNavBar /> 
+    <ScrollView  style={{ flex: 1,  backgroundColor: "black",height:'auto',paddingTop:10 }}>
+     <ArtistScrollBox onPress={handleNavication}   Title='Top Artists' Color='#F5EDFD' view='View All'/>
+     <ArtistScrollBox onPress={handleNavication}     Title='DJ' Color='#F5EDFD' view='View All'/>
+     <ArtistScrollBox onPress={handleNavication}     Title='Band' Color='#F5EDFD' view='View All'/>
+     <ArtistScrollBox onPress={handleNavication}     Title='Musicians' Color='#F5EDFD' view='View All'/>
     </ScrollView>
     </>
   )
