@@ -24,6 +24,8 @@ import ArtistScreen from './Screens/ArtistScreen';
 import ArtistDetailScreen from './Screens/ArtistDetailScreen';
 import SingleEventDetail from './Screens/SingleEventDetail';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import VenueDetailScreen from './Screens/VenueDetailScreen';
+import TermsAndConditionScreen from './Screens/TermsAndConditionScreen';
 
 
 
@@ -66,31 +68,6 @@ const Screens = () => (
     </SafeAreaView>
   </React.Fragment>
 );
-// export default function App() {
-  
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator initialRouteName="Reservation" 
-//       screenOptions={{headerStyle:{backgroundColor:'#1B1B1B',borderBottomWidth:1,borderColor:'#474747'},
-//       headerTintColor:'white'}}>
-//         <Stack.Screen name="Loginscreen" component={LogInScreen} />
-//         <Stack.Screen name="otpverifyscreen" component={OtpVerifyScreen} />
-//         <Stack.Screen name="enterdetailscreen" component={EnterDetailScreen} />
-//         <Stack.Screen name="homescreen" component={HomeScreen} />
-//         <Stack.Screen name="Notifications" component={NotificationScreen} />
-//         <Stack.Screen name="Select City" component={SelectCity}/>
-//         <Stack.Screen name="Search" component={SearchScreen}/>
-//         <Stack.Screen name="Profile" component={Profile}/>
-//         <Stack.Screen name="Support & Contact Us" component={SupportScreen}/>
-//         <Stack.Screen name="My Profile" component={MyProfile}/>
-//         <Stack.Screen name="My Tickets" component={MyTickets}/>
-//         <Stack.Screen name="Tickets Details" component={TicketDetailsScreen}/>
-//         <Stack.Screen name="Reservation" component={ReservationScreen}/>
-//         {/* <Stack.Screen name="homescreen" component={Screens}   options={{ headerShown: false }}/> */}
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   );
-// }
 
 export default function App() {
   return (
@@ -123,6 +100,16 @@ export default function App() {
             name="singleeventdetail"
             component={SingleEventDetail}
             options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="venudetailscreen"
+            component={VenueDetailScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Tearms & Conditions"
+            component={TermsAndConditionScreen}
+            options={{ headerShown: true }}
           />
           <Stack.Screen name="Notifications" component={NotificationScreen} />
         <Stack.Screen name="Select City" component={SelectCity}/>

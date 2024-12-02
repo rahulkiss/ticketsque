@@ -17,7 +17,7 @@ type EventDetailsProps ={
     return (
         <View style={styles.container}>
             {/* Horizontal Scrollable Box */}
-            <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'center',gap:12,paddingHorizontal:7}}>
+            <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'center',gap:12}}>
             
                 
             
@@ -34,13 +34,13 @@ type EventDetailsProps ={
                         >
                             <Image
                                 source={Imageassets.PartyImage}
-                                style={{ height: 157, width: 157 }}
+                                style={{ height: 157, width: '100%' }}
                             />
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
-                                <Text style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                    ElectroGroove Fusion Night Geater fun unlimited bre...
+                                <Text numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600', }}>
+                                    ElectroGroove Fusion Night Geater fun unlimited bre
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
                                     TOCA, Koramangala
@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10, 
     },
     item: {
-        maxWidth: 177,
+        maxWidth: "48%",
         height: 285, 
         backgroundColor: '#1B1B1B',
         borderRadius: 8,

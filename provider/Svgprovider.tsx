@@ -1,5 +1,6 @@
-import { Text, View } from "react-native";
-import Svg, { Path } from "react-native-svg"
+import React from "react";
+import Svg, { Path } from "react-native-svg";
+
 
 export default class SvgProvider {
   static SVG_vector = ({ width = 18, height = 18, stroke = "#F5EDFD" }) => {

@@ -2,8 +2,20 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
 import { Imageassets } from '../assets/images/image';
+import { useNavigation } from "@react-navigation/native";
  
 const TopNavBar = () => {
+  const navigator = useNavigation();
+  const ShowSearchScreen = () =>{
+    navigator.navigate('Search')
+  }
+  const ShowNotifyScreen = () =>{
+    navigator.navigate('Notifications')
+  }
+  const ShowSelectCity = () =>{
+    navigator.navigate('Select City')
+  }
+
   return (
     <View style={styles.container}>
      
@@ -14,19 +26,22 @@ const TopNavBar = () => {
           style={styles.logo}
         />
       </TouchableOpacity>
-
-      <View style={styles.locationContainer}>
-      <Image source={Imageassets.Location} />
-        <Text style={styles.locationText}>Bengaluru</Text>
-        <Image source={Imageassets.ArrowDown} />
-      </View>
-      </View>
+      <TouchableOpacity style={styles.locationContainer} onPress={ShowSelectCity}>
+        
+           <Image source={Imageassets.Location} />
+             <Text style={styles.locationText}>Bengaluru</Text>
+             <Image source={Imageassets.ArrowDown} />
+          
+      </TouchableOpacity>
+           </View>
+           
+      
     
       <View style={styles.iconsContainer}>
-        <TouchableOpacity style={styles.iconButton}>
-        <Image source={Imageassets.Search} style={{width:20,height:20}} />
+        <TouchableOpacity onPress={ShowSearchScreen} style={styles.iconButton}>
+        <Image source={Imageassets.Search}  style={{width:20,height:20}} />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton}>
+        <TouchableOpacity onPress={ShowNotifyScreen} style={styles.iconButton} >
         <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
         </TouchableOpacity>
       </View>
