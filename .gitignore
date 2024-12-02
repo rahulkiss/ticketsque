@@ -76,3 +76,6 @@ yarn-error.log
 /android/caches/
 /android/daemon/
 /android/wrapper/
+
+
+/ios/
