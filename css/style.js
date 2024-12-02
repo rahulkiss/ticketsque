@@ -53,6 +53,13 @@ pinkText:{
   borderTopWidth:1,
   borderTopColor:'rgba(245, 237, 253, 0.1)'
  },
+ NavBar:{
+  backgroundColor:'rgba(37, 37, 37, 0.7)',
+  paddingHorizontal:20,
+  paddingVertical:15,
+  borderColor:'rgba(71, 71, 71, 1)',
+  borderBottomWidth:1,
+  flexDirection:'row'}
 })
 
 export default styles

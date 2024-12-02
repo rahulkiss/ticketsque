@@ -1,16 +1,20 @@
 import { StyleSheet, Text, View,Image,ScrollView } from 'react-native'
 import React from 'react'
 import { icons } from '../assert/image/image'
+import NameBar from '../provider/NameBar'
 const TicketDetailsScreen = () => {
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1,}}> 
     <ScrollView>
+    <View>
+          <NameBar name='My Tickets' />
+      </View>
     <View style={{margin:20,gap:16,marginBottom:60 }}>
       <View style={styles.card}>
         
         <View style={{minHeight:233,gap:8}}>
           
-          <View style={{flexDirection:'row',margin:10}}>
+          <View style={{flexDirection:'row',justifyContent:'space-between', margin:10}}>
             <View style={{gap:8}}>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:18,fontWeight:700}}>Event Name</Text>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:12,fontWeight:500,}}>TOCA, Koramangala</Text>

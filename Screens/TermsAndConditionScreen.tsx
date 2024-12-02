@@ -1,10 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { ScrollView } from 'react-native-gesture-handler'
+import NameBar from '../provider/NameBar'
 
 const TermsAndConditionScreen = () => {
   return (
     <ScrollView style={{backgroundColor:"black"}}>
+            <View>
+          <NameBar name='Terms & Conditions'/>
+      </View>
     <View  style={{padding:15}}>
      <Text style={{color:'rgba(208, 162, 247, 1)',fontSize:20,fontWeight:700,}}>Discounts - Terms & Conditions</Text>
      <View style={{marginTop:15,gap:12}}>

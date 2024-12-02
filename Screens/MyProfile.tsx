@@ -2,12 +2,16 @@ import { StyleSheet, Text, View ,Image} from 'react-native'
 import React from 'react'
 import { icons } from '../assert/image/image'
 import { TextInput } from 'react-native-gesture-handler'
+import NameBar from '../provider/NameBar'
 
 
 
 const MyProfile = () => {
   return (
-<View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1 }}>    
+<View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1 }}>
+        <View>
+          <NameBar name='My Profile'/>
+        </View>    
       <View style={styles.Fram}>
         <View style={{alignItems:'center',width:140,gap:8}}>
             <Image source={icons.profile}/>

@@ -2,6 +2,7 @@ import { StyleSheet, Text, View,ScrollView,Image } from 'react-native'
 import React from 'react'
 import CustomButton from '../Components/CustomButton'
 import { icons } from '../assert/image/image';
+import NameBar from '../provider/NameBar';
 
 type BookingDetailScreenprops={
     navigation: any;
@@ -13,6 +14,9 @@ const BookingDetailScreen:React.FC<BookingDetailScreenprops> = ({navigation}) =>
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1,}}> 
       <ScrollView>
+      <View>
+          <NameBar name='Reservation' />
+      </View>
             <View style={{margin:20,gap:16}}>
                 <View style={{gap:10}}>
                     <Text style={styles.Heading}>Review Booking Details</Text>

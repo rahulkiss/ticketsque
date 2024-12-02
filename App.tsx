@@ -83,7 +83,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
         
-        <Stack.Navigator initialRouteName="homescreen">
+        <Stack.Navigator initialRouteName="homescreen" screenOptions={{headerShown:false}}>
           <Stack.Screen
             name="Loginscreen"
             component={LogInScreen}
@@ -120,7 +120,6 @@ export default function App() {
             options={{ headerShown: true }}
           />
           <Stack.Screen name="Notifications" component={NotificationScreen} />
-        <Stack.Screen name="Notifications" component={NotificationScreen}  />
         <Stack.Screen name="Select City" component={SelectCity}/>
         <Stack.Screen name="Search" component={SearchScreen}/>
         <Stack.Screen name="Profile" component={Profile}/>

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View,Image,TouchableOpacity } from 'react-native'
 import React from 'react'
 import { icons } from '../assert/image/image'
+import NameBar from '../provider/NameBar';
 
 type MyticketsProps={
     navigation: any;
@@ -10,7 +11,10 @@ const Mytickets:React.FC<MyticketsProps> = ({navigation}) => {
         navigation.navigate(value);
     };
   return (
-    <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1 }}> 
+    <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1 }}>
+              <View>
+          <NameBar name='My Tickets' />
+      </View> 
     <View style={{margin:20,minHeight:550,gap:16}}>
 
        <View style={styles.TextBox}>

@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
+import NameBar from '../provider/NameBar';
 
 
 const NotificationScreen = () => {
     
-  return (
+  return ( 
     <View style={{backgroundColor:'#0D0D0D',flex:1}}>
+      <View style={{marginTop:10}}>
+          <NameBar name='Notifications' />
+      </View>
       <View style={styles.frame1}>
         <View style={styles.InnerFrame}>
             <Text style={styles.InnerHead}>Event Booking Successful</Text>

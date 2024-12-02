@@ -3,11 +3,15 @@ import React, { useState } from 'react'
 import Search from '../Components/Search'
 import { icons } from '../assert/image/image'
 import { Imageassets } from '../assets/images/image'
+import NameBar from '../provider/NameBar'
 
 const SelectCity = () => {
     const [ShowNotFount,setShowNotFount]=useState(false)
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1}}>
+            <View style={{marginTop:10}}>
+          <NameBar name='Select City'/>
+      </View>
         <Search SearchTitle="Search  your City" />
     <View style={styles.container}>
 
