@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image } from 'react-native'
+import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from '../css/style'
 import { icons } from '../assert/image/image'
@@ -9,14 +9,14 @@ type TicketChooseScreenprops = {
 };
 const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
     const handler = () => {
-        navigation.navigate('reservationSuccess')
+        navigation.navigate('eventpayment')
     };
   return (
     <View style={{backgroundColor:'black',flex:1}}>
         <View style={styles.maincontainer}>
         <View style={[styles.card,{padding:20}]}>
                     <View style={{flexDirection:'row'}}>
-                        <Image source={icons.BackArrow}/>
+                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><Image source={icons.BackArrow}/></TouchableOpacity> 
                         <Text style={styles.Heading}>  Event Name</Text>
                     </View>
                     <Text style={styles.Text}>May 15 Thursday | Drave Koramangala  |  500 Onwards</Text>

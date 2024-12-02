@@ -1,22 +1,26 @@
-import { StyleSheet, Text, View,Image,ScrollView, TextInput } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,Image,ScrollView, TextInput, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import styles from '../css/style'
 import { icons } from '../assert/image/image'
 import CustomButton from '../Components/CustomButton'
+import EventAvailableScroll from '../Components/EventAvailableScroll'
+import CustomerDetailsPopup from '../provider/CustemerDetailsPopup'
 type EventPaymentScreenprops={
     navigation: any;
 }
 const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
+    const [Popup,setPopup] = useState(false)
         const handler=() =>{
-            navigation.navigate('homescreen')
+            navigation.navigate('bookingConfirmed')
         };
+       
   return (
     <View style={{backgroundColor:'black',flex:1 ,paddingBottom:80}}>
         <ScrollView>
             <View style={[styles.maincontainer,{gap:16}]}>
                 <View style={[styles.card,{padding:20}]}>
                     <View style={{flexDirection:'row'}}>
-                        <Image source={icons.BackArrow}/>
+                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><Image source={icons.BackArrow}/></TouchableOpacity> 
                         <Text style={styles.Heading}>  Event Name</Text>
                     </View>
                     <Text style={styles.Text}>May 15 Thursday | Drave Koramangala  |  500 Onwards</Text>
@@ -29,9 +33,9 @@ const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
                             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:700}}>Shankar Pawar</Text>
                             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:10,fontWeight:400}}>+91 8147113798 | shankar@gmail.com</Text>
                             </View>
-                                <View>
+                                <TouchableOpacity onPress={()=>setPopup(true)}>
                                 <Text style={{color:'rgba(208, 162, 247, 1)',fontSize:12,fontWeight:600}}>edit</Text>
-                                </View>
+                                </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -46,8 +50,15 @@ const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
                         <Text style={[styles.Heading,{fontSize:16,textAlign:'center', color:'rgba(13, 13, 13, 1)'}]}>Apply</Text>
                     </View>
                     </View>
-                    {/* put your code here */}
+                    
                 </View>
+                    </View>
+                     
+                    <View>
+                    <EventAvailableScroll/>
+                    </View>
+                    <View style={[styles.maincontainer,{gap:16}]}>
+                        
                 <View style={{gap:16}}>
                 <Text style={styles.Heading}>Order Details</Text>
                 <View style={styles.card}>
@@ -57,7 +68,7 @@ const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
                   <View style={{width:'40%'}}>
                   <Text style={[styles.Text,{fontSize:14}]}>Tickets</Text>
                   </View>
-                  <View style={{width:'49%'}}>
+                  <View style={{width:'53%'}}>
                         <View style={styles.package}>
                             <Text style={[styles.Text,{fontSize:14}]}> QTY</Text>
                             <Text style={[styles.Text,{fontSize:14}]}>Sub Total</Text>
@@ -146,7 +157,7 @@ const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
                         <Image source={icons.CheckBox}/>
                     </View>
                     <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:400}}>I agree to the </Text>
-                    <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:700,textDecorationLine:'underline'}} >Terms & Conditions</Text>
+                    <TouchableOpacity onPress={()=>navigation.navigate('Tearms & Conditions')}><Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:700,textDecorationLine:'underline'}} >Terms & Conditions</Text></TouchableOpacity>   
                           
                 </View>
                 </View>
@@ -155,6 +166,7 @@ const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
         <View style={styles.bottomTab}>
         < CustomButton onPress={handler} buttontitle="Proceed To Pay"/>
         </View>
+        <CustomerDetailsPopup Popup={Popup} setPopup={setPopup}/>
     </View>
   )}
 

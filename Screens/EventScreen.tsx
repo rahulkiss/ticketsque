@@ -5,8 +5,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import EventDateFilter from '../Components/EventDateFilter'
 import EventDetails from '../Components/EventDetails'
 import { Imageassets } from '../assets/images/image';
-import FilterPopup from '../provider/FilterPopup'
-import CustomerDetailsPopup from '../provider/CustemerDetailsPopup'
+import FilterPopup from '../provider/FilterPopup';
 
 type  EventScreenProps ={
   navigation :any
@@ -30,7 +29,7 @@ const EventScreen : React.FC<EventScreenProps>= ({navigation}) => {
 
     </ScrollView>
     <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}><Image source={Imageassets.Filterimg}/></TouchableOpacity>
-    <CustomerDetailsPopup Popup={Popup} setPopup={setPopup}/>
+    <FilterPopup Popup={Popup} setPopup={setPopup}/>
     </>
   )
 }

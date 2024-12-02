@@ -8,6 +8,7 @@ import ScrollBox from '../Components/ScrollBox'
 import BackButton from '../Components/BackButton'
 import SharePopup from '../provider/SharePopup'
 import MenuScroll from '../Components/MenuScroll'
+import { useNavigation } from '@react-navigation/native'
 
 
 
@@ -18,8 +19,8 @@ const VenueDetailScreen = () => {
    const [ArtistImage,setArtistImage] = useState(true)
    const [ShowManu,setShowManu] = useState(true)
    const [Popup,setPopup]=useState(false)
-
-
+   const  navigator = useNavigation();
+  
   return (
     <View style={{flex:1,backgroundColor: "black" }}>
       <ScrollView style={{ backgroundColor: "black" }}>
@@ -188,7 +189,7 @@ const VenueDetailScreen = () => {
       </ScrollView>
       <View style={{alignItems:'center',justifyContent:'center',backgroundColor: 'rgba(13, 13, 13, 0.8)', position:'absolute',bottom:0,width:'100%',height:76,borderTopWidth:1,borderColor:'rgba(71, 71, 71, 1)'}}>
             <View style={{height:45,paddingHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',flex:1}}>
-              <TouchableOpacity style={{backgroundColor:'#D0A2F7',borderRadius:23.84,flex:1,height:45,justifyContent:'center',alignItems:"center",}}>
+              <TouchableOpacity onPress={()=>navigator.navigate('Reservation')} style={{backgroundColor:'#D0A2F7',borderRadius:23.84,flex:1,height:45,justifyContent:'center',alignItems:"center",}}>
                  <Text style={{color:'rgba(32, 32, 32, 1)',height:22,width:137,textAlign:'center',fontSize:16,fontWeight:700,lineHeight:21.82}}>Reserve Your Spot</Text>
               </TouchableOpacity>
               </View>

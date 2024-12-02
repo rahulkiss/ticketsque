@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image,ScrollView } from 'react-native'
+import { StyleSheet, Text, View,Image,ScrollView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from '../css/style'
 import { icons } from '../assert/image/image'
@@ -17,7 +17,7 @@ const EventBookingScreen:React.FC<EventBookingScreenProps> = ({navigation}) => {
             <View style={styles.maincontainer}>
                 <View style={[styles.card,{padding:20}]}>
                     <View style={{flexDirection:'row'}}>
-                        <Image source={icons.BackArrow}/>
+                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><Image source={icons.BackArrow}/></TouchableOpacity> 
                         <Text style={styles.Heading}>  Event Name</Text>
                     </View>
                     <Text style={styles.Text}>May 15 Thursday | Drave Koramangala  |  500 Onwards</Text>

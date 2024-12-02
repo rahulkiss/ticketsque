@@ -1,10 +1,12 @@
-import { Text, View,ScrollView,Image } from 'react-native'
+import { Text, View,ScrollView,Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import styles from '../css/style'
 import { gif } from '../assert/gif/gifs'
 import { icons } from '../assert/image/image'
 
+
 const ReservationSuccess = () => {
+  
     const [Animation,setAnimation] =useState(true)
     setTimeout(()=>{
          setAnimation(false);
@@ -30,9 +32,9 @@ const ReservationSuccess = () => {
         </View>
         <View style={{alignItems:'center'}}>
                         <View style={[styles.slot,{paddingVertical:10,borderRadius:20,borderColor:'rgba(208, 162, 247, 1)',width:'50%',}]}>
-                            <View style={{marginHorizontal:15}}>
+                            <TouchableOpacity style={{marginHorizontal:15}}>
                             <Text style={[styles.Heading,{fontSize:14,textAlign:'center',color:'rgba(208, 162, 247, 1)'}]}>Back to Venue Home</Text>
-                            </View>
+                            </TouchableOpacity>
                         </View>
                     </View>
     </View>

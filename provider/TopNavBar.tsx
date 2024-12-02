@@ -50,9 +50,6 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
         <TouchableOpacity onPress={ShowNotifyScreen} style={styles.iconButton} >
         <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.iconButton} >
-            <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
-        </TouchableOpacity>
       </View>
     </View>
   );

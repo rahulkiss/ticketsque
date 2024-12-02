@@ -16,7 +16,7 @@ type CustomerDetailsPopupProps ={
     setPopup : any;
 }
 
-const CustomerDetailsPopup: React.FC<CustomerDetailsPopupProps> = ({Popup,setPopup}) => {
+const CustomerDetailsPopup: React.FC<Props> = ({Popup,setPopup}) => {
   const [Name,setName] =useState('')
   const [Email,setEmail] =useState('')
   const [phoneNumber,setphoneNumber] =useState('')
