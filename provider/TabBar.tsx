@@ -109,9 +109,6 @@ const TabBar = ({ state, descriptors, navigation }:TabBar) => {
       }
       return  null;
   }
-         
-          
-  
           return (
             <TouchableOpacity
               key={index}

@@ -4,6 +4,12 @@ import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { Imageassets } from '../assets/images/image';
 import { useNavigation } from "@react-navigation/native";
  
+import NotificationScreen from "../Screens/NotificationScreen";
+
+type TopNavBarprops ={
+  navigation: any;
+}
+
 const TopNavBar = () => {
   const navigator = useNavigation();
   const ShowSearchScreen = () =>{
@@ -43,6 +49,9 @@ const TopNavBar = () => {
         </TouchableOpacity>
         <TouchableOpacity onPress={ShowNotifyScreen} style={styles.iconButton} >
         <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.iconButton} >
+            <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
         </TouchableOpacity>
       </View>
     </View>

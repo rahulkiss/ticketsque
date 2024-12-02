@@ -27,6 +27,14 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import VenueDetailScreen from './Screens/VenueDetailScreen';
 import TermsAndConditionScreen from './Screens/TermsAndConditionScreen';
 
+import Booking from './Screens/BookingDetailScreen';
+import EventBookingScreen from './Screens/EventBookingScreen';
+import TicketChooseScreen from './Screens/TicketChooseScreen';
+import EventPaymentScreen from './Screens/EventPaymentScreen';
+import BookingConfirmed from './Screens/BookingConfirmed';
+import PaymentPending from './Screens/PaymentPending';
+import SomethingWentWrong from './Screens/SomethingWentWrong';
+import SessionExpired from './Screens/SessionExpired';
 
 
 const Stack = createStackNavigator();
@@ -75,7 +83,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
         
-        <Stack.Navigator initialRouteName="homescreen">
+        <Stack.Navigator initialRouteName="choose Ticket">
           <Stack.Screen
             name="Loginscreen"
             component={LogInScreen}
@@ -112,6 +120,7 @@ export default function App() {
             options={{ headerShown: true }}
           />
           <Stack.Screen name="Notifications" component={NotificationScreen} />
+        <Stack.Screen name="Notifications" component={NotificationScreen}  />
         <Stack.Screen name="Select City" component={SelectCity}/>
         <Stack.Screen name="Search" component={SearchScreen}/>
         <Stack.Screen name="Profile" component={Profile}/>
@@ -120,7 +129,16 @@ export default function App() {
         <Stack.Screen name="My Tickets" component={MyTickets}/>
         <Stack.Screen name="Tickets Details" component={TicketDetailsScreen}/>
         <Stack.Screen name="Reservation" component={ReservationScreen}/>
-        
+        <Stack.Screen name="booking" component={Booking}/>
+        <Stack.Screen name='EventBooking' component={EventBookingScreen}/>
+        <Stack.Screen name='choose Ticket' component={TicketChooseScreen}/>
+        <Stack.Screen name='eventpayment' component={EventPaymentScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name='bookingConfirmed' component={BookingConfirmed}/>
+        <Stack.Screen name='payment pending' component={PaymentPending}/>
+        <Stack.Screen name='went wrong' component={SomethingWentWrong}/>
+        <Stack.Screen name='session expired' component={SessionExpired}/>
+
+
           <Stack.Screen name="homescreen" component={Screens}   options={{ headerShown: false }}/>
         </Stack.Navigator>
       </NavigationContainer>

@@ -61,9 +61,9 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
       <View style ={{}}>
         <Text style ={{color:'white',textAlign:'center'}}>Send OTP on WhatsApp</Text>
       </View>
-
+      <View style={{paddingTop:20}}>
       < CustomButton onPress={handleButtonPress} buttontitle="Continue" />
-
+      </View>
     </View>
     </View>
   )

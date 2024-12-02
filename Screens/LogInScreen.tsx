@@ -39,8 +39,9 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
           maxLength={10} 
         />
       </View>
-          
+         <View style={{paddingTop:20}}>
          < CustomButton onPress={handleButtonPress} buttontitle="Get OTP" />
+         </View>
          
      
          <View style={styles.textcontainer}>
