@@ -7,10 +7,10 @@ import { useNavigation } from "@react-navigation/native";
 import NotificationScreen from "../Screens/NotificationScreen";
 
 type TopNavBarprops ={
-  navigation: any;
+  navigation?: any;
 }
 
-const TopNavBar = () => {
+const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
   const navigator = useNavigation();
   const ShowSearchScreen = () =>{
     navigator.navigate('Search')
