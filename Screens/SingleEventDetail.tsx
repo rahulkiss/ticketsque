@@ -7,6 +7,7 @@ import ArtistScrollBox from '../Components/ArtistScrollBox'
 import ScrollBox from '../Components/ScrollBox'
 import BackButton from '../Components/BackButton'
 import SharePopup from '../provider/SharePopup'
+import { useNavigation } from '@react-navigation/native'
 
 
 
@@ -17,7 +18,10 @@ const SingleEventDetail = () => {
    const [ArtistImage,setArtistImage] = useState(true)
    const [ShowManu,setShowManu] = useState(true)
    const [Popup,setPopup]=useState(false)
-
+   const navigator = useNavigation();
+   const GoToEventBooking = () =>{
+     navigator.navigate('EventBooking')
+   }
 
   return (
     <View style={{flex:1,backgroundColor: "black" }}>
@@ -235,7 +239,7 @@ const SingleEventDetail = () => {
                  <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:18}}>Onwards</Text>
                 </View>
                 </View>
-              <TouchableOpacity style={{backgroundColor:'#D0A2F7',borderRadius:23.84,width:116,height:45,justifyContent:'center',alignItems:"center",}}>
+              <TouchableOpacity onPress={GoToEventBooking} style={{backgroundColor:'#D0A2F7',borderRadius:23.84,width:116,height:45,justifyContent:'center',alignItems:"center",}}>
                  <Text style={{color:'rgba(32, 32, 32, 1)',height:22,width:82,textAlign:'center',fontSize:16,fontWeight:700,lineHeight:21.82}}>BooK Now</Text>
               </TouchableOpacity>
               </View>

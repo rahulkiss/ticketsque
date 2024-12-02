@@ -119,7 +119,7 @@ export default function App() {
             component={TermsAndConditionScreen}
             options={{ headerShown: true }}
           />
-          <Stack.Screen name="Notifications" component={NotificationScreen} />
+        <Stack.Screen name="Notifications" component={NotificationScreen}  />
         <Stack.Screen name="Select City" component={SelectCity}/>
         <Stack.Screen name="Search" component={SearchScreen}/>
         <Stack.Screen name="Profile" component={Profile}/>
@@ -129,8 +129,8 @@ export default function App() {
         <Stack.Screen name="Tickets Details" component={TicketDetailsScreen}/>
         <Stack.Screen name="Reservation" component={ReservationScreen}/>
         <Stack.Screen name="booking" component={Booking}/>
-        <Stack.Screen name='EventBooking' component={EventBookingScreen}/>
-        <Stack.Screen name='choose Ticket' component={TicketChooseScreen}/>
+        <Stack.Screen name='EventBooking' component={EventBookingScreen}  options={{ headerShown: false }}/>
+        <Stack.Screen name='choose Ticket' component={TicketChooseScreen}  options={{ headerShown: false }}/>
         <Stack.Screen name='eventpayment' component={EventPaymentScreen} options={{ headerShown: false }}/>
         <Stack.Screen name='bookingConfirmed' component={BookingConfirmed}/>
         <Stack.Screen name='payment pending' component={PaymentPending}/>

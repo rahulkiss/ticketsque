@@ -1,15 +1,17 @@
-import { StyleSheet, Text, View,ScrollView,Image } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,ScrollView,Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import CustomButton from '../Components/CustomButton'
 import { icons } from '../assert/image/image';
 import NameBar from '../provider/NameBar';
+import CustomerDetailsPopup from '../provider/CustemerDetailsPopup';
 
 type BookingDetailScreenprops={
     navigation: any;
 }
 const BookingDetailScreen:React.FC<BookingDetailScreenprops> = ({navigation}) => {
+    const [Popup,setPopup] =useState(false)
     const handler=()=>{
-    navigation.navigate('homescreen')
+    navigation.navigate('reservationSuccess')
     };
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1,}}> 
@@ -44,9 +46,9 @@ const BookingDetailScreen:React.FC<BookingDetailScreenprops> = ({navigation}) =>
                             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:700}}>Shankar Pawar</Text>
                             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:10,fontWeight:400}}>+91 8147113798 | shankar@gmail.com</Text>
                             </View>
-                                <View>
+                            <TouchableOpacity onPress={()=>setPopup(true)}>
                                 <Text style={{color:'rgba(208, 162, 247, 1)',fontSize:12,fontWeight:600}}>edit</Text>
-                                </View>
+                                </TouchableOpacity>
                         </View>
                     </View>
                 </View>
@@ -63,6 +65,7 @@ const BookingDetailScreen:React.FC<BookingDetailScreenprops> = ({navigation}) =>
       <View style={{position:'absolute',bottom:10,width:'100%',paddingHorizontal:20,borderTopWidth:1,borderTopColor:'rgba(245, 237, 253, 0.1)'}}>
         < CustomButton onPress={handler} buttontitle="Continue"/>
       </View>
+      <CustomerDetailsPopup Popup={Popup} setPopup={setPopup}/>
     </View>
   )
 }
@@ -80,7 +83,9 @@ const styles = StyleSheet.create({
         borderRadius:8,
         minHeight:36,
         gap:12,
-        padding:10
+        padding:10,
+        borderWidth:1,
+        borderColor:'rgba(71, 71, 71, 1)'
     },
   package:{
     justifyContent:'space-between',

@@ -1,10 +1,12 @@
-import { Text, View,ScrollView,Image } from 'react-native'
+import { Text, View,ScrollView,Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import styles from '../css/style'
 import { gif } from '../assert/gif/gifs'
 import { icons } from '../assert/image/image'
+import { useNavigation } from '@react-navigation/native'
 
 const  BookingConfirmed = () => {
+    const navigator = useNavigation()
     const [Animation,setAnimation] =useState(true)
     setTimeout(()=>{
          setAnimation(false);
@@ -61,12 +63,12 @@ const  BookingConfirmed = () => {
                     </View>
 
                     <View style={[styles.package]}>
-                        <View style={[styles.slot,{backgroundColor:'rgba(208, 162, 247, 1)',paddingVertical:10,paddingHorizontal:'20%',borderRadius:20}]}>
+                        <TouchableOpacity onPress={()=>{navigator.navigate('homescreen'); }} style={[styles.slot,{backgroundColor:'rgba(208, 162, 247, 1)',paddingVertical:10,paddingHorizontal:'20%',borderRadius:20}]}>
                             <Text style={[styles.Heading,{fontSize:14,color:'rgba(13, 13, 13, 1)'}]}>Home</Text>
-                        </View>
-                        <View style={[styles.slot,{paddingVertical:10,paddingHorizontal:'15%',borderRadius:20,borderColor:'rgba(208, 162, 247, 1)'}]}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{navigator.navigate('My Tickets'); }} style={[styles.slot,{paddingVertical:10,paddingHorizontal:'15%',borderRadius:20,borderColor:'rgba(208, 162, 247, 1)'}]}>
                             <Text style={[styles.Heading,{fontSize:14,color:'rgba(208, 162, 247, 1)'}]}>My Tickets</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                     </View>
                 </View>

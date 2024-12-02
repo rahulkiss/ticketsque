@@ -15,6 +15,8 @@ type  EnterDetailScreenProps= {
    const prevScreen = () => {
             navigation.navigate('otpverifyscreen');
             };
+
+            
   return (
     <View style={{flex: 1, backgroundColor:"#0D0D0D"}}>
     <View  style={styles.container}>
