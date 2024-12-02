@@ -32,7 +32,7 @@ import BookingConfirmed from './Screens/BookingConfirmed';
 import PaymentPending from './Screens/PaymentPending';
 import SomethingWentWrong from './Screens/SomethingWentWrong';
 import SessionExpired from './Screens/SessionExpired';
-
+import ReservationSuccess from './Screens/ReservationSuccess';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -105,7 +105,7 @@ export default function App() {
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
         
-        <Stack.Navigator initialRouteName="choose Ticket">
+        <Stack.Navigator initialRouteName="homescreen">
           <Stack.Screen
             name="Loginscreen"
             component={LogInScreen}
@@ -148,6 +148,7 @@ export default function App() {
         <Stack.Screen name='payment pending' component={PaymentPending}/>
         <Stack.Screen name='went wrong' component={SomethingWentWrong}/>
         <Stack.Screen name='session expired' component={SessionExpired}/>
+        <Stack.Screen name='reservationSuccess' component={ReservationSuccess}/>
 
 
           <Stack.Screen name="homescreen" component={Screens}   options={{ headerShown: false }}/>

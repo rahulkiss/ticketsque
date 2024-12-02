@@ -9,7 +9,7 @@ type TicketChooseScreenprops = {
 };
 const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
     const handler = () => {
-        navigation.navigate('session expired')
+        navigation.navigate('reservationSuccess')
     };
   return (
     <View style={{backgroundColor:'black',flex:1}}>
