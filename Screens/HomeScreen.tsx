@@ -8,6 +8,7 @@ import DiscountCarousal from '../Components/DiscountCarousal'
 import ScrollBox from '../Components/ScrollBox'
 import VenueScrollBox from '../Components/VenueScrollBox'
 import ArtistScrollBox from '../Components/ArtistScrollBox'
+import { Imageassets } from '../assets/images/image'
 
 type HomeScreenProps = {
   navigation: any;
@@ -25,7 +26,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
     <TopNavBar/> 
     <ScrollView showsVerticalScrollIndicator={false}  style={{ flex: 1,  backgroundColor: "black",height:'auto' }}>
       <View>
-        <CarouselBar/> 
+        <CarouselBar imageList={[require("../assets/images/Banner_1.png"),require("../assets/images/Banner_2.png"),require("../assets/images/Banner_3.png")]}/> 
       </View>
      <CategoryScroll/>
      <ScrollBox Title ='Featured Events' Color='#F5EDFD' view = 'View All' />

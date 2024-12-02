@@ -1,51 +1,104 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import * as React from 'react';
+import { useState } from 'react';
+import { Animated, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { LinearGradient } from 'react-native-linear-gradient';
+import Carousel from 'react-native-reanimated-carousel';
 
-const CarouselBar = () => {
-  return (
-    <View style={{height:250,margin:15 ,backgroundColor:"#1B1B1B",borderColor:'#474747',borderWidth:1,borderRadius:10,justifyContent:'center'}}>
-      <Text style={{color:'white',textAlign:'center'}}>CarouselBar</Text>
-    </View>
-  )
+interface CarouselBarProps {
+  imageList: any[];
 }
 
-export default CarouselBar
+const CarouselBar: React.FC<CarouselBarProps> = ({ imageList }) => {
+  const width = Dimensions.get('window').width;
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-const styles = StyleSheet.create({})
+  return (
+    <View style={{ flex: 1}}>
+      <View>
+      <Carousel
+        loop
+        width={width}
+        height={width / 1.5}
+        autoPlay={true}
+        data={imageList ?? []}
+        scrollAnimationDuration={1500}
+        onSnapToItem={(index) => setCurrentIndex(index)}
+        defaultIndex={currentIndex}
+        renderItem={({ index }) => (
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+            }}
+          >
+            <View style={{ height: 250, margin: 10, backgroundColor: "#1B1B1B", borderColor: '#474747', borderWidth: 0.1, borderRadius: 10, justifyContent: 'center' }}>
+              <Image source={imageList[index]} style={{ width: "100%", height: 300 }} resizeMode="contain" />
+            </View>
+          </View>
+        )}
+      />
+      </View>
+      <View style={styles.indicatorContainer}>
+        {imageList.map((_, index) => (
+           <LinearGradient
+           key={index}
+           colors={
+             currentIndex === index
+               ? ['rgba(208, 162, 247, 1)', 'rgba(208, 162, 247, 1)'] 
+               : ['rgba(255, 255, 255, 0.25)', 'rgba(255, 255, 255, 0.3)'] 
+           }
+           style={[
+            styles.indicator,
+            currentIndex === index ? styles.activeIndicator : styles.inactiveIndicator,
+          ]}
+         >
+          <Animated.View
+            key={index}
+          />
+          </LinearGradient>
+        ))}
+      </View>
+      
+    </View>
+  );
+}
 
 
-// import * as React from 'react';
-// import { Dimensions, Text, View } from 'react-native';
-// import Carousel from 'react-native-reanimated-carousel';
+const styles = StyleSheet.create({
+  indicatorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'center',
+    backgroundColor: 'rgba(212, 212, 212, 0.1)', 
+    padding: 5, 
+    borderRadius: 15,
+    borderColor:"rgba(255, 255, 255, 0.25)",
+    borderWidth:1,
+    marginTop:3
+  },
+  indicator: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    marginHorizontal: 5,
+    borderWidth:1,
+    borderColor:"rgba(208, 162, 247, 1)",
+  },
+  activeIndicator: {
+    width: 20,
+  },
+  inactiveIndicator: {
+    // backgroundColor: 'rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.05)',
+  },
+  gradientIndicator: {
+    width: 12,
+    height: 12,
+    borderRadius: 6,
+    marginHorizontal: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
 
-// function CarouselBar() {
-//     const width = Dimensions.get('window').width;
-//     return (
-//         <View style={{ flex: 1 }}>
-//             <Carousel
-//                 loop
-//                 width={width}
-//                 height={width / 2}
-//                 autoPlay={true}
-//                 data={[...new Array(6).keys()]}
-//                 scrollAnimationDuration={1000}
-//                 onSnapToItem={(index) => console.log('current index:', index)}
-//                 renderItem={({ index }) => (
-//                     <View
-//                         style={{
-//                             flex: 1,
-//                             borderWidth: 1,
-//                             justifyContent: 'center',
-//                         }}
-//                     >
-//                         <Text style={{ textAlign: 'center', fontSize: 30 }}>
-//                             {index}
-//                         </Text>
-//                     </View>
-//                 )}
-//             />
-//         </View>
-//     );
-// }
-
-// export default CarouselBar;
+export default CarouselBar;
