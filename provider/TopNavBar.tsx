@@ -63,7 +63,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#121212", 
     paddingHorizontal: 20,
     paddingVertical: 12,
-    height:54
+    height:54,
+    borderBottomWidth:1,
+    borderBlockColor:'rgba(71, 71, 71, 1)'
   },
   logoContainer: {
     flex: 1,

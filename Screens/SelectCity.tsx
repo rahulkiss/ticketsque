@@ -67,7 +67,9 @@ const styles = StyleSheet.create({
         height:48,
         borderRadius:8,
         alignItems:'center',
-        flexDirection:'row'
+        flexDirection:'row',
+        borderWidth:1,
+        borderColor:'#474747',
     },
     Cites:{
         backgroundColor:'#1B1B1B',

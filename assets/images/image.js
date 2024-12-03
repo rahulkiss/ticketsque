@@ -48,5 +48,7 @@ export const  Imageassets ={
     ArrowUpIcon :require("./ArrowUpIcon.png"),
     ArrowDownIcon :require("./ArrowDownIcon.png"),
     EventNotFount :require("./EventNotFount.png"),
+    DiscountImg :require("./DiscountImg.png"),
+    
     
 }

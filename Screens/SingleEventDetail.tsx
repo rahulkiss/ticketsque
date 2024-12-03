@@ -25,7 +25,7 @@ const SingleEventDetail = () => {
 
   return (
     <View style={{flex:1,backgroundColor: "black" }}>
-      <ScrollView style={{ backgroundColor: "black" }}>
+      <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: "black" }}>
 
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
           {/* <Image style={{ height: 360, width: 360, borderRadius: 12 }} source={Imageassets.PartyImage} /> */}

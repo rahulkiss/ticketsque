@@ -13,7 +13,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <View style={{ flex: 1}}>
+    <View style={{ flex: 1,marginTop:10}}>
       <View>
       <Carousel
         loop
@@ -78,15 +78,15 @@ const styles = StyleSheet.create({
     marginTop:3
   },
   indicator: {
-    width: 10,
-    height: 10,
+    width: 8,
+    height: 8,
     borderRadius: 5,
-    marginHorizontal: 5,
-    borderWidth:1,
+    marginHorizontal: 3,
+    borderWidth:0.6,
     borderColor:"rgba(208, 162, 247, 1)",
   },
   activeIndicator: {
-    width: 20,
+    width: 16,
   },
   inactiveIndicator: {
     // backgroundColor: 'rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.05)',

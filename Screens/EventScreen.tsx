@@ -22,7 +22,7 @@ const EventScreen : React.FC<EventScreenProps>= ({navigation}) => {
   return (
     <>
     <TopNavBar/> 
-    <ScrollView  style={{ flex: 1,  backgroundColor: "#0D0D0D",height:'auto', padding:15 }}>
+    <ScrollView showsVerticalScrollIndicator={false}  style={{ flex: 1,  backgroundColor: "#0D0D0D",height:'auto', padding:15 }}>
      <Text   style={{color:'#F5EDFD',fontWeight:700,fontSize:20}}>Club & Nightlife Events in Bengaluru</Text>
      <EventDateFilter/>
       <EventDetails onPress={ViewDetails}/>

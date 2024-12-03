@@ -142,7 +142,7 @@ const TabBar = ({ state, descriptors, navigation }:TabBar) => {
       flexDirection: 'row',
       height: 58,
       backgroundColor: '#000',
-      borderTopWidth:2,
+      borderTopWidth:1.35,
       borderColor:'#474747',
       elevation: 10,
       shadowColor: '#000',

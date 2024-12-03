@@ -36,7 +36,7 @@ type  ArtistGalleryScrollProps = {
         <SafeAreaView>
             <ScrollView
                 horizontal={true}
-                showsHorizontalScrollIndicator={true}
+                showsHorizontalScrollIndicator={false}
                 style={styles.scrollBox}
                 contentContainerStyle={styles.scrollContent}
             >
