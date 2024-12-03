@@ -71,7 +71,7 @@ const Screens = () => (
           component={Profile}
           options={{ tabBarLabel: "Profile", headerShown: false }}
         />
-       
+
       </Tab.Navigator>
     </SafeAreaView>
   </React.Fragment>
@@ -82,64 +82,41 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
-        
-        <Stack.Navigator initialRouteName="homescreen" screenOptions={{headerShown:false}}>
-          <Stack.Screen
-            name="Loginscreen"
-            component={LogInScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="otpverifyscreen"
-            component={OtpVerifyScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="enterdetailscreen"
-            component={EnterDetailScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="artistdetailscreen"
-            component={ArtistDetailScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="singleeventdetail"
-            component={SingleEventDetail}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="venudetailscreen"
-            component={VenueDetailScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="Tearms & Conditions"
-            component={TermsAndConditionScreen}
-            options={{ headerShown: true }}
-          />
-        <Stack.Screen name="Notifications" component={NotificationScreen}  />
-        <Stack.Screen name="Select City" component={SelectCity}/>
-        <Stack.Screen name="Search" component={SearchScreen}/>
-        <Stack.Screen name="Profile" component={Profile}/>
-        <Stack.Screen name="Support & Contact Us" component={SupportScreen}/>
-        <Stack.Screen name="My Profile" component={MyProfile}/>
-        <Stack.Screen name="My Tickets" component={MyTickets}/>
-        <Stack.Screen name="Tickets Details" component={TicketDetailsScreen}/>
-        <Stack.Screen name="Reservation" component={ReservationScreen}/>
-        <Stack.Screen name="booking" component={Booking}/>
-        <Stack.Screen name='EventBooking' component={EventBookingScreen}  options={{ headerShown: false }}/>
-        <Stack.Screen name='choose Ticket' component={TicketChooseScreen}  options={{ headerShown: false }}/>
-        <Stack.Screen name='eventpayment' component={EventPaymentScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='bookingConfirmed' component={BookingConfirmed}/>
-        <Stack.Screen name='payment pending' component={PaymentPending}/>
-        <Stack.Screen name='went wrong' component={SomethingWentWrong}/>
-        <Stack.Screen name='session expired' component={SessionExpired}/>
-        <Stack.Screen name='reservationSuccess' component={ReservationSuccess}/>
+        <Stack.Navigator initialRouteName="homescreen" screenOptions={{
+          headerShown: false,
+          cardStyle: { backgroundColor: 'black' },
+          cardStyleInterpolator: ({ current }) => ({
+            cardStyle: { opacity: current.progress },
+          }),
+        }} >
+          <Stack.Screen name="Loginscreen" component={LogInScreen} />
+          <Stack.Screen name="otpverifyscreen" component={OtpVerifyScreen}/>
+          <Stack.Screen name="enterdetailscreen" component={EnterDetailScreen}/>
+          <Stack.Screen name="artistdetailscreen" component={ArtistDetailScreen}/>
+          <Stack.Screen name="singleeventdetail" component={SingleEventDetail}/>
+          <Stack.Screen name="venudetailscreen" component={VenueDetailScreen}/>
+          <Stack.Screen name="Tearms & Conditions" component={TermsAndConditionScreen}/>
+          <Stack.Screen name="Notifications" component={NotificationScreen} />
+          <Stack.Screen name="Select City" component={SelectCity} />
+          <Stack.Screen name="Search" component={SearchScreen} />
+          <Stack.Screen name="Profile" component={Profile} />
+          <Stack.Screen name="Support & Contact Us" component={SupportScreen} />
+          <Stack.Screen name="My Profile" component={MyProfile} />
+          <Stack.Screen name="My Tickets" component={MyTickets} />
+          <Stack.Screen name="Tickets Details" component={TicketDetailsScreen} />
+          <Stack.Screen name="Reservation" component={ReservationScreen} />
+          <Stack.Screen name="booking" component={Booking} />
+          <Stack.Screen name='EventBooking' component={EventBookingScreen} />
+          <Stack.Screen name='choose Ticket' component={TicketChooseScreen} />
+          <Stack.Screen name='eventpayment' component={EventPaymentScreen} />
+          <Stack.Screen name='bookingConfirmed' component={BookingConfirmed} />
+          <Stack.Screen name='payment pending' component={PaymentPending} />
+          <Stack.Screen name='went wrong' component={SomethingWentWrong} />
+          <Stack.Screen name='session expired' component={SessionExpired} />
+          <Stack.Screen name='reservationSuccess' component={ReservationSuccess} />
 
 
-          <Stack.Screen name="homescreen" component={Screens}   options={{ headerShown: false }}/>
+          <Stack.Screen name="homescreen" component={Screens} />
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>

@@ -1,7 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import CustomButton from '../Components/CustomButton';
+import { Imageassets } from '../assets/images/image';
+
 
 type  OtpVerifyScreenProps= {
   navigation: any;
@@ -32,9 +34,14 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
   return (
     <View style={{flex: 1, backgroundColor:"#0D0D0D"}}>
     <View  style={styles.container}>
+    <View style={{flexDirection:'row',alignItems:'center',gap:8,height:27}}>
     <TouchableOpacity onPress={prevScreen}>
-    <Text style={{fontSize:20,color:'#F5EDFD'}} >Verify the OTP sent to</Text>
-    </TouchableOpacity>
+        <Image style={{height:24,width:24}} source={Imageassets.BackArrowIcon} />
+       </TouchableOpacity>    
+           <Text style={{fontSize:20,color:'#F5EDFD'}} >Verify the OTP sent to</Text>
+      </View>
+
+    
     
           
      <View style={{marginTop:35, height:50}}>
@@ -56,7 +63,9 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
       </View>
 
       <View style ={styles.iconcontainer}>
-        <Text style ={{color:'white',textAlign:'center'}}>OR</Text>
+         <Image style={{width:87}} source={Imageassets.line}/>
+        <Text style ={{color:'white',}}>OR</Text>
+        <Image style={{width:87}} source={Imageassets.line}/>
       </View>
       <View style ={{}}>
         <Text style ={{color:'white',textAlign:'center'}}>Send OTP on WhatsApp</Text>
@@ -95,6 +104,10 @@ timingcontainer:{
 iconcontainer:{
   width:'100%',
   marginVertical:15,
+  flexDirection:'row',
+  justifyContent:'center',
+  alignItems:'center',
+  gap:8
  
 }
 })

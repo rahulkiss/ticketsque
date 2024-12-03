@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler';
 import CustomButton from '../Components/CustomButton';
+import { Imageassets } from '../assets/images/image';
+
 
 type  LogInScreenProps= {
   navigation: any;
@@ -18,10 +20,12 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
     <View style={{flex: 1, backgroundColor:"#0D0D0D"}}>
 
     <View style={styles.container}>
-    
-            <Text style={{fontSize:20,color:'#F5EDFD'}} >Login/ SignUp to TicketsQue</Text>
+      <View style={{flexDirection:'row',alignItems:'center',gap:8,height:27}}>
+          <Image style={{height:24,width:24}} source={Imageassets.BackArrowIcon} />
+          <Text style={{fontSize:20,color:'#F5EDFD'}} >Login/ SignUp to TicketsQue</Text>
+      </View>
 
-            <View style={styles.inputContainer}>
+    <View style={styles.inputContainer}>
         <TextInput
           style={styles.inputCode}
           value="+91"
@@ -47,14 +51,14 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
          <View style={styles.textcontainer}>
       <View style={styles.textWrapper}>
         <View style={{flexDirection: 'row'}}>
-        <Text style={styles.text}>By continuing, I agree to</Text>
+        <Text style={styles.text}>By continuing, I agree to </Text>
         <TouchableOpacity>
-          <Text style={styles.link}> Terms of service </Text>
+          <Text style={styles.link}>Terms of service</Text>
         </TouchableOpacity>
-        <Text style={styles.text}> &</Text>
+        <Text style={styles.text}> & </Text>
         </View>
         <TouchableOpacity>
-          <Text style={styles.link}> Privacy policy </Text>
+          <Text style={styles.link}>Privacy policy</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -71,7 +75,7 @@ export default LogInScreen;
 const styles = StyleSheet.create({
     container :{
         marginTop:100,
-        margin:25
+        margin:25,
     }, inputContainer: {
         marginTop:35,
         flexDirection: 'row', // Display inputs in a row
@@ -118,7 +122,7 @@ const styles = StyleSheet.create({
       link: {
         textDecorationLine: 'underline',
         color: '#F5EDFD',
-        fontSize: 15,
+        fontSize: 14,
           // Fine-tune the position by adjusting padding
       },
       image: {

@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View,Image,ScrollView } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, View,Image,ScrollView, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import { icons } from '../assert/image/image'
 import NameBar from '../provider/NameBar'
+import TicketDownloadPopup from '../provider/TicketDownloadPopup'
 const TicketDetailsScreen = () => {
+  const [Popup,setPopup] = useState(false)
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1,}}> 
     <ScrollView>
@@ -19,7 +21,7 @@ const TicketDetailsScreen = () => {
             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:18,fontWeight:700}}>Event Name</Text>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:12,fontWeight:500,}}>TOCA, Koramangala</Text>
             </View>
-            <Image source={icons.Threedot} />
+             <TouchableOpacity onPress={()=>setPopup(true)}><Image source={icons.Threedot} /></TouchableOpacity>
           </View>
           <View >    
           <Image source={icons.ticket} style={{width:'100%',}}/>
@@ -190,6 +192,7 @@ const TicketDetailsScreen = () => {
         </View>
       </View>
       </ScrollView>
+      <TicketDownloadPopup Popup={Popup}  setPopup={setPopup}/>
     </View>
   )
 }

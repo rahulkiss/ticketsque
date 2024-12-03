@@ -8,6 +8,7 @@ import ScrollBox from '../Components/ScrollBox'
 import BackButton from '../Components/BackButton'
 import SharePopup from '../provider/SharePopup'
 import { useNavigation } from '@react-navigation/native'
+import EventCarousel from '../provider/EventCarousel'
 
 
 
@@ -28,8 +29,9 @@ const SingleEventDetail = () => {
       <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: "black" }}>
 
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-          {/* <Image style={{ height: 360, width: 360, borderRadius: 12 }} source={Imageassets.PartyImage} /> */}
-            <View style={{ height: 360, width: 360, borderRadius: 12, borderColor:'rgba(255, 255, 255, 0.25)',borderWidth:1 }}></View>
+            
+            <EventCarousel/>
+           
         </View>
         <View style={{ maxHeight: 423, gap: 13, paddingHorizontal: 15, paddingTop: 15 }}>
           <Text style={{ color: '#F5EDFD', fontWeight: 700, fontSize: 20 }}>Event Name</Text>

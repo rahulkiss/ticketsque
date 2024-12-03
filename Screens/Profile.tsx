@@ -25,9 +25,9 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
                             <Image source={icons.ArrowRight} style={{marginLeft:5}}/>
                         </View>
                 </View>
-                <View style={styles.Button}>
+                <TouchableOpacity onPress={()=>navigation.navigate('Loginscreen')} style={styles.Button}>
                 <Text style={{fontWeight:700,fontSize:12,textAlign:'center'}}>Login/ Register</Text>
-                </View>
+                </TouchableOpacity >
             </View>
             <TouchableOpacity onPress= {()=>handler("My Profile")}>
             <View style={styles.Fram}>

@@ -1,17 +1,24 @@
 import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../css/style'
 import { icons } from '../assert/image/image'
 import CustomButton from '../Components/CustomButton'
+import { ScrollView } from 'react-native-gesture-handler'
+import TicketInfoPopup from '../provider/TicketInfoPopup'
 
 type TicketChooseScreenprops = {
     navigation: any;
+    
 };
 const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
+    const [Popup,setPopup] =useState(false)
     const handler = () => {
         navigation.navigate('eventpayment')
     };
   return (
+    <>
+    
+
     <View style={{backgroundColor:'black',flex:1}}>
         <View style={styles.maincontainer}>
         <View style={[styles.card,{padding:20}]}>
@@ -36,8 +43,12 @@ const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
                                 </View>
                             </View>
                         <View style={[styles.package,{width:'50%'}]}>
-                        <Text style={[styles.Text,{fontSize:10}]}>Permits 1 Lady | Fully-Redeemable </Text>
-                        <Image source={icons.Iicon}/>
+                          <View>
+                            <Text style={[styles.Text,{fontSize:10}]}>Permits 1 Lady | Fully-Redeemable </Text>
+                            </View> 
+                           <TouchableOpacity  onPress={()=>setPopup(true)}> 
+                            <Image source={icons.Iicon}/>
+                            </TouchableOpacity>
                         </View>
                     </View>
 
@@ -106,6 +117,9 @@ const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
                 <CustomButton onPress={handler} buttontitle='Continue'/>
         </View>
     </View>
+    
+    <TicketInfoPopup Popup={Popup} setPopup={setPopup}/>
+    </>
   )
 }
 

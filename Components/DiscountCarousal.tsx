@@ -1,54 +1,5 @@
 
 
-
-// import React from 'react';
-// import { ScrollView, StyleSheet, View, Text } from 'react-native';
-// import LinearGradient from 'react-native-linear-gradient';
-// import { SafeAreaView } from 'react-native-safe-area-context';
-
-
-// const DiscountCarousal = () => {
-//   return (
-//     <View style={styles.container}>
-//        <Text style={{height:25,paddingHorizontal:15,color:'#F5EDFD',fontWeight:700,fontSize:18, width:'100%'}}>Discounts</Text>
-//       <SafeAreaView>
-//         <ScrollView
-//           horizontal
-//           showsHorizontalScrollIndicator={false}
-//          contentContainerStyle={{gap:10,paddingHorizontal:15}}
-//         >
-//         <View style={{height:143,flexDirection:'row',justifyContent:'center'}}>
-//              <View style={{height:121,borderRadius:12,borderWidth:1,borderColor:'#474747',width:362}}> 
-
-//               </View>  
-//         </View>
-//         <View style={{height:143,flexDirection:'row',justifyContent:'center'}}>
-//              <View style={{height:121,borderRadius:12,borderWidth:1,borderColor:'#474747',width:362}}>         
-//               </View>  
-//         </View>
-//         <View style={{height:143,flexDirection:'row',justifyContent:'center'}}>
-//              <View style={{height:121,borderRadius:12,borderWidth:1,borderColor:'#474747',width:362}}>         
-//               </View>  
-//         </View>
-                
-                             
-             
-     
-//         </ScrollView>
-//       </SafeAreaView>
-//     </View>
-       
-//   );
-// };
-
-// const styles = StyleSheet.create({
-
-
- 
-// });
-
-// export default DiscountCarousal;
-
 import * as React from 'react';
 import { useState } from 'react';
 import { Animated, Dimensions, Image, StyleSheet, Text, View } from 'react-native';
@@ -77,20 +28,18 @@ const CarouselBar: React.FC<CarouselBarProps> = ({  }) => {
       <Carousel
         loop
         width={width}
-        height={width / 1.5}
-        autoPlay={false}
+        height={width}
+        autoPlay={true}
         data={imageList ?? []}
         scrollAnimationDuration={1500}
         onSnapToItem={(index) => setCurrentIndex(index)}
         defaultIndex={currentIndex}
         renderItem={({ index }) => (
           
-             <View style={{height:121,borderRadius:12,borderWidth:1,borderColor:'#474747',width:362,marginHorizontal:'auto',alignItems:'center',justifyContent:'center',flexDirection:'row',backgroundColor:'rgba(27, 27, 27, 1)'}}> 
-             <View style={{maxWidth:'50%'}}>
-               <Image style={{maxWidth:'90%',maxHeight:'85%'}} resizeMode='contain'  source={imageList[index].image} /> 
-               </View>
-               
-
+             <View style={{height:121,borderRadius:12,borderWidth:1,borderColor:'#474747',width:362,marginHorizontal:'auto',alignItems:'center',justifyContent:'flex-start',flexDirection:'row',backgroundColor:'rgba(27, 27, 27, 1)'}}> 
+                     
+                    <Image style={{maxHeight:91,maxWidth:140,marginHorizontal:15}} resizeMode='stretch'  source={imageList[index].image} /> 
+                
              <View style={{}} >
                 <View style={{flexDirection:'row'}}>
                     <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:600,fontSize:16}}>Get </Text>

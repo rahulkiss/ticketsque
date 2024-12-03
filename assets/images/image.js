@@ -49,6 +49,8 @@ export const  Imageassets ={
     ArrowDownIcon :require("./ArrowDownIcon.png"),
     EventNotFount :require("./EventNotFount.png"),
     DiscountImg :require("./DiscountImg.png"),
+    PartyImg360 :require("./PartyImg360.png"),
+    BackArrowIcon :require("./BackArrowIcon.png"),
     
     
 }
