@@ -85,20 +85,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000',
-        marginVertical:16 // Optional for better contrast
+        marginVertical:16 
     },
     scrollBox: {
         marginHorizontal: 10,
     },
     scrollContent: {
-        flexDirection: 'row', // Ensures items are laid out horizontally
+        flexDirection: 'row',
         alignItems: 'center',
-      // Adds padding inside the scroll container
     },
     item: {
-        width: 177, // Fixed width for each item
-        height: 235, // Fixed height for each item
-        marginRight: 10, // Spacing between items
+        width: 177,
+        height: 235, 
+        marginRight: 10,
         backgroundColor: '#1B1B1B',
         borderRadius: 8,
         borderColor: '#474747',

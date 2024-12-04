@@ -33,22 +33,22 @@ export default Search;
 
 const styles = StyleSheet.create({
   gradientBorder: {
-    padding: 2, // Space for the gradient border
-    borderRadius: 26, // Slightly larger than inner box radius
+    padding: 2, 
+    borderRadius: 26, 
     marginTop: 20,
     marginHorizontal: 20,
   },
   box: {
     height: 48,
-    borderRadius: 24, // Match the inner box's shape
-    backgroundColor: '#1B1B1B', // Inner background color
+    borderRadius: 24, 
+    backgroundColor: '#1B1B1B', 
     paddingHorizontal: 12,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   search: {
-    flex: 1, // Take up the remaining space
+    flex: 1, 
     color: 'white',
     fontWeight: '600',
     fontSize: 14,

@@ -13,6 +13,12 @@ type ArtistDetailScreenProps = {
 
 const ArtistDetailScreen: React.FC<ArtistDetailScreenProps> = ({ navigation }) => {
     const [Popup,setPopup]=useState(false)
+    const eventDetails = [
+        {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+        {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+        {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+        {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'}
+    ];
     
 
     return (
@@ -59,7 +65,7 @@ const ArtistDetailScreen: React.FC<ArtistDetailScreenProps> = ({ navigation }) =
                 </View>
 
                 <ArtistGalleryScroll />
-                <ScrollBox Title="Events" Color="#F5EDFD" />
+                <ScrollBox eventDetails={eventDetails} Title="Events" Color="#F5EDFD" />
             </ScrollView>
 
             <BackButton setPopup={setPopup}  />

@@ -25,6 +25,28 @@ const SingleEventDetail = () => {
     {image:Imageassets.ArtistGalleryimg1,},
     {image:Imageassets.ArtistGalleryimg3,},
   ]
+  
+  const eventDetail = [
+    "Live DJ Sets: Our lineup features some of the most talented and sought-after DJs in the industry, each bringing their unique style to the stage. From deep house to techno, trance to funk-infused beats, they'll take you on an unforgettable sonic journey.",
+    "State-of-the-Art Visuals: Prepare to be mesmerized by cutting-edge visual projections that sync perfectly with the music, creating a multisensory experience that will transport you to a world of vibrant colors and captivating visuals.",
+    "Interactive Dance Zones: We've set up dedicated dance zones with immersive lighting and pulsating sound systems, ensuring that you'll find the perfect spot to let loose and dance to your heart's content.",
+    "Artisanal Food and Drinks: Take a break from the dance floor and indulge in a variety of delectable bites and crafted cocktails from our top-notch culinary and mixology teams.",
+    "Chillout Lounge: Need a breather? Visit our chillout lounge area, where you can relax, recharge, and socialize with fellow music enthusiasts. Unwind while still being enveloped in the event's electrifying atmosphere.",
+  ];
+  const eventDetails = [
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'}
+];
+const artistdata= [
+  { id: '1', name: 'Artist Name', icon: Imageassets.Artist1 ,event:'Event'},
+  { id: '2', name: 'Artist Name', icon: Imageassets.Artist3 ,event:'Event' },
+  { id: '3', name: 'Artist Name', icon: Imageassets.Artist2 ,event:'Event' },
+  { id: '4', name: 'Artist Name', icon: Imageassets.Artist1 ,event:'Event' },
+  
+];
+  
    const GoToEventBooking = () =>{
      navigator.navigate('EventBooking')
    }
@@ -95,37 +117,37 @@ const SingleEventDetail = () => {
             </View>
         </View>
 
-       <View style={{paddingHorizontal:15,paddingVertical:20}}>
-        <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:18,}}>Event Details</Text>
-        <View style={{paddingTop:20,gap:5}}>
-          <View style={{flexDirection:'row',gap:4}} >
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize: 20,lineHeight: 22,}}>•</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
-            Live DJ Sets: Our lineup features some of the most talented and sought-after DJs in the industry, each bringing their unique style to the stage. From deep house to techno, trance to funk-infused beats, they'll take you on an unforgettable sonic journey.
-            </Text>
-          </View>
-          <View style={{flexDirection:'row',gap:4}} >
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize: 20,lineHeight: 22,}}>•</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
-            State-of-the-Art Visuals: Prepare to be mesmerized by cutting-edge visual projections that sync perfectly with the music, creating a multisensory experience that will transport you to a world of vibrant colors and captivating visuals.            </Text>
-          </View>
-          <View style={{flexDirection:'row',gap:4}} >
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize: 20,lineHeight: 22,}}>•</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
-            Interactive Dance Zones: We've set up dedicated dance zones with immersive lighting and pulsating sound systems, ensuring that you'll find the perfect spot to let loose and dance to your heart's content.            </Text>
-          </View>
-          <View style={{flexDirection:'row',gap:4}} >
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize: 20,lineHeight: 22,}}>•</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
-            Artisanal Food and Drinks: Take a break from the dance floor and indulge in a variety of delectable bites and crafted cocktails from our top-notch culinary and mixology teams.            </Text>
-          </View>
-          <View style={{flexDirection:'row',gap:4}} >
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize: 20,lineHeight: 22,}}>•</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
-            Chillout Lounge: Need a breather? Visit our chillout lounge area, where you can relax, recharge, and socialize with fellow music enthusiasts. Unwind while still being enveloped in the event's electrifying atmosphere.    </Text>     
-              </View>
-        </View>
-       </View>
+
+<View style={{ paddingHorizontal: 15, paddingVertical: 20 }}>
+  <Text style={{ color: "#F5EDFD", fontWeight: 700, fontSize: 18 }}>Event Details</Text>
+  <View style={{ paddingTop: 20, gap: 5 }}>
+    {eventDetail.map((detail, index) => (
+      <View key={index} style={{ flexDirection: "row", gap: 4 }}>
+        <Text 
+          style={{
+            color: "rgba(245, 237, 253, 1)",
+            fontWeight: 500,
+            fontSize: 20,
+            lineHeight: 22,
+          }}
+        >
+          •
+        </Text>
+        <Text
+          style={{
+            color: "rgba(245, 237, 253, 1)",
+            fontWeight: 400,
+            fontSize: 14,
+            flex: 1,
+          }}
+        >
+          {detail}
+        </Text>
+      </View>
+    ))}
+  </View>
+</View>;
+
        <View>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1,marginLeft:15}} >Available Details</Text>
         <EventAvailableScroll/>
@@ -139,17 +161,29 @@ const SingleEventDetail = () => {
         {TermsAndCondition && <View ><Image source={Imageassets.DownIcon}/></View>}  
         {!TermsAndCondition&& <View ><Image source={Imageassets.UpIcon}/></View>} 
        </TouchableOpacity>
-       {TermsAndCondition &&
-       <View style={{gap:5,paddingVertical:5}}>
-        <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>1. Age Restriction: You must be at least 21 years old to attend the ElectroGroove Fusion Night. Valid photo identification (driver's license, passport, or government- issued ID) is required for entry. No exceptions will be made.
-        </Text>
-        <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>2. Ticketing: All ticket sales are final and non- refundable. Lost or stolen tickets will not be replaced. Tickets are valid only for the date and time indicated on the ticket.
-        </Text>
-        <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>3. Entry and Security: Entry to the event is subject to security checks. Prohibited items include weapons, drugs, outside food and beverages, and any other items deemed unsafe or inappropriate by event security. The event organizers reserve the right to refuse entry to anyone for any reason.
-        </Text>
-        <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>4. Behavior and Conduct: All attendees are expected to behave respectfully towards fellow attendees, event staff, and performers. Any disruptive or unruly behavior may result in removal from the event without refund</Text>
-       </View>
-         }
+       {TermsAndCondition && (
+  <View style={{ gap: 5, paddingVertical: 5 }}>
+    {[
+      "1.Age Restriction: You must be at least 21 years old to attend the ElectroGroove Fusion Night. Valid photo identification (driver's license, passport, or government-issued ID) is required for entry. No exceptions will be made.",
+      "2.Ticketing: All ticket sales are final and non-refundable. Lost or stolen tickets will not be replaced. Tickets are valid only for the date and time indicated on the ticket.",
+      "3.Entry and Security: Entry to the event is subject to security checks. Prohibited items include weapons, drugs, outside food and beverages, and any other items deemed unsafe or inappropriate by event security. The event organizers reserve the right to refuse entry to anyone for any reason.",
+      "4.Behavior and Conduct: All attendees are expected to behave respectfully towards fellow attendees, event staff, and performers. Any disruptive or unruly behavior may result in removal from the event without refund.",
+    ].map((term, index) => (
+      <Text
+        key={index}
+        style={{
+          color: 'rgba(245, 237, 253, 1)',
+          fontWeight: 400,
+          fontSize: 14,
+          flex: 1,
+        }}
+      >
+        {term}
+      </Text>
+    ))}
+  </View>
+)}
+
        </View>
 
 
@@ -162,7 +196,7 @@ const SingleEventDetail = () => {
        {ArtistImage &&
        
        <View >
-        <ArtistScrollBox/>
+        <ArtistScrollBox artistdata={artistdata}/>
          </View>
          }
        </View>
@@ -214,8 +248,8 @@ const SingleEventDetail = () => {
          }
        </View>
        </View>
-       <ScrollBox Title ='Other Events' Color='#F5EDFD' />
-       <ScrollBox Title ='Discounts' Color='#F5EDFD' />
+       <ScrollBox eventDetails={eventDetails} Title ='Other Events' Color='#F5EDFD' />
+       <ScrollBox eventDetails={eventDetails} Title ='Discounts' Color='#F5EDFD' />
          
        <View style={{height: 193, flex:1, borderRadius: 8, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#1B1B1B',alignItems:'center',justifyContent:'center',marginTop:5,marginHorizontal:15,gap:8,marginBottom:76}}>
             <View style={{height: 121,width:330,gap:16}} >

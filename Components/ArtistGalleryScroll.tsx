@@ -71,20 +71,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000',
-        marginVertical:12 // Optional for better contrast
+        marginVertical:12 
     },
     scrollBox: {
         marginHorizontal: 10,
     },
     scrollContent: {
-        flexDirection: 'row', // Ensures items are laid out horizontally
+        flexDirection: 'row', 
         alignItems: 'center',
-        paddingHorizontal: 10, // Adds padding inside the scroll container
+        paddingHorizontal: 10, 
     },
     item: {
-        width: 167.5, // Fixed width for each item
-        height: 160, // Fixed height for each item
-        marginRight: 10, // Spacing between items
+        width: 167.5,
+        height: 160, 
+        marginRight: 10,
         backgroundColor: '#1B1B1B',
         borderRadius: 8,
         borderColor: '#474747',

@@ -15,6 +15,12 @@ const VenueScreen = () => {
   const ShowPopup = () =>{
     setPopup(true);
   }
+  const venueData = [
+    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
+    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
+    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
+    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'}
+  ];
   
   return (
     <>
@@ -24,9 +30,9 @@ const VenueScreen = () => {
       <CarouselBar carousal={'Home'} margintop={10} carousalwidth={1.5} imageList={[require("../assets/images/Banner_1.png"),require("../assets/images/Banner_2.png"),require("../assets/images/Banner_3.png")]}/> 
       </View>
      
-      <VenueScrollBox text={'Top Venuns'} color={'rgba(208, 162, 247, 1)'}/>
-      <VenueScrollBox text={'Available for Reservation'} color={'rgba(208, 162, 247, 1)'}/>
-      <VenueScrollBox text={'Venun with Event'} color={'rgba(208, 162, 247, 1)'}/>
+      <VenueScrollBox venueData={venueData}  text={'Top Venuns'} color={'rgba(208, 162, 247, 1)'}/>
+      <VenueScrollBox venueData={venueData} text={'Available for Reservation'} color={'rgba(208, 162, 247, 1)'}/>
+      <VenueScrollBox venueData={venueData} text={'Venun with Event'} color={'rgba(208, 162, 247, 1)'}/>
     </ScrollView>
     <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}><Image source={Imageassets.Filterimg}/></TouchableOpacity>
     <FilterPopup Popup={Popup} setPopup={setPopup}/>

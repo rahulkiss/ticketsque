@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)', 
   },
   inputName: {
-    flex: 1, // Take up the remaining space
+    flex: 1, 
     height: 44,
     borderColor: '#474747',
     borderWidth: 1,
@@ -126,23 +126,23 @@ const styles = StyleSheet.create({
     color: '#F5EDFD'
   },
   inputContainer: {
-    flexDirection: 'row', // Display inputs in a row
-    alignItems: 'center', // Align inputs vertically
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   inputCode: {
-    width: 60, // Width for the country code input
+    width: 60, 
     height: 44,
     borderColor: '#474747',
     borderWidth: 1,
     borderRadius: 10,
     fontSize: 14,
-    textAlign: 'center', // Center the +91 in the input
-    backgroundColor: '#1B1B1B', // Light background color
+    textAlign: 'center', 
+    backgroundColor: '#1B1B1B',
     marginRight: 10,
     color: 'rgba(245, 237, 253, 0.5)',
   },
   inputNumber: {
-    flex: 1, // Take up the remaining space
+    flex: 1,
     height: 44,
     borderColor: '#474747',
     borderWidth: 1,

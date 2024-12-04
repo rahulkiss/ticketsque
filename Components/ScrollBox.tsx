@@ -8,17 +8,16 @@ type  ScrollBoxProps = {
     Color?: string;
     view?: any;
     padding?:any;
+    eventDetails:any[];
   };
 
 
-  const ScrollBox: React.FC<ScrollBoxProps> = ({ Title, Color,view,padding }) => {
-    // Sample data for rendering items
-    const items = [1, 2, 3, 4]; // Array to repeat the item 4 times
-    
+  const ScrollBox: React.FC<ScrollBoxProps> = ({ Title, Color,view,padding,eventDetails }) => {
+
 
     return (
         <View style={styles.container}>
-            {/* Horizontal Scrollable Box */}
+           
             <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
                     <Text style={{color:Color,fontSize:18,fontWeight:700}}>{Title}</Text>
                     <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>{view}</Text>
@@ -31,7 +30,7 @@ type  ScrollBoxProps = {
                 contentContainerStyle={styles.scrollContent}
             >
                 
-                {items.map((_, index) => (
+                {eventDetails.map((items,index) => (
                     <View key={index} style={[styles.item,{marginVertical:padding}]}>
                         <View
                             style={{
@@ -42,20 +41,20 @@ type  ScrollBoxProps = {
                             }}
                         >
                             <Image
-                                source={Imageassets.PartyImage}
+                                source={items.image}
                                 style={{ height: 157, width: 157 }}
                             />
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
                                 <Text  numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                    ElectroGroove Fusion Night Geater fun unlimited bre...
+                                    {items.title}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                    TOCA, Koramangala
+                                    {items.palce}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                    24th March, 6:30
+                                   {items.date}
                                 </Text>
                             </View>
                             <View
@@ -76,7 +75,7 @@ type  ScrollBoxProps = {
                                         alignItems: 'baseline',
                                     }}
                                 >
-                                    <Text style={{ color: '#D0A2F7', fontSize: 12, fontWeight: '700' }}>₹1000</Text>
+                                    <Text style={{ color: '#D0A2F7', fontSize: 12, fontWeight: '700' }}>₹{items.price}</Text>
                                     <Text
                                         style={{
                                             color: '#D0A2F7',
@@ -104,21 +103,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000',
-        marginVertical:12 // Optional for better contrast
+        marginVertical:12 
     },
     scrollBox: {
         marginHorizontal: 10,
     },
     scrollContent: {
-        flexDirection: 'row', // Ensures items are laid out horizontally
+        flexDirection: 'row', 
         alignItems: 'center',
-         // Adds padding inside the scroll container
+    
         backgroundColor:'black'
     },
     item: {
-        width: 176, // Fixed width for each item
-        height: 285, // Fixed height for each item
-        marginRight: 10, // Spacing between items
+        width: 176, 
+        height: 285, 
+        marginRight: 10,
         backgroundColor: '#1B1B1B',
         borderRadius: 8,
         borderColor: '#474747',

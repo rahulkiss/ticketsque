@@ -10,13 +10,12 @@ type EventDetailsProps ={
 
 
   const EventDetails: React.FC<EventDetailsProps> = ({onPress}) => {
-    // Sample data for rendering items
-    const items = [1,2,3,4,5,6,7,8]; // Array to repeat the item 4 times
     
+    const items = [1,2,3,4,5,6,7,8]; 
 
     return (
         <View style={styles.container}>
-            {/* Horizontal Scrollable Box */}
+          
             <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'center',gap:12}}>
             
                 

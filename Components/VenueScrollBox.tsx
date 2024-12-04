@@ -7,20 +7,21 @@ import { useNavigation } from '@react-navigation/native';
 type  VenueScrollBoxProps = {
       text?:any;
       color?:any;
+      venueData:any[];
   };
 
-
-  const VenueScrollBox: React.FC<VenueScrollBoxProps> = ({text,color}) => {
-    // Sample data for rendering items
+ 
+  const VenueScrollBox: React.FC<VenueScrollBoxProps> = ({text,color,venueData}) => {
+    
     const navigation = useNavigation();
-    const items = [1, 2, 3, 4]; // Array to repeat the item 4 times
+   
     const GoToDetails =()=>{
         navigation.navigate('venudetailscreen')
     }
 
     return (
         <View  style={styles.container}>
-            {/* Horizontal Scrollable Box */}
+           
             <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
                    <View><Text style={[styles.title, { color }]}>{text}</Text></View> 
                     {/* <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>View All</Text> */}
@@ -33,7 +34,7 @@ type  VenueScrollBoxProps = {
                 contentContainerStyle={styles.scrollContent}
             >
                 
-                {items.map((_, index) => (
+                {venueData.map((items,index) => (
                     <TouchableOpacity  onPress={GoToDetails} key={index} style={styles.item}>
                         <View
                             style={{
@@ -44,20 +45,20 @@ type  VenueScrollBoxProps = {
                             }}
                         >
                             <Image 
-                                source={Imageassets.PartyImage90}
+                                source={items.image}
                                 style={{ height: 114, width:157  }}
                             />
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, height: 72, gap: 8 }}>
                                 <Text style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                21st AMendement gaasto
+                                  {items.title}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                   TOCA, Koramangala
+                                   {items.palce}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                Events 14 
+                                  {items.eventNo}
                                 </Text>
                             </View>
                         </View>
@@ -76,21 +77,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000',
-        marginVertical:12 // Optional for better contrast
+        marginVertical:12 
     },
     VenuescrollBox: {
         marginHorizontal: 10,
     },
     scrollContent: {
-        flexDirection: 'row', // Ensures items are laid out horizontally
+        flexDirection: 'row', 
         alignItems: 'center',
-        // Adds padding inside the scroll container
+      
         backgroundColor:'black'
     },
     item: {
-        width: 176, // Fixed width for each item
-        height: 215, // Fixed height for each item
-        marginRight: 10, // Spacing between items
+        width: 176,
+        height: 215,
+        marginRight: 10,
         backgroundColor: '#1B1B1B',
         borderRadius: 8,
         borderColor: '#474747',

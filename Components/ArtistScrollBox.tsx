@@ -8,33 +8,22 @@ type  ArtistScrollBoxProps = {
     Color?: string;
     onPress?:any;
     view?:any;
+    artistdata:any[];
    
     
   };
  
-  type DataItem = {
-    id: string;
-    name: string;
-    icon: any;
-    event:string
-  }
   
-  const data: DataItem[] = [
-    { id: '1', name: 'Artist Name', icon: Imageassets.Artist1 ,event:'Event'},
-    { id: '2', name: 'Artist Name', icon: Imageassets.Artist3 ,event:'Event' },
-    { id: '3', name: 'Artist Name', icon: Imageassets.Artist2 ,event:'Event' },
-    { id: '4', name: 'Artist Name', icon: Imageassets.Artist1 ,event:'Event' },
-    
-  ];
+  
  
 
-  const ArtistScrollBox: React.FC<ArtistScrollBoxProps> = ({Title, Color,onPress,view}) => {
+  const ArtistScrollBox: React.FC<ArtistScrollBoxProps> = ({Title, Color,onPress,view,artistdata}) => {
   
        
 
     return (
         <View style={styles.container}>
-            {/* Horizontal Scrollable Box */}
+           
             {Title && <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
                     <Text style={{color:Color,fontSize:18,fontWeight:700}}>{Title}</Text>
                     <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>{view}</Text>
@@ -47,8 +36,8 @@ type  ArtistScrollBoxProps = {
                 contentContainerStyle={styles.scrollContent}
             >
                 
-                {data.map((item) => (
-                      <TouchableOpacity onPress={onPress}  key={item.id} style={styles.item}>
+                {artistdata.map((items,index) => (
+                      <TouchableOpacity onPress={onPress}  key={index} style={styles.item}>
                         <View
                             style={{
                                 justifyContent: 'center',
@@ -58,17 +47,17 @@ type  ArtistScrollBoxProps = {
                             }}
                         >
                             <Image
-                                source={item.icon}
+                                source={items.icon}
                                 style={{ height: 172, width: 158 }}
                             />
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, height: 33, gap: 5.02 }}>
                                 <Text style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                    {item.name}
+                                    {items.name}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                    {item.event}
+                                    {items.event}
                                 </Text>
                             </View>
                         </View>
@@ -86,20 +75,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000',
-        marginVertical:12 // Optional for better contrast
+        marginVertical:12 
     },
     scrollBox: {
         marginHorizontal: 10,
     },
     scrollContent: {
-        flexDirection: 'row', // Ensures items are laid out horizontally
+        flexDirection: 'row',
         alignItems: 'center',
-      // Adds padding inside the scroll container
+      
     },
     item: {
-        width: 176, // Fixed width for each item
-        height: 235, // Fixed height for each item
-        marginRight: 10, // Spacing between items
+        width: 176,
+        height: 235,
+        marginRight: 10,
         backgroundColor: '#1B1B1B',
         borderRadius: 8,
         borderColor: '#474747',

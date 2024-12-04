@@ -25,6 +25,19 @@ const VenueDetailScreen = () => {
      {image:Imageassets.ArtistGalleryimg1,},
      {image:Imageassets.ArtistGalleryimg3,},
    ]
+   const eventDetails = [
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
+    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'}
+];
+const artistdata= [
+  { id: '1', name: 'Artist Name', icon: Imageassets.Artist1 ,event:'Event'},
+  { id: '2', name: 'Artist Name', icon: Imageassets.Artist3 ,event:'Event' },
+  { id: '3', name: 'Artist Name', icon: Imageassets.Artist2 ,event:'Event' },
+  { id: '4', name: 'Artist Name', icon: Imageassets.Artist1 ,event:'Event' },
+  
+];
    const  navigator = useNavigation();
   
   return (
@@ -137,7 +150,7 @@ const VenueDetailScreen = () => {
        {ArtistImage &&
        
        <View >
-        <ArtistScrollBox/>
+        <ArtistScrollBox artistdata={artistdata}/>
          </View>
          }
        </View>
@@ -155,7 +168,7 @@ const VenueDetailScreen = () => {
          }
        </View>
        
-       <ScrollBox padding={3} Title ='Events' Color='#F5EDFD' />
+       <ScrollBox eventDetails={eventDetails} padding={3} Title ='Events' Color='#F5EDFD' />
        </View>
          
        <View style={{height:369, flex:1, borderRadius: 8, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#1B1B1B',alignItems:'center',justifyContent:'center',marginTop:5,marginHorizontal:15,gap:8,marginBottom:10}}>
