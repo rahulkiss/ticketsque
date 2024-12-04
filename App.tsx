@@ -39,7 +39,6 @@ import ReservationSuccess from './Screens/ReservationSuccess';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-
 const Screens = () => (
   <React.Fragment>
     <StatusBar barStyle="light-content" backgroundColor="#212121" />
