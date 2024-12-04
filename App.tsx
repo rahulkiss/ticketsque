@@ -1,41 +1,41 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LogInScreen from './Screens/LogInScreen';
-import OtpVerifyScreen from './Screens/OtpVerifyScreen';
-import EnterDetailScreen from './Screens/EnterDetailScreen';
-import HomeScreen from './Screens/HomeScreen';
-import NotificationScreen from './Screens/NotificationScreen';
-import SelectCity from './Screens/SelectCity';
-import SearchScreen from './Screens/SearchScreen';
-import Profile from './Screens/Profile';
-import SupportScreen from './Screens/SupportScreen';
-import MyProfile from './Screens/MyProfile';
-import MyTickets from './Screens/MyTickets';
-import TicketDetailsScreen from './Screens/TicketDetailsScreen';
-import ReservationScreen from './Screens/ReservationScreen';
+import LogInScreen from './src/Screens/LogInScreen';
+import OtpVerifyScreen from './src/Screens/OtpVerifyScreen';
+import EnterDetailScreen from './src/Screens/EnterDetailScreen';
+import HomeScreen from './src/Screens/HomeScreen';
+import NotificationScreen from './src/Screens/NotificationScreen';
+import SelectCity from './src/Screens/SelectCity';
+import SearchScreen from './src/Screens/SearchScreen';
+import Profile from './src/Screens/Profile';
+import SupportScreen from './src/Screens/SupportScreen';
+import MyProfile from './src/Screens/MyProfile';
+import MyTickets from './src/Screens/MyTickets';
+import TicketDetailsScreen from './src/Screens/TicketDetailsScreen';
+import ReservationScreen from './src/Screens/ReservationScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import TabBar from './provider/TabBar';
-import EventScreen from './Screens/EventScreen';
-import VenueScreen from './Screens/VenueScreen';
-import ArtistScreen from './Screens/ArtistScreen';
-import ArtistDetailScreen from './Screens/ArtistDetailScreen';
-import SingleEventDetail from './Screens/SingleEventDetail';
+import TabBar from './src/provider/TabBar';
+import EventScreen from './src/Screens/EventScreen';
+import VenueScreen from './src/Screens/VenueScreen';
+import ArtistScreen from './src/Screens/ArtistScreen';
+import ArtistDetailScreen from './src/Screens/ArtistDetailScreen';
+import SingleEventDetail from './src/Screens/SingleEventDetail';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import VenueDetailScreen from './Screens/VenueDetailScreen';
-import TermsAndConditionScreen from './Screens/TermsAndConditionScreen';
+import VenueDetailScreen from './src/Screens/VenueDetailScreen';
+import TermsAndConditionScreen from './src/Screens/TermsAndConditionScreen';
 
-import Booking from './Screens/BookingDetailScreen';
-import EventBookingScreen from './Screens/EventBookingScreen';
-import TicketChooseScreen from './Screens/TicketChooseScreen';
-import EventPaymentScreen from './Screens/EventPaymentScreen';
-import BookingConfirmed from './Screens/BookingConfirmed';
-import PaymentPending from './Screens/PaymentPending';
-import SomethingWentWrong from './Screens/SomethingWentWrong';
-import SessionExpired from './Screens/SessionExpired';
-import ReservationSuccess from './Screens/ReservationSuccess';
+import Booking from './src/Screens/BookingDetailScreen';
+import EventBookingScreen from './src/Screens/EventBookingScreen';
+import TicketChooseScreen from './src/Screens/TicketChooseScreen';
+import EventPaymentScreen from './src/Screens/EventPaymentScreen';
+import BookingConfirmed from './src/Screens/BookingConfirmed';
+import PaymentPending from './src/Screens/PaymentPending';
+import SomethingWentWrong from './src/Screens/SomethingWentWrong';
+import SessionExpired from './src/Screens/SessionExpired';
+import ReservationSuccess from './src/Screens/ReservationSuccess';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -81,7 +81,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
-        <Stack.Navigator initialRouteName="homescreen" screenOptions={{
+        <Stack.Navigator initialRouteName="Loginscreen" screenOptions={{
           headerShown: false,
           cardStyle: { backgroundColor: 'black' },
           cardStyleInterpolator: ({ current }) => ({

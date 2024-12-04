@@ -4,8 +4,8 @@
   },
   "extends": "@react-native/typescript-config/tsconfig.json",
   "include": [
-    "Screens/*.ts",
-    "Screens/**/*.tsx",
+    "src/Screens/*.ts",
+    "src/Screens/**/*.tsx",
     "declarations.d.ts"
   ]
 }
