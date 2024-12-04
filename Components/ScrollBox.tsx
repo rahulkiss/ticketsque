@@ -6,11 +6,12 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 type  ScrollBoxProps = {
     Title?: string;
     Color?: string;
-    view?: any
+    view?: any;
+    padding?:any;
   };
 
 
-  const ScrollBox: React.FC<ScrollBoxProps> = ({ Title, Color,view }) => {
+  const ScrollBox: React.FC<ScrollBoxProps> = ({ Title, Color,view,padding }) => {
     // Sample data for rendering items
     const items = [1, 2, 3, 4]; // Array to repeat the item 4 times
     
@@ -31,7 +32,7 @@ type  ScrollBoxProps = {
             >
                 
                 {items.map((_, index) => (
-                    <View key={index} style={styles.item}>
+                    <View key={index} style={[styles.item,{marginVertical:padding}]}>
                         <View
                             style={{
                                 justifyContent: 'center',

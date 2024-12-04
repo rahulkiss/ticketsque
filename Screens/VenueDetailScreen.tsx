@@ -9,7 +9,7 @@ import BackButton from '../Components/BackButton'
 import SharePopup from '../provider/SharePopup'
 import MenuScroll from '../Components/MenuScroll'
 import { useNavigation } from '@react-navigation/native'
-import EventCarousel from '../provider/EventCarousel'
+import CarouselBar from '../provider/CarouselBar'
 
 
 
@@ -20,14 +20,19 @@ const VenueDetailScreen = () => {
    const [ArtistImage,setArtistImage] = useState(true)
    const [ShowManu,setShowManu] = useState(true)
    const [Popup,setPopup]=useState(false)
+   const  data = 
+   [{image:Imageassets.PartyImage,},
+     {image:Imageassets.ArtistGalleryimg1,},
+     {image:Imageassets.ArtistGalleryimg3,},
+   ]
    const  navigator = useNavigation();
   
   return (
     <View style={{flex:1,backgroundColor: "black" }}>
       <ScrollView style={{ backgroundColor: "black" }}>
 
-        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <EventCarousel/>
+        <View style={{ alignItems: 'center', justifyContent: 'center',height: 364, }}>
+        <CarouselBar carousal={'Event'} imageList={data} position={'absolute'} bottom={10} bgcolor={'rgba(212, 212, 212, 0.1)'} carousalwidth={1}/>
         </View>
         <View style={{ maxHeight: 423, gap: 13, paddingHorizontal: 15, paddingTop: 15 }}>
           <Text style={{ color: '#F5EDFD', fontWeight: 700, fontSize: 20 }}>Venue Name</Text>
@@ -70,7 +75,7 @@ const VenueDetailScreen = () => {
 
        <View style={{paddingHorizontal:15,paddingVertical:20}}>
         <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:18,}}>Venue Details</Text>
-        <View style={{paddingTop:20,gap:5}}>
+        <View style={{paddingTop:10,gap:5}}>
           <View style={{flexDirection:'row',gap:4}} >
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize: 20,lineHeight: 22,}}>•</Text>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
@@ -102,15 +107,15 @@ const VenueDetailScreen = () => {
        
 
 
-
+      <View style={{gap:5}}>
       <View style={{height:'auto',paddingHorizontal:15}}>
-       <View style={{flexDirection:'row',justifyContent:'center'}}>
+       <TouchableOpacity  onPress={()=>setTermsAndCondition(!TermsAndCondition)} style={{flexDirection:'row',justifyContent:'center'}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Terms & Conditions</Text>
-        {TermsAndCondition && <TouchableOpacity onPress={()=>setTermsAndCondition(false)}><Image source={Imageassets.DownIcon}/></TouchableOpacity>}  
-        {!TermsAndCondition&& <TouchableOpacity onPress={()=>setTermsAndCondition(true)}><Image source={Imageassets.UpIcon}/></TouchableOpacity>} 
-       </View>
+        {TermsAndCondition && <View ><Image source={Imageassets.DownIcon}/></View>}  
+        {!TermsAndCondition&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+       </TouchableOpacity>
        {TermsAndCondition &&
-       <View style={{gap:5}}>
+       <View style={{gap:5,paddingVertical:5}}>
         <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>1. Age Restriction: You must be at least 21 years old to attend the ElectroGroove Fusion Night. Valid photo identification (driver's license, passport, or government- issued ID) is required for entry. No exceptions will be made.
         </Text>
         <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>2. Ticketing: All ticket sales are final and non- refundable. Lost or stolen tickets will not be replaced. Tickets are valid only for the date and time indicated on the ticket.
@@ -123,12 +128,12 @@ const VenueDetailScreen = () => {
        </View>
 
 
-      < View style={{height:'auto',marginTop:5}}>
-       <View style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15}}>
+      < View style={{height:'auto',}}>
+       <TouchableOpacity onPress={()=>setArtistImage(!ArtistImage)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Events</Text>
-        {ArtistImage && <TouchableOpacity onPress={()=>setArtistImage(false)}><Image source={Imageassets.DownIcon}/></TouchableOpacity>}  
-        {!ArtistImage&& <TouchableOpacity onPress={()=>setArtistImage(true)}><Image source={Imageassets.UpIcon}/></TouchableOpacity>} 
-       </View>
+        {ArtistImage && <View ><Image source={Imageassets.DownIcon}/></View>}  
+        {!ArtistImage&& <View><Image source={Imageassets.UpIcon}/></View>} 
+       </TouchableOpacity>
        {ArtistImage &&
        
        <View >
@@ -138,20 +143,20 @@ const VenueDetailScreen = () => {
        </View>
 
        <View style={{height:'auto'}}>
-       <View style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15,}}>
+       <TouchableOpacity onPress={()=>setShowManu(!ShowManu)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15,}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Menu</Text>
-        {ShowManu && <TouchableOpacity onPress={()=>setShowManu(false)}><Image source={Imageassets.DownIcon}/></TouchableOpacity>}  
-        {!ShowManu&& <TouchableOpacity onPress={()=>setShowManu(true)}><Image source={Imageassets.UpIcon}/></TouchableOpacity>} 
-       </View>
+        {ShowManu && <View ><Image source={Imageassets.DownIcon}/></View>}  
+        {!ShowManu&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+       </TouchableOpacity>
        {ShowManu &&
             <View >
             <MenuScroll/>
              </View>
          }
        </View>
-
-       <ScrollBox Title ='Events' Color='#F5EDFD' />
        
+       <ScrollBox padding={3} Title ='Events' Color='#F5EDFD' />
+       </View>
          
        <View style={{height:369, flex:1, borderRadius: 8, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#1B1B1B',alignItems:'center',justifyContent:'center',marginTop:5,marginHorizontal:15,gap:8,marginBottom:10}}>
             <View style={{height: 121,width:330,gap:16}} >

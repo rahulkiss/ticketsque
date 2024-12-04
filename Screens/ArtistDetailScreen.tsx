@@ -17,7 +17,7 @@ const ArtistDetailScreen: React.FC<ArtistDetailScreenProps> = ({ navigation }) =
 
     return (
         <>
-            <ScrollView style={styles.scrollView}>
+            <ScrollView  showsVerticalScrollIndicator={false} style={styles.scrollView} >
                 <View style={styles.artistImageContainer}>
                     <Image style={styles.artistImage} source={Imageassets.ArtistSingleimg} />
                 </View>
@@ -73,7 +73,7 @@ export default ArtistDetailScreen;
 const styles = StyleSheet.create({
     scrollView: {
         flex: 1,
-        backgroundColor: '#0D0D0D',
+        backgroundColor: 'black',
         height: 'auto',
     },
     artistImageContainer: {

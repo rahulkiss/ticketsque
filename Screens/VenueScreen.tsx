@@ -21,7 +21,7 @@ const VenueScreen = () => {
     <TopNavBar navigation={navigation}/> 
     <ScrollView showsVerticalScrollIndicator={false}  style={{ flex: 1,  backgroundColor: "black",height:'auto' }}>
       <View>
-        <CarouselBar  imageList={[require("../assets/images/Banner_1.png"),require("../assets/images/Banner_2.png"),require("../assets/images/Banner_3.png")]}/> 
+      <CarouselBar carousal={'Home'} margintop={10} carousalwidth={1.5} imageList={[require("../assets/images/Banner_1.png"),require("../assets/images/Banner_2.png"),require("../assets/images/Banner_3.png")]}/> 
       </View>
      
       <VenueScrollBox text={'Top Venuns'} color={'rgba(208, 162, 247, 1)'}/>

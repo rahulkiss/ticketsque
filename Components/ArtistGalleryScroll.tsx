@@ -50,7 +50,7 @@ type  ArtistGalleryScrollProps = {
                                 paddingHorizontal: 10,
                             }}
                         >
-                            <Image
+                            <Image resizeMode='cover'
                                 source={item.icon}
                                 style={{ height: 160, width: 167.5,borderRadius:8}}
                             />

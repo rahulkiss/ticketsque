@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#000',
-        marginVertical:12 // Optional for better contrast
+        marginVertical:16 // Optional for better contrast
     },
     scrollBox: {
         marginHorizontal: 10,
