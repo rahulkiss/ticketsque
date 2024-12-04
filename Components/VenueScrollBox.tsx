@@ -34,7 +34,7 @@ type  VenueScrollBoxProps = {
             >
                 
                 {items.map((_, index) => (
-                    <TouchableOpacity onPress={GoToDetails} key={index} style={styles.item}>
+                    <TouchableOpacity  onPress={GoToDetails} key={index} style={styles.item}>
                         <View
                             style={{
                                 justifyContent: 'center',

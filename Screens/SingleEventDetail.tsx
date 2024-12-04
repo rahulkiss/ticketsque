@@ -8,7 +8,7 @@ import ScrollBox from '../Components/ScrollBox'
 import BackButton from '../Components/BackButton'
 import SharePopup from '../provider/SharePopup'
 import { useNavigation } from '@react-navigation/native'
-import EventCarousel from '../provider/EventCarousel'
+import CarouselBar from '../provider/CarouselBar'
 
 
 
@@ -20,6 +20,11 @@ const SingleEventDetail = () => {
    const [ShowManu,setShowManu] = useState(true)
    const [Popup,setPopup]=useState(false)
    const navigator = useNavigation();
+   const  data = 
+  [{image:Imageassets.PartyImage,},
+    {image:Imageassets.ArtistGalleryimg1,},
+    {image:Imageassets.ArtistGalleryimg3,},
+  ]
    const GoToEventBooking = () =>{
      navigator.navigate('EventBooking')
    }
@@ -28,9 +33,9 @@ const SingleEventDetail = () => {
     <View style={{flex:1,backgroundColor: "black" }}>
       <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: "black" }}>
 
-        <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <View style={{ alignItems: 'center', justifyContent: 'center',height: 364, }}>
             
-            <EventCarousel/>
+            <CarouselBar carousal={'Event'} imageList={data} position={'absolute'} bottom={10} bgcolor={'rgba(9, 9, 9, 0.5)'} carousalwidth={1}/>
            
         </View>
         <View style={{ maxHeight: 423, gap: 13, paddingHorizontal: 15, paddingTop: 15 }}>
@@ -126,16 +131,16 @@ const SingleEventDetail = () => {
         <EventAvailableScroll/>
        </View>
 
-
-
+  
+      <View style={{gap:5}}>
       <View style={{height:'auto',paddingHorizontal:15}}>
-       <View style={{flexDirection:'row',justifyContent:'center'}}>
+       <TouchableOpacity onPress={()=>setTermsAndCondition(!TermsAndCondition)} style={{flexDirection:'row',justifyContent:'center'}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Terms & Conditions</Text>
-        {TermsAndCondition && <TouchableOpacity onPress={()=>setTermsAndCondition(false)}><Image source={Imageassets.DownIcon}/></TouchableOpacity>}  
-        {!TermsAndCondition&& <TouchableOpacity onPress={()=>setTermsAndCondition(true)}><Image source={Imageassets.UpIcon}/></TouchableOpacity>} 
-       </View>
+        {TermsAndCondition && <View ><Image source={Imageassets.DownIcon}/></View>}  
+        {!TermsAndCondition&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+       </TouchableOpacity>
        {TermsAndCondition &&
-       <View style={{gap:5}}>
+       <View style={{gap:5,paddingVertical:5}}>
         <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>1. Age Restriction: You must be at least 21 years old to attend the ElectroGroove Fusion Night. Valid photo identification (driver's license, passport, or government- issued ID) is required for entry. No exceptions will be made.
         </Text>
         <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>2. Ticketing: All ticket sales are final and non- refundable. Lost or stolen tickets will not be replaced. Tickets are valid only for the date and time indicated on the ticket.
@@ -148,12 +153,12 @@ const SingleEventDetail = () => {
        </View>
 
 
-      < View style={{height:'auto',marginTop:5}}>
-       <View style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15}}>
+      < View style={{height:'auto'}}>
+       <TouchableOpacity onPress={()=>setArtistImage(!ArtistImage)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Artists</Text>
-        {ArtistImage && <TouchableOpacity onPress={()=>setArtistImage(false)}><Image source={Imageassets.DownIcon}/></TouchableOpacity>}  
-        {!ArtistImage&& <TouchableOpacity onPress={()=>setArtistImage(true)}><Image source={Imageassets.UpIcon}/></TouchableOpacity>} 
-       </View>
+        {ArtistImage && <View ><Image source={Imageassets.DownIcon}/></View>}  
+        {!ArtistImage&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+       </TouchableOpacity>
        {ArtistImage &&
        
        <View >
@@ -163,11 +168,11 @@ const SingleEventDetail = () => {
        </View>
 
        <View style={{height:'auto',paddingHorizontal:15,}}>
-       <View style={{flexDirection:'row',justifyContent:'center'}}>
+       <TouchableOpacity onPress={()=>setShowManu(!ShowManu)} style={{flexDirection:'row',justifyContent:'center'}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Menu</Text>
-        {ShowManu && <TouchableOpacity onPress={()=>setShowManu(false)}><Image source={Imageassets.DownIcon}/></TouchableOpacity>}  
-        {!ShowManu&& <TouchableOpacity onPress={()=>setShowManu(true)}><Image source={Imageassets.UpIcon}/></TouchableOpacity>} 
-       </View>
+        {ShowManu && <View ><Image source={Imageassets.DownIcon}/></View>}  
+        {!ShowManu&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+       </TouchableOpacity>
        {ShowManu &&
        <View style={{marginBottom:10}}>
         <View style={{paddingTop:5,gap:5}}>
@@ -208,7 +213,7 @@ const SingleEventDetail = () => {
         </View>
          }
        </View>
-
+       </View>
        <ScrollBox Title ='Other Events' Color='#F5EDFD' />
        <ScrollBox Title ='Discounts' Color='#F5EDFD' />
          

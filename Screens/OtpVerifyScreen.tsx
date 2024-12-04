@@ -58,8 +58,8 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
       </View>
 
       <View style ={styles.timingcontainer}>
-        <Text style ={{color:'white',width:100}}>00 : {seconds} Sce</Text>
-        <Text  style ={{color:'white',width:87}}>Resend OTP ?</Text>
+        <Text style ={{color:'white',}}>00 : {seconds} Sce</Text>
+        <Text  style ={{color:'white',}}>Resend OTP ?</Text>
       </View>
 
       <View style ={styles.iconcontainer}>
