@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity,} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler';
 import CustomButton from '../Components/CustomButton';
