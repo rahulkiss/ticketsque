@@ -1,7 +1,8 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
- import NotificationScreen from "../Screens/NotificationScreen";
+ 
+import NotificationScreen from "../Screens/NotificationScreen";
 import { useSelector } from "react-redux";
 import Logo from '../../assets/svg/AppLogo.svg'
 import Location from'../../assets/svg/location.svg'
@@ -29,18 +30,15 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
   return (
     <View style={styles.container}>
      
-     <View style={{width:'80%', flexDirection: "row",gap:10}} >
+     <View style={{width:'80%', flexDirection: "row",gap:12}} >
       <TouchableOpacity style={styles.logoContainer}>
         <Logo/>
       </TouchableOpacity>
       
       <TouchableOpacity style={styles.locationContainer} onPress={ShowSelectCity}>
-        
-
            <Location/>
-             <Text style={styles.locationText}>Bengaluru</Text>
+             <Text style={styles.locationText}>{seletedCity}</Text>
              <DownArrow/>
-          
       </TouchableOpacity>
            </View>
            
@@ -88,22 +86,14 @@ const styles = StyleSheet.create({
     borderStyle:'dashed',
     paddingBottom:3,
     gap:8,
-    
-    
-  
-    
-   
-   
-    
-
-    
 
   },
   locationText: {
     color: "#fff",
     fontSize: 12,
     fontWeight: "600",
-    minWidth:10
+    minWidth:10,
+    paddingLeft:2
   },
   iconsContainer: {
     flex: 1,
