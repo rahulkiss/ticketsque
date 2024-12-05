@@ -2,15 +2,13 @@ import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import CustomButton from '../Components/CustomButton';
-<<<<<<< HEAD
 import { Imageassets } from '../../assets//images/image';
 import { useSelector } from 'react-redux';
 import api from '../services/api.interceptor';
 
-=======
+
 import LineFade from '../../assets/svg/SingleLine .svg'
 import BackButton from "../../assets/svg/BackButton.svg";
->>>>>>> refs/remotes/origin/main
 
 
 type  OtpVerifyScreenProps= {

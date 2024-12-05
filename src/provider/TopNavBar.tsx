@@ -1,17 +1,13 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-<<<<<<< HEAD
- 
-import NotificationScreen from "../Screens/NotificationScreen";
+ import NotificationScreen from "../Screens/NotificationScreen";
 import { useSelector } from "react-redux";
-=======
 import Logo from '../../assets/svg/AppLogo.svg'
 import Location from'../../assets/svg/location.svg'
 import DownArrow from'../../assets/svg/downArrow.svg'
 import Search from'../../assets/svg/SearchIcon.svg'
 import BellIcon from'../../assets/svg/Notification.svg'
->>>>>>> refs/remotes/origin/main
 
 type TopNavBarprops ={
   navigation?: any;
@@ -40,15 +36,10 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
       
       <TouchableOpacity style={styles.locationContainer} onPress={ShowSelectCity}>
         
-<<<<<<< HEAD
-           <Image source={Imageassets.Location} />
-             <Text style={styles.locationText}>{seletedCity}</Text>
-             <Image source={Imageassets.ArrowDown} />
-=======
+
            <Location/>
              <Text style={styles.locationText}>Bengaluru</Text>
              <DownArrow/>
->>>>>>> refs/remotes/origin/main
           
       </TouchableOpacity>
            </View>

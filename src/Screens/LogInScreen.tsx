@@ -5,12 +5,9 @@ import CustomButton from '../Components/CustomButton';
 import api from '../services/api.interceptor';
 import {EventsResponse} from '../interfaces/events.interfaces';
 import { AxiosResponse } from 'axios';
-<<<<<<< HEAD
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser, clearUser, updateUser } from '../Store/Actions/UserActions';
-=======
 import BackButton from "../../assets/svg/BackButton.svg";
->>>>>>> refs/remotes/origin/main
 
 type  LogInScreenProps= {
   navigation: any;
