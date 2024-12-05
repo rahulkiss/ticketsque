@@ -1,15 +1,14 @@
 import { Text, View,ScrollView,Image } from 'react-native'
 import styles from '../../assets/css/style'
-import { icons } from '../../assets/images/image'
 import React from 'react'
-
+import Pending from '../../assets/svg/pending.svg'
 const PaymentPending = () => {
   return (
     <View style={{backgroundColor:'black',flex:1}}>
         <ScrollView>
             <View style={styles.maincontainer}>
             <View style={{alignItems:'center',marginTop:40}}>
-                  <Image source={icons.pending}  />
+                  <Pending/>
                     </View>
                     <View style={{alignItems:'center',gap:16,}}>
 

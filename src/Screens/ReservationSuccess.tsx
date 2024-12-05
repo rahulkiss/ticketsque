@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from '../../assets/css/style'
 import { gif } from '../../assets/gif/gifs'
 import { icons } from '../../assets/images/image'
+import Confirmed from '../../assets/svg/Complete.svg'
 
 
 const ReservationSuccess = () => {
@@ -17,7 +18,7 @@ const ReservationSuccess = () => {
         <View style={{margin:10,gap:20}}>
         <View style={{alignItems:'center',marginTop:40}}>
                   {Animation && <Image source={gif.success} style={{width:140,height:140,padding:1}} />}  
-                   {!Animation &&  <Image source={icons.confirm} style={{width:140,height:140,padding:1}} />} 
+                   {!Animation &&  <Confirmed/>} 
 
         </View>
         <View style={{gap:32}}>

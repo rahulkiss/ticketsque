@@ -4,7 +4,7 @@ import TopNavBar from '../provider/TopNavBar'
 import { ScrollView } from 'react-native-gesture-handler'
 import EventDateFilter from '../Components/EventDateFilter'
 import EventDetails from '../Components/EventDetails'
-import { Imageassets } from '../../assets//images/image';
+import Filter from '../../assets/svg/filter.svg'
 import FilterPopup from '../provider/FilterPopup';
 
 type  EventScreenProps ={
@@ -28,7 +28,9 @@ const EventScreen : React.FC<EventScreenProps>= ({navigation}) => {
       <EventDetails onPress={ViewDetails}/>
 
     </ScrollView>
-    <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}><Image source={Imageassets.Filterimg}/></TouchableOpacity>
+    <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}>
+      <Filter/>
+      </TouchableOpacity>
     <FilterPopup Popup={Popup} setPopup={setPopup}/>
     </>
   )

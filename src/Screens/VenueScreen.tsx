@@ -7,6 +7,7 @@ import VenueScrollBox from '../Components/VenueScrollBox'
 import FilterPopup from '../provider/FilterPopup'
 import { Imageassets } from '../../assets//images/image'
 import { useNavigation } from '@react-navigation/native'
+import Filter from '../../assets/svg/filter.svg'
 
 
 const VenueScreen = () => {
@@ -34,7 +35,8 @@ const VenueScreen = () => {
       <VenueScrollBox venueData={venueData} text={'Available for Reservation'} color={'rgba(208, 162, 247, 1)'}/>
       <VenueScrollBox venueData={venueData} text={'Venun with Event'} color={'rgba(208, 162, 247, 1)'}/>
     </ScrollView>
-    <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}><Image source={Imageassets.Filterimg}/></TouchableOpacity>
+    <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}>
+      <Filter/></TouchableOpacity>
     <FilterPopup Popup={Popup} setPopup={setPopup}/>
     </>
   )

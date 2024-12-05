@@ -14,7 +14,7 @@ const NameBar = (props:NameBarprops) => {
     <View style={styles.NavBar}>
         <TouchableOpacity onPress={()=>{navigator.goBack();}}>
             
-        <BackButton width={25} height={25} />  
+        <BackButton width={25} height={25} style={{marginRight:10}} />  
             </TouchableOpacity>
       <Text style={styles.Heading}>{props.name}</Text>
         

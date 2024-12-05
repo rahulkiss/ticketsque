@@ -10,6 +10,12 @@ import SharePopup from '../provider/SharePopup'
 import MenuScroll from '../Components/MenuScroll'
 import { useNavigation } from '@react-navigation/native'
 import CarouselBar from '../provider/CarouselBar'
+import Calender from '../../assets/svg/DateIcon.svg'
+import Location from '../../assets/svg/locationIcon.svg'
+import Direction from '../../assets/svg/GetDirections.svg'
+import Drava from '../../assets/svg/Drava.svg'
+import Down from '../../assets/svg/DropDown.svg'
+import Up from '../../assets/svg/Drop_Up.svg'
 
 
 
@@ -53,7 +59,7 @@ const artistdata= [
           
              <View style={{height:42,flexDirection:'row',gap:12}}>
              <View style={{height: 42, width: 42, borderRadius: 50, borderWidth: 0.8, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#D4D4D41A',alignItems:'center',justifyContent:'center'}}>
-                            <Image  style={{height: 18, width:12 }} source={Imageassets.LocationIcon}  />
+                            <Location/>
             </View>
             <View  style={{flexDirection:"row",justifyContent:'space-between',flex:1}}>
             <View style={{justifyContent:'space-between'}}>
@@ -65,7 +71,7 @@ const artistdata= [
               <View  style={{width:110,height:24,borderRadius:4,borderColor:'rgba(255, 255, 255,0.25)',borderWidth:1,flexDirection:'row',justifyContent:'space-between',paddingHorizontal:7,alignItems:'center'}}>
                 <View><Text style={{color:'rgba(245, 237, 253, 1)',fontSize:10,fontWeight:400,paddingBottom:1.5}}>Get Direction</Text>
                 </View>
-                 <View><Image source={Imageassets.Direction} style={{height: 14, width:14 }} />
+                 <View><Direction/>
                 </View>
                </View>
             </View>
@@ -74,7 +80,7 @@ const artistdata= [
 
             <View style={{height:42,flexDirection:'row',gap:12}}>
           <View style={{height: 42, width: 42, borderRadius: 50, borderWidth: 0.8, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#D4D4D41A',alignItems:'center',}}>
-             <Image  style={{height: 23, width: 23,marginTop:7.8} } source={Imageassets.EventBox} />
+            <Calender/>
         </View>
 
             <View style={{justifyContent:'space-between'}}>
@@ -124,8 +130,8 @@ const artistdata= [
       <View style={{height:'auto',paddingHorizontal:15}}>
        <TouchableOpacity  onPress={()=>setTermsAndCondition(!TermsAndCondition)} style={{flexDirection:'row',justifyContent:'center'}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Terms & Conditions</Text>
-        {TermsAndCondition && <View ><Image source={Imageassets.DownIcon}/></View>}  
-        {!TermsAndCondition&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+        {TermsAndCondition && <View ><Down/></View>}  
+        {!TermsAndCondition&& <View ><Up/></View>} 
        </TouchableOpacity>
        {TermsAndCondition &&
        <View style={{gap:5,paddingVertical:5}}>
@@ -144,8 +150,8 @@ const artistdata= [
       < View style={{height:'auto',}}>
        <TouchableOpacity onPress={()=>setArtistImage(!ArtistImage)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Events</Text>
-        {ArtistImage && <View ><Image source={Imageassets.DownIcon}/></View>}  
-        {!ArtistImage&& <View><Image source={Imageassets.UpIcon}/></View>} 
+        {ArtistImage && <View ><Down/></View>}  
+        {!ArtistImage&& <View><Up/></View>} 
        </TouchableOpacity>
        {ArtistImage &&
        
@@ -158,8 +164,8 @@ const artistdata= [
        <View style={{height:'auto'}}>
        <TouchableOpacity onPress={()=>setShowManu(!ShowManu)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15,}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Menu</Text>
-        {ShowManu && <View ><Image source={Imageassets.DownIcon}/></View>}  
-        {!ShowManu&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+        {ShowManu && <View ><Down/></View>}  
+        {!ShowManu&& <View ><Up/></View>} 
        </TouchableOpacity>
        {ShowManu &&
             <View >

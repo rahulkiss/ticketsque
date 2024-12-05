@@ -4,6 +4,9 @@ import styles from '../../assets/css/style'
 import { gif } from '../../assets/gif/gifs'
 import { icons } from '../../assets/images/image'
 import { useNavigation } from '@react-navigation/native'
+import Confirmed from '../../assets/svg/Complete.svg'
+import Calender from '../../assets/svg/DateIcon.svg'
+import Location from '../../assets/svg/locationIcon.svg'
 
 const  BookingConfirmed = () => {
     const navigator = useNavigation()
@@ -17,7 +20,7 @@ const  BookingConfirmed = () => {
                 <View style={styles.maincontainer}>
                     <View style={{alignItems:'center',marginTop:40}}>
                   {Animation && <Image source={gif.success} style={{width:140,height:140,padding:1}} />}  
-                   {!Animation &&  <Image source={icons.confirm} style={{width:140,height:140,padding:1}} />} 
+                   {!Animation &&  <Confirmed/>} 
 
                     </View>
                     <View style={{gap:32}}>
@@ -42,18 +45,16 @@ const  BookingConfirmed = () => {
                         <Text style={[styles.pinkText,{fontWeight:600}]}>Ticket Id : 123456</Text>
                         <Text style={styles.Heading}>Event Name </Text>
                         <View style={[styles.package,{width:'55%'}]}>
-                        <View style={[styles.card,{borderRadius:25}]}>
-                            <Image source={icons.calender2}/>
-                        </View>
+                        
+                            <Calender/>
+                        
                             <View style={{gap:4}}>
                                 <Text style={[styles.Heading,{fontSize:16}]}>14/08/2024</Text>
                                 <Text style={[styles.Text,{fontSize:11}]}>Sun, 06:30 PM Onwards</Text>
                             </View>
                         </View>
                         <View style={[styles.package,{width:'55%'}]}>
-                            <View style={[styles.card,{borderRadius:25}]}>
-                            <Image source={icons.location2}/>
-                            </View>
+                            <Location/>
                             <View style={{gap:4}}>
                                 <Text style={[styles.Heading,{fontSize:16}]}>Happy Brew</Text>
                                 <Text style={[styles.Text,{fontSize:11}]}>Kormangala, Bengaluru.</Text>

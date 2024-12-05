@@ -1,11 +1,17 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-
-import { Imageassets } from '../../assets//images/image';
 import { useNavigation } from "@react-navigation/native";
+<<<<<<< HEAD
  
 import NotificationScreen from "../Screens/NotificationScreen";
 import { useSelector } from "react-redux";
+=======
+import Logo from '../../assets/svg/AppLogo.svg'
+import Location from'../../assets/svg/location.svg'
+import DownArrow from'../../assets/svg/downArrow.svg'
+import Search from'../../assets/svg/SearchIcon.svg'
+import BellIcon from'../../assets/svg/Notification.svg'
+>>>>>>> refs/remotes/origin/main
 
 type TopNavBarprops ={
   navigation?: any;
@@ -29,17 +35,20 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
      
      <View style={{width:'80%', flexDirection: "row",gap:10}} >
       <TouchableOpacity style={styles.logoContainer}>
-        <Image
-          source={Imageassets.Frame} 
-          style={styles.logo}
-        />
+        <Logo/>
       </TouchableOpacity>
       
       <TouchableOpacity style={styles.locationContainer} onPress={ShowSelectCity}>
         
+<<<<<<< HEAD
            <Image source={Imageassets.Location} />
              <Text style={styles.locationText}>{seletedCity}</Text>
              <Image source={Imageassets.ArrowDown} />
+=======
+           <Location/>
+             <Text style={styles.locationText}>Bengaluru</Text>
+             <DownArrow/>
+>>>>>>> refs/remotes/origin/main
           
       </TouchableOpacity>
            </View>
@@ -48,10 +57,10 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
     
       <View style={styles.iconsContainer}>
         <TouchableOpacity onPress={ShowSearchScreen} style={styles.iconButton}>
-        <Image source={Imageassets.Search}  style={{width:20,height:20}} />
+        <Search/>
         </TouchableOpacity>
         <TouchableOpacity onPress={ShowNotifyScreen} style={styles.iconButton} >
-        <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
+        <BellIcon/>
         </TouchableOpacity>
        
       </View>

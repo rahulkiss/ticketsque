@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Modal,
-  Image,
-  TouchableOpacity,
-} from 'react-native';
-import { Imageassets } from '../../assets//images/image';
+import {View,Text,StyleSheet,Modal,Image,TouchableOpacity,} from 'react-native';
+import UpArrow from '../../assets/svg/upArrow.svg'
+import DownArrow from '../../assets/svg/downArrow.svg'
+import Close from '../../assets/svg/CloseIcon.svg'
 
 type FilterPopupProps = {
   Popup: boolean;
@@ -28,7 +23,7 @@ const FilterPopup: React.FC<FilterPopupProps> = ({ Popup, setPopup }) => {
             <View style={styles.header}>
               <Text style={styles.headerTitle}>Filters</Text>
               <TouchableOpacity onPress={() => setPopup(false)}>
-                <Image source={Imageassets.Xicon} />
+                <Close/>
               </TouchableOpacity>
             </View>
 
@@ -38,11 +33,11 @@ const FilterPopup: React.FC<FilterPopupProps> = ({ Popup, setPopup }) => {
                   <Text style={styles.sectionTitle}>Categories</Text>
                   {ShowCategory ? (
                     <TouchableOpacity onPress={() => setShowCategory(false)}>
-                      <Image source={Imageassets.ArrowDownIcon} />
+                     <DownArrow/>
                     </TouchableOpacity>
                   ) : (
                     <TouchableOpacity onPress={() => setShowCategory(true)}>
-                      <Image source={Imageassets.ArrowUpIcon} />
+                      <UpArrow/>
                     </TouchableOpacity>
                   )}
                 </View>
@@ -72,11 +67,11 @@ const FilterPopup: React.FC<FilterPopupProps> = ({ Popup, setPopup }) => {
                   <Text style={styles.sectionTitle}>Places</Text>
                   {ShowPlace1 ? (
                     <TouchableOpacity onPress={() => setShowPlace1(false)}>
-                      <Image source={Imageassets.ArrowDownIcon} />
+                      <DownArrow/>
                     </TouchableOpacity>
                   ) : (
                     <TouchableOpacity onPress={() => setShowPlace1(true)}>
-                      <Image source={Imageassets.ArrowUpIcon} />
+                      <UpArrow/>
                     </TouchableOpacity>
                   )}
                 </View>

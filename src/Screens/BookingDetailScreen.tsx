@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View,ScrollView,Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../Components/CustomButton'
-import { icons } from '../../assets/images/image';
 import NameBar from '../provider/NameBar';
 import CustomerDetailsPopup from '../provider/CustemerDetailsPopup';
+import CheckBox from '../../assets/svg/CheckBox.svg'
+
 
 type BookingDetailScreenprops={
     navigation: any;
@@ -54,7 +55,11 @@ const BookingDetailScreen:React.FC<BookingDetailScreenprops> = ({navigation}) =>
                 </View>
                 <View style={{flexDirection:'row'}}>
                     <View style={{marginHorizontal:10}}>
-                        <Image source={icons.CheckBox}/>
+                    {/* <View style={{marginHorizontal:10}}>
+                        <CheckBox/>
+                    </View> */}
+                        <View style={{height:15,width:15,borderColor:'rgba(208, 162, 247, 1)',borderWidth:2}}>
+                        </View>
                     </View>
                     <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:400}}>I agree to the </Text>
                     <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:700,textDecorationLine:'underline'}} >Terms & Conditions</Text>

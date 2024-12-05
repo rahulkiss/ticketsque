@@ -1,13 +1,21 @@
 import { StyleSheet, Text, View,Image } from 'react-native'
 import React from 'react'
-import { icons } from '../../assets/images/image'
+import Support from '../../assets/svg/Support.svg'
+import Insta from '../../assets/svg/Insta_Icon.svg'
+import Facebook from '../../assets/svg/Facebook_Icon.svg'
+import Twitter from '../../assets/svg/tiwtter_Icon.svg'
+import Linkedin from '../../assets/svg/Linkedin_Icon.svg'
+import NameBar from '../provider/NameBar'
 
 const SupportScreen = () => {
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1 }}>
+                   <View style={{marginTop:10}}>
+          <NameBar name='Select City'/>
+      </View>
         <View style={{margin:20,height:622,gap:33}}>
             <View style={{alignItems:'center',}}>
-            <Image source={icons.Support}/>
+            <Support/>
             </View>
             <View style={{height:421,gap:12}}>
                 <View style={{height:67,gap:4,}}>
@@ -39,10 +47,10 @@ const SupportScreen = () => {
                 <View style={{height:67,gap:4,}}>
                     <Text style={styles.heading}>Follow Us On</Text>
                     <View style={{flexDirection:'row',justifyContent:'space-between',width:'68%',paddingTop:10}}>
-                        <Image source={icons.insta}/>
-                        <Image source={icons.facebook}/>
-                        <Image source={icons.twitter}/>
-                        <Image source={icons.linkedin}/>
+                        <Insta/>
+                        <Facebook/>
+                        <Twitter/>
+                        <Linkedin/>
                     </View>
                 </View>
             </View>

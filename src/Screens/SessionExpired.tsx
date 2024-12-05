@@ -1,6 +1,7 @@
-import { Text, View,ScrollView,Image } from 'react-native'
+import { Text,ScrollView,Image, View } from 'react-native'
 import styles from '../../assets/css/style'
-import { icons } from '../../assets/images/image'
+import React from 'react'
+import Expaired from '../../assets/svg/SessionExpaired.svg'
 
 const SessionExpired = () => {
   return (
@@ -8,7 +9,7 @@ const SessionExpired = () => {
         <ScrollView>
             <View style={styles.maincontainer}>
             <View style={{alignItems:'center',marginTop:40}}>
-                  <Image source={icons.expaired}  />
+                  <Expaired/>
                     </View>
                     <View style={{alignItems:'center',gap:16,}}>
 

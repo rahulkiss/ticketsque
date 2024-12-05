@@ -3,6 +3,9 @@ import React from 'react'
 import { icons } from '../../assets/images/image'
 import TabBar from '../provider/TabBar'
 import TopNavBar from '../provider/TopNavBar'
+import SmallArrow from '../../assets/svg/SmallRightArrow.svg'
+import GoArrow from '../../assets/svg/RightArrow.svg'
+
 type Profileprops={
     navigation: any;
 }
@@ -20,10 +23,10 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.container}>
                 <View style={{height:43, margin:5,}}>
                     <Text style={{fontSize:20, color:'rgba(245, 237, 253, 1)',fontWeight:600}}>Hey! User</Text>
-                        <View style={{height:16,flexDirection:'row',alignItems:'baseline'}}>
+                        <View style={{height:16,flexDirection:'row',gap:4}}>
                             <Text style={{fontSize:12,color:'rgba(245, 237, 253, 1)',fontWeight:400,}}>Edit Profile</Text>
-                            <Image source={icons.ArrowRight} style={{marginLeft:5}}/>
-                        </View>
+                            <SmallArrow style={{marginTop:5}}/>
+                       </View>
                 </View>
                 <TouchableOpacity onPress={()=>navigation.navigate('Loginscreen')} style={styles.Button}>
                 <Text style={{fontWeight:700,fontSize:12,textAlign:'center'}}>Login/ Register</Text>
@@ -33,7 +36,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.Fram}>
                 <Text style={styles.FramText}>My Profile</Text>
                 <View>
-                    <Image source={icons.GoArrow} style={{width:30}}/>
+                    <GoArrow/>
                 </View>   
             </View>
             </TouchableOpacity>
@@ -41,7 +44,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.Fram}>
                 <Text style={styles.FramText}>My Tickets</Text>
                 <View>
-                    <Image source={icons.GoArrow} style={{width:30}}/>
+                    <GoArrow/>
                 </View>  
             </View>
             </TouchableOpacity>
@@ -49,7 +52,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.Fram}>
                     <Text style={styles.FramText}>Support & Contact Us</Text>
                     <View>
-                        <Image source={icons.GoArrow} style={{width:30}}/>
+                        <GoArrow/>
                     </View>  
                 </View>
             </TouchableOpacity>
@@ -57,7 +60,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.Fram}>
                 <Text style={styles.FramText}>Terms & Conditions</Text>
                 <View>
-                    <Image source={icons.GoArrow} style={{width:30}}/>
+                    <GoArrow/>
                 </View>  
             </View>
             </TouchableOpacity>
@@ -65,7 +68,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.Fram}>
                 <Text style={styles.FramText}>Privacy Policy</Text>
                 <View>
-                    <Image source={icons.GoArrow} style={{width:30}}/>
+                    <GoArrow/>
                 </View>  
             </View>
             </TouchableOpacity>
@@ -73,7 +76,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.Fram}>
                 <Text style={styles.FramText}>Refund & Cancellation Policy</Text>
                 <View>
-                    <Image source={icons.GoArrow} style={{width:30}}/>
+                    <GoArrow/>
                 </View>  
             </View>
             </TouchableOpacity>
@@ -81,7 +84,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
             <View style={styles.Fram}>
                 <Text style={styles.FramText}>Logout</Text>
                 <View>
-                    <Image source={icons.GoArrow} style={{width:30}}/>
+                    <GoArrow/>
                 </View>  
             </View>
             </TouchableOpacity>

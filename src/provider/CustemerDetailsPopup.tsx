@@ -8,7 +8,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { Imageassets } from '../../assets//images/image';
+import Close from '../../assets/svg/CloseIcon.svg'
 import { TextInput } from 'react-native-gesture-handler';
 
 type CustomerDetailsPopupProps ={
@@ -35,7 +35,7 @@ const CustomerDetailsPopup: React.FC<CustomerDetailsPopupProps> = ({Popup,setPop
             <View style={{height:52.75,paddingHorizontal:10,marginHorizontal:8,justifyContent: 'space-between',flexDirection:'row',alignItems: 'center',borderBottomColor:'rgba(255, 255, 255, 0.25)',borderBottomWidth:0.6}}>
                 <Text style={{color:'#F5EDFD',fontSize:20,fontWeight:800}}>Customer Details</Text>
                 <TouchableOpacity onPress={()=>setPopup(false)}>
-                <Image source={Imageassets.Xicon}/>
+                <Close/>
                 </TouchableOpacity>
             </View>
                  <View style={{minHeight:177,marginHorizontal:10,gap:12}}>

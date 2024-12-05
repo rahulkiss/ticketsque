@@ -1,8 +1,8 @@
-import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../Components/CustomButton';
 import { TextInput } from 'react-native-gesture-handler';
-import { Imageassets } from '../../assets//images/image';
+import BackButton from "../../assets/svg/BackButton.svg";
 
 type  EnterDetailScreenProps= {
     navigation: any;
@@ -23,7 +23,7 @@ type  EnterDetailScreenProps= {
     <View  style={styles.container}>
     <View style={{flexDirection:'row',alignItems:'center',gap:8,height:27}}>
       <TouchableOpacity onPress={prevScreen}>
-        <Image style={{height:24,width:24}} source={Imageassets.BackArrowIcon} />
+        <BackButton/>
        </TouchableOpacity>    
            <Text style={{fontSize:20,color:'#F5EDFD'}} >Enter your Details</Text>
       </View>

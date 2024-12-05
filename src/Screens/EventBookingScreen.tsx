@@ -3,6 +3,8 @@ import React from 'react'
 import styles from '../../assets/css/style'
 import { icons } from '../../assets/images/image'
 import CustomButton from '../Components/CustomButton'
+import BackButton from '../../assets/svg/BackButton.svg'
+
 
 type EventBookingScreenProps = {
     navigation: any;
@@ -17,7 +19,7 @@ const EventBookingScreen:React.FC<EventBookingScreenProps> = ({navigation}) => {
             <View style={styles.maincontainer}>
                 <View style={[styles.card,{padding:20}]}>
                     <View style={{flexDirection:'row'}}>
-                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><Image source={icons.BackArrow}/></TouchableOpacity> 
+                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><BackButton/></TouchableOpacity> 
                         <Text style={styles.Heading}>  Event Name</Text>
                     </View>
                     <Text style={styles.Text}>May 15 Thursday | Drave Koramangala  |  500 Onwards</Text>

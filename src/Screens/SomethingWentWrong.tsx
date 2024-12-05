@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from '../../assets/css/style'
 import { gif } from '../../assets/gif/gifs'
 import { icons } from '../../assets/images/image'
-
+import Wrong from '../../assets/svg/Wrong.svg'
 const SomethingWentWrong = () => {
     const [Animation,setAnimation] =useState(true)
     setTimeout(()=>{
@@ -15,7 +15,7 @@ const SomethingWentWrong = () => {
             <View style={styles.maincontainer}>
                 <View style={{alignItems:'center',marginTop:40}}>
                     {Animation && <Image source={gif.wrong} style={{width:140,height:140,padding:1}} />}  
-                    {!Animation &&  <Image source={icons.wrong} style={{width:140,height:140,padding:1}} />} 
+                    {!Animation &&  <Wrong/>} 
                 </View>
                 <View>
                     <View style={{alignItems:'center',gap:16,}}>

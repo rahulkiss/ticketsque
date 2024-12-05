@@ -8,7 +8,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { Imageassets } from '../../assets//images/image';
+import Close from '../../assets/svg/CloseIcon.svg'
 
 type TicketInfoPopupProps ={
     Popup : any;
@@ -33,7 +33,7 @@ const TicketInfoPopup: React.FC<TicketInfoPopupProps> = ({Popup,setPopup}) => {
           <View style={{minHeight:200,width:360,backgroundColor:"#1B1B1B",borderRadius:21,gap:3}}>
             <View style={{paddingHorizontal:30,justifyContent: 'center',alignItems:'flex-end',marginTop:20}}>
                 <TouchableOpacity onPress={()=>setPopup(false)}>
-                <Image source={Imageassets.Xicon}/>
+                <Close/>
                 </TouchableOpacity>
             </View>
             <View style={{height:'auto',marginHorizontal:20,gap:20,marginBottom:25}}>
