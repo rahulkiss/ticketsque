@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import CustomButton from '../Components/CustomButton';
 import { Imageassets } from '../../assets//images/image';
+import { useSelector } from 'react-redux';
+import api from '../services/api.interceptor';
+
 
 
 type  OtpVerifyScreenProps= {
@@ -12,7 +15,8 @@ type  OtpVerifyScreenProps= {
 const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
   const [phoneOtp, setPhoneOtp] = useState('');
   const [seconds, setSeconds] = useState(30);
-  
+  const phoneNumber = useSelector((state: any) => state.user.phoneNo);
+
   useEffect(() => {
     if (seconds === 0) {
       return;
@@ -20,17 +24,42 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
     const interval = setInterval(() => {
       setSeconds((prev) => prev - 1);
     }, 1000);
-
     return () => clearInterval(interval);
-
   }, [seconds]);
 
-  const handleButtonPress = () => {
-    navigation.navigate('enterdetailscreen');
+
+  const getUserData = async () => {
+    try {
+      const requestBody = {
+        "otp": phoneOtp.trim(),
+        "user": phoneNumber.trim()
     };
-    const prevScreen = () => {
+      const response = (await api.post('/service/accounts_service/v1/no_auth/sign-in',requestBody));
+     
+      if(response?.data){
+        console.log("response?.data",response?.data)
+        navigation.navigate('enterdetailscreen');
+      }
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  };
+
+
+
+  const handleInputChange = (text: string) => {
+    setPhoneOtp(text);
+    console.log(phoneNumber)
+    };
+
+  const handleButtonPress = () =>{
+      getUserData()
+    }
+
+ const prevScreen = () => {
       navigation.navigate('Loginscreen');
       };
+
   return (
     <View style={{flex: 1, backgroundColor:"#0D0D0D"}}>
     <View  style={styles.container}>
@@ -46,11 +75,11 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
           
      <View style={{marginTop:35, height:50}}>
      <TextInput
+          onChangeText={handleInputChange}
           style={styles.inputNumber}
           placeholder="Enter 4 Digit OTP sent to your number"
           placeholderTextColor="#F5EDFD"
           value={phoneOtp}
-          onChangeText={setPhoneOtp}
           keyboardType="number-pad" 
           maxLength={4}  
           

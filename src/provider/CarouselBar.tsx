@@ -25,7 +25,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
         loop
         width={width}
         height={width /carousalwidth}
-        autoPlay={true}
+        autoPlay={false}
         data={imageList ?? []}
         scrollAnimationDuration={1500}
         onSnapToItem={(index) => setCurrentIndex(index)}

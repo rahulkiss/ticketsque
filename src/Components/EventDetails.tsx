@@ -32,7 +32,7 @@ type EventDetailsProps ={
                             }}
                         >
                             <Image
-                                source={Imageassets.PartyImage}
+                                source={{uri:"https://tq-events-staging-public.s3.ap-south-1.amazonaws.com/public/66b5d317fff73a89034cbd98/events/FLAM-54/image/test-1/new-years-events-near-me_1733075179188.avif"}}
                                 style={{ height: 157, width: '100%' }}
                             />
                         </View>

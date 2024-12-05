@@ -36,6 +36,9 @@ import PaymentPending from './src/Screens/PaymentPending';
 import SomethingWentWrong from './src/Screens/SomethingWentWrong';
 import SessionExpired from './src/Screens/SessionExpired';
 import ReservationSuccess from './src/Screens/ReservationSuccess';
+ import { Provider } from 'react-redux';
+import { store } from './src/Store/Store';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -78,10 +81,11 @@ const Screens = () => (
 
 export default function App() {
   return (
+    <Provider store={store}>
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
-        <Stack.Navigator initialRouteName="Loginscreen" screenOptions={{
+        <Stack.Navigator initialRouteName="homescreen" screenOptions={{
           headerShown: false,
           cardStyle: { backgroundColor: 'black' },
           cardStyleInterpolator: ({ current }) => ({
@@ -119,5 +123,6 @@ export default function App() {
         </Stack.Navigator>
       </NavigationContainer>
     </GestureHandlerRootView>
+    </Provider>
   );
 }

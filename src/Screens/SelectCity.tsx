@@ -1,12 +1,42 @@
 import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Search from '../Components/Search'
 import { icons } from '../../assets/images/image'
 import { Imageassets } from '../../assets//images/image'
 import NameBar from '../provider/NameBar'
-
+import api from '../services/api.interceptor';
+import {CityResponse} from '../interfaces/city.interfaces';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser, clearUser, updateUser } from '../Store/Actions/UserActions';
+import { useNavigation } from '@react-navigation/native'
 const SelectCity = () => {
     const [ShowNotFount,setShowNotFount]=useState(false)
+    const [IsLoader,setIsLoader]=useState(false)
+    const [cityDta,setcityDta]=useState([])
+    const dispatch = useDispatch();
+    const navigator = useNavigation()
+
+    useEffect(()=>{
+      getUserData();
+    },[])
+    const getUserData = async () => {
+      try {
+        setIsLoader(true);
+        const response = (await api.get<CityResponse[]>('/service/events_service/v1/no_auth/city/list?lng=77.5504666&lat=12.9763776'));
+        setIsLoader(false);
+        if(response?.data){
+          console.log("response?.data",response?.data)
+          setcityDta(response?.data??[])
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+    const updateCity = (city) => {
+      dispatch(updateUser({city:city}));
+      navigator.navigate('homescreen')
+    };
+
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1}}>
             <View style={{marginTop:10}}>
@@ -15,7 +45,7 @@ const SelectCity = () => {
         <Search SearchTitle="Search  your City" />
     <View style={styles.container}>
 
-       <TouchableOpacity onPress={()=>setShowNotFount(true)} style={styles.Location}>
+       <TouchableOpacity onPress={()=>{setShowNotFount(true)}} style={styles.Location}>
         <View style={{margin:10}}>
         <Image source={icons.locationicon} />
         </View>
@@ -31,21 +61,12 @@ const SelectCity = () => {
 
        <View style={{height:285,gap:12}}>
         <Text style={{height:25, fontWeight:700, fontSize:18,color:'#F5EDFD'}}>All Available Cities</Text>
-        <View style={styles.Cites}>
-        <Text style={{color:'#D0A2F7', fontSize:12,}}>Bengaluru</Text>
-        </View>
-        <View style={styles.Cites}>
-        <Text style={{color:'#D0A2F7', fontSize:12,}}>Mysore</Text>
-        </View>
-        <View style={styles.Cites}>
-        <Text style={{color:'#D0A2F7', fontSize:12,}}>Goa</Text>
-        </View>
-        <View style={styles.Cites}>
-        <Text style={{color:'#D0A2F7', fontSize:12,}}>Mumbai</Text>
-        </View>
-        <View style={styles.Cites}>
-        <Text style={{color:'#D0A2F7', fontSize:12,}}>Noida</Text>
-        </View>
+        { cityDta?.length &&
+        cityDta?.map((items,index) =>(
+        <TouchableOpacity onPress={()=>updateCity(items.city)}   key={index} style={styles.Cites}>
+        <Text style={{color:'#D0A2F7', fontSize:12,}}>{items.city}</Text>
+        </TouchableOpacity >
+          ))}
 
        </View>
 

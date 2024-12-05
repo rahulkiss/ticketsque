@@ -6,6 +6,8 @@ import { Imageassets } from '../../assets//images/image';
 import api from '../services/api.interceptor';
 import {EventsResponse} from '../interfaces/events.interfaces';
 import { AxiosResponse } from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { setUser, clearUser, updateUser } from '../Store/Actions/UserActions';
 
 type  LogInScreenProps= {
   navigation: any;
@@ -13,30 +15,40 @@ type  LogInScreenProps= {
 
 
 const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
-    const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
     const [isLoader, setIsLoader] = useState(false);
-    const [eventsResponse, setEventsResponse] = useState<EventsResponse[]>([]);
+    const dispatch = useDispatch();
     
-    useEffect(()=>{
-      getUserData();
-    },[])
+    
     const handleButtonPress = () => {
-      navigation.navigate('otpverifyscreen')
+      getUserData();
+      console.log(phoneNumber)
+      dispatch(updateUser({phoneNo:phoneNumber}));
+
       };
 
       const getUserData = async () => {
         try {
           setIsLoader(true);
-          const response = (await api.get<EventsResponse[]>('service/events_service/v1/no_auth/sponsored/events?location=Bengaluru'));
+          const requestBody = {
+            "mobile":phoneNumber.trim()
+        };
+          const response = (await api.post('/service/accounts_service/v1/no_auth/customer',requestBody));
           setIsLoader(false);
           if(response?.data){
-            console.log("response?.data",response?.data)
-            setEventsResponse(response?.data ?? []);
+            console.log("response?.data",response?.data);
+            navigation.navigate('otpverifyscreen');
           }
         } catch (error) {
           console.error('Error fetching user data:', error);
         }
       };
+
+      
+      const handleInputChange = (text: string) => {
+        setPhoneNumber(text);  
+    };
+
   return (
     <View style={{flex: 1, backgroundColor:"#0D0D0D"}}>
 
@@ -47,7 +59,7 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
       </View>
 
     <View style={styles.inputContainer}>
-        <TextInput
+        <TextInput 
           style={styles.inputCode}
           value="+91"
           editable={false} 
@@ -55,11 +67,11 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
         />
         
         <TextInput
+         onChangeText={handleInputChange}
           style={styles.inputNumber}
           placeholder="Enter your mobile Number"
           placeholderTextColor="#F5EDFD"
           value={phoneNumber}
-          onChangeText={setPhoneNumber}
           keyboardType="numeric" 
           maxLength={10} 
         />
@@ -81,12 +93,6 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
         <TouchableOpacity>
           <Text style={styles.link}>Privacy policy</Text>
         </TouchableOpacity>
-
-        {/* {eventsResponse.length && eventsResponse?.map((x)=>{
-          console.log("jhkd",x.name);
-          return(<Text style={{color:"#fff"}}>{x.name}</Text>);
-        })}
-        {isLoader && <Text style={{color:"#fff"}}>Loading...</Text>} */}
       </View>
     </View>
 
@@ -158,4 +164,8 @@ const styles = StyleSheet.create({
         resizeMode: 'contain', // Makes sure the image is scaled without distortion
       },
 })
+
+function useAppSelector(arg0: (state: any) => any) {
+  throw new Error('Function not implemented.');
+}
 

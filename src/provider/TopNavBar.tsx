@@ -5,6 +5,7 @@ import { Imageassets } from '../../assets//images/image';
 import { useNavigation } from "@react-navigation/native";
  
 import NotificationScreen from "../Screens/NotificationScreen";
+import { useSelector } from "react-redux";
 
 type TopNavBarprops ={
   navigation?: any;
@@ -12,6 +13,7 @@ type TopNavBarprops ={
 
 const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
   const navigator = useNavigation();
+  const seletedCity = useSelector((state: any) => state.user.city)
   const ShowSearchScreen = () =>{
     navigator.navigate('Search')
   }
@@ -25,17 +27,18 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
   return (
     <View style={styles.container}>
      
-     <View style={{width:140, flexDirection: "row", justifyContent:'space-between'}} >
+     <View style={{width:'80%', flexDirection: "row",gap:10}} >
       <TouchableOpacity style={styles.logoContainer}>
         <Image
           source={Imageassets.Frame} 
           style={styles.logo}
         />
       </TouchableOpacity>
+      
       <TouchableOpacity style={styles.locationContainer} onPress={ShowSelectCity}>
         
            <Image source={Imageassets.Location} />
-             <Text style={styles.locationText}>Bengaluru</Text>
+             <Text style={styles.locationText}>{seletedCity}</Text>
              <Image source={Imageassets.ArrowDown} />
           
       </TouchableOpacity>
@@ -50,6 +53,7 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
         <TouchableOpacity onPress={ShowNotifyScreen} style={styles.iconButton} >
         <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
         </TouchableOpacity>
+       
       </View>
     </View>
   );
@@ -68,7 +72,7 @@ const styles = StyleSheet.create({
     borderBlockColor:'rgba(71, 71, 71, 1)'
   },
   logoContainer: {
-    flex: 1,
+
   },
   logo: {
     width: 30,
@@ -76,15 +80,20 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
   locationContainer: {
-    flex: 2,
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: 'space-between',
     height:24,
     borderBottomColor:'#474747',
     borderBottomWidth:2,
     borderStyle:'dashed',
     paddingBottom:3,
+    gap:8,
+    
+    
+  
+    
+   
+   
     
 
     
@@ -94,6 +103,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 12,
     fontWeight: "600",
+    minWidth:10
   },
   iconsContainer: {
     flex: 1,
