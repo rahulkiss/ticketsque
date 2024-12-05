@@ -5,6 +5,9 @@ import { icons } from '../../assets/images/image'
 import CustomButton from '../Components/CustomButton'
 import { ScrollView } from 'react-native-gesture-handler'
 import TicketInfoPopup from '../provider/TicketInfoPopup'
+import BackButton from '../../assets/svg/BackButton.svg'
+import Info from '../../assets/svg/InfoIcon.svg'
+import DownIcon from '../../assets/svg/DownIcon.svg'
 
 type TicketChooseScreenprops = {
     navigation: any;
@@ -23,7 +26,7 @@ const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
         <View style={styles.maincontainer}>
         <View style={[styles.card,{padding:20}]}>
                     <View style={{flexDirection:'row'}}>
-                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><Image source={icons.BackArrow}/></TouchableOpacity> 
+                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><BackButton/></TouchableOpacity> 
                         <Text style={styles.Heading}>  Event Name</Text>
                     </View>
                     <Text style={styles.Text}>May 15 Thursday | Drave Koramangala  |  500 Onwards</Text>
@@ -47,7 +50,7 @@ const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
                             <Text style={[styles.Text,{fontSize:10}]}>Permits 1 Lady | Fully-Redeemable </Text>
                             </View> 
                            <TouchableOpacity  onPress={()=>setPopup(true)}> 
-                            <Image source={icons.Iicon}/>
+                            <Info/>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -67,9 +70,9 @@ const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
                             <View style={styles.package}>  
                                 <View style={[styles.package,{width:'35%'}]}>
                                 <Text style={[styles.Text,{fontSize:10,fontWeight:600}]}>Entry Fee </Text>
-                                <Image source={icons.Iicon}/>
+                                <Info/>
                                 <Text style={[styles.Text,{fontSize:10,fontWeight:600}]}>Details</Text>
-                                <Image source={icons.down}/>
+                                <DownIcon/>
                             </View>
                             <View style={styles.package}>
                                 <Text style={[styles.Text,{fontSize:10,fontWeight:600,color:'red'}]}>Ends in </Text>
@@ -92,9 +95,9 @@ const TicketChooseScreen:React.FC<TicketChooseScreenprops> = ({navigation}) => {
                             <View style={styles.package}>  
                                 <View style={[styles.package,{width:'35%'}]}>
                                 <Text style={[styles.Text,{fontSize:10,fontWeight:600}]}>Entry Fee </Text>
-                                <Image source={icons.Iicon}/>
+                                <Info/>
                                 <Text style={[styles.Text,{fontSize:10,fontWeight:600}]}>Details</Text>
-                                <Image source={icons.down}/>
+                                <DownIcon/>
                             </View>
                             <View style={styles.package}>
                                 <Text style={[styles.Text,{fontSize:10,fontWeight:600,color:'red'}]}>Ends in </Text>

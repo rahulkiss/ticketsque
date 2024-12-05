@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
-
-import { Imageassets } from '../../assets//images/image';
 import { useNavigation } from "@react-navigation/native";
- 
-import NotificationScreen from "../Screens/NotificationScreen";
+import Logo from '../../assets/svg/AppLogo.svg'
+import Location from'../../assets/svg/location.svg'
+import DownArrow from'../../assets/svg/downArrow.svg'
+import Search from'../../assets/svg/SearchIcon.svg'
+import BellIcon from'../../assets/svg/Notification.svg'
 
 type TopNavBarprops ={
   navigation?: any;
@@ -27,16 +28,13 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
      
      <View style={{width:140, flexDirection: "row", justifyContent:'space-between'}} >
       <TouchableOpacity style={styles.logoContainer}>
-        <Image
-          source={Imageassets.Frame} 
-          style={styles.logo}
-        />
+        <Logo/>
       </TouchableOpacity>
       <TouchableOpacity style={styles.locationContainer} onPress={ShowSelectCity}>
         
-           <Image source={Imageassets.Location} />
+           <Location/>
              <Text style={styles.locationText}>Bengaluru</Text>
-             <Image source={Imageassets.ArrowDown} />
+             <DownArrow/>
           
       </TouchableOpacity>
            </View>
@@ -45,10 +43,10 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
     
       <View style={styles.iconsContainer}>
         <TouchableOpacity onPress={ShowSearchScreen} style={styles.iconButton}>
-        <Image source={Imageassets.Search}  style={{width:20,height:20}} />
+        <Search/>
         </TouchableOpacity>
         <TouchableOpacity onPress={ShowNotifyScreen} style={styles.iconButton} >
-        <Image source={Imageassets.Notify} style={{width:20,height:20}}/>
+        <BellIcon/>
         </TouchableOpacity>
       </View>
     </View>

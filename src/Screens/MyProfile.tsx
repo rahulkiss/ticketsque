@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View ,Image} from 'react-native'
+import { StyleSheet, Text, View ,} from 'react-native'
 import React from 'react'
-import { icons } from '../../assets/images/image'
 import { TextInput } from 'react-native-gesture-handler'
 import NameBar from '../provider/NameBar'
+import Profile from '../../assets/svg/Profile.svg'
 
 
 
@@ -14,7 +14,7 @@ const MyProfile = () => {
         </View>    
       <View style={styles.Fram}>
         <View style={{alignItems:'center',width:140,gap:8}}>
-            <Image source={icons.profile}/>
+            <Profile/>
             <View style={styles.photo}>
                 <Text style={{color:'white',fontSize:12,}}>Upload Photo</Text>
             </View>

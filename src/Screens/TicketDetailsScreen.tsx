@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { icons } from '../../assets/images/image'
 import NameBar from '../provider/NameBar'
 import TicketDownloadPopup from '../provider/TicketDownloadPopup'
+import ThreeDot from '../../assets/svg/ThreeDot.svg'
 const TicketDetailsScreen = () => {
   const [Popup,setPopup] = useState(false)
   return (
@@ -21,7 +22,7 @@ const TicketDetailsScreen = () => {
             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:18,fontWeight:700}}>Event Name</Text>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:12,fontWeight:500,}}>TOCA, Koramangala</Text>
             </View>
-             <TouchableOpacity onPress={()=>setPopup(true)}><Image source={icons.Threedot} /></TouchableOpacity>
+             <TouchableOpacity onPress={()=>setPopup(true)}><ThreeDot/></TouchableOpacity>
           </View>
           <View >    
           <Image source={icons.ticket} style={{width:'100%',}}/>

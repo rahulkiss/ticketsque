@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity,} from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler';
 import CustomButton from '../Components/CustomButton';
-import { Imageassets } from '../../assets//images/image';
 import api from '../services/api.interceptor';
 import {EventsResponse} from '../interfaces/events.interfaces';
 import { AxiosResponse } from 'axios';
+import BackButton from "../../assets/svg/BackButton.svg";
 
 type  LogInScreenProps= {
   navigation: any;
@@ -42,7 +42,7 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
 
     <View style={styles.container}>
       <View style={{flexDirection:'row',alignItems:'center',gap:8,height:27}}>
-          <Image style={{height:24,width:24}} source={Imageassets.BackArrowIcon} />
+          <BackButton/>
           <Text style={{fontSize:20,color:'#F5EDFD'}} >Login/ SignUp to TicketsQue</Text>
       </View>
 

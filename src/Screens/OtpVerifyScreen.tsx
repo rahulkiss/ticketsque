@@ -2,7 +2,8 @@ import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import CustomButton from '../Components/CustomButton';
-import { Imageassets } from '../../assets//images/image';
+import LineFade from '../../assets/svg/SingleLine .svg'
+import BackButton from "../../assets/svg/BackButton.svg";
 
 
 type  OtpVerifyScreenProps= {
@@ -36,7 +37,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
     <View  style={styles.container}>
     <View style={{flexDirection:'row',alignItems:'center',gap:8,height:27}}>
     <TouchableOpacity onPress={prevScreen}>
-        <Image style={{height:24,width:24}} source={Imageassets.BackArrowIcon} />
+      <BackButton/>
        </TouchableOpacity>    
            <Text style={{fontSize:20,color:'#F5EDFD'}} >Verify the OTP sent to</Text>
       </View>
@@ -63,9 +64,9 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
       </View>
 
       <View style ={styles.iconcontainer}>
-         <Image style={{width:87}} source={Imageassets.line}/>
+        <LineFade/>
         <Text style ={{color:'white',}}>OR</Text>
-        <Image style={{width:87}} source={Imageassets.line}/>
+        <LineFade/>
       </View>
       <View style ={{}}>
         <Text style ={{color:'white',textAlign:'center'}}>Send OTP on WhatsApp</Text>

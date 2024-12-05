@@ -9,6 +9,13 @@ import BackButton from '../Components/BackButton'
 import SharePopup from '../provider/SharePopup'
 import { useNavigation } from '@react-navigation/native'
 import CarouselBar from '../provider/CarouselBar'
+import Calender from '../../assets/svg/DateIcon.svg'
+import Location from '../../assets/svg/locationIcon.svg'
+import Direction from '../../assets/svg/GetDirections.svg'
+import Drava from '../../assets/svg/Drava.svg'
+import Down from '../../assets/svg/DropDown.svg'
+import Up from '../../assets/svg/Drop_Up.svg'
+import Wallet from '../../assets/svg/wallet.svg'
 
 
 
@@ -64,9 +71,8 @@ const artistdata= [
           <Text style={{ color: '#F5EDFD', fontWeight: 700, fontSize: 20 }}>Event Name</Text>
 
           <View style={{height:42,flexDirection:'row',gap:12}}>
-          <View style={{height: 42, width: 42, borderRadius: 50, borderWidth: 0.8, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#D4D4D41A',alignItems:'center',}}>
-                            <Image  style={{height: 23, width: 23,marginTop:7.8} } source={Imageassets.EventBox} />
-                        </View>
+                            <Calender/>
+                        
 
             <View style={{justifyContent:'space-between'}}>
             <Text  style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>30/11/2024</Text>
@@ -75,9 +81,7 @@ const artistdata= [
 
           </View>
              <View style={{height:42,flexDirection:'row',gap:12}}>
-             <View style={{height: 42, width: 42, borderRadius: 50, borderWidth: 0.8, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#D4D4D41A',alignItems:'center',justifyContent:'center'}}>
-                            <Image  style={{height: 18, width:12 }} source={Imageassets.LocationIcon}  />
-            </View>
+                <Location/>
             <View  style={{flexDirection:"row",justifyContent:'space-between',flex:1}}>
             <View style={{justifyContent:'space-between'}}>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>Happy Brew</Text>
@@ -88,17 +92,14 @@ const artistdata= [
               <View  style={{width:110,height:24,borderRadius:4,borderColor:'rgba(255, 255, 255,0.25)',borderWidth:1,flexDirection:'row',justifyContent:'space-between',paddingHorizontal:7,alignItems:'center'}}>
                 <View><Text style={{color:'rgba(245, 237, 253, 1)',fontSize:10,fontWeight:400,paddingBottom:1.5}}>Get Direction</Text>
                 </View>
-                 <View><Image source={Imageassets.Direction} style={{height: 14, width:14 }} />
-                </View>
+                  <Direction/>
                </View>
             </View>
             </View>
             </View>
 
           <View style={{height:42,flexDirection:'row',gap:12}}>
-          <View style={{height: 42, width: 42, borderRadius: 50, borderWidth: 0.8, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#D4D4D41A',alignItems:'center',}}>
-                            <Image  style={{height: 23, width: 23,marginTop:7.8} } source={Imageassets.EventBox} />
-                        </View>
+              <Calender/>
             <View style={{justifyContent:'center'}}>
                <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>Artist Name</Text>
             </View>
@@ -108,7 +109,7 @@ const artistdata= [
             <View style={{height:48,borderRadius:104,borderWidth:1,borderColor:'rgba(71, 71, 71, 1)', backgroundColor: '#D4D4D41A',flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:10}}>
 
                <View style={{flexDirection:'row',width:177,height:22,alignItems:'center',gap:8}}>
-                <Image source={Imageassets.EventPlace} style={{height:20,width:20 }}/>
+                <Drava/>
                 <Text style={{color:'rgba(245, 237, 253, 1)',height:22,fontWeight:800,fontSize:16,alignContent:'center',marginBottom:1 }}>DRAVA, Kormagala</Text>
                </View>
                <View style={{height:32,width:72,borderRadius:44,borderWidth:1,borderColor:'rgba(255, 255, 255, 0.25)',backgroundColor:'black',justifyContent:'center'}}>
@@ -158,8 +159,8 @@ const artistdata= [
       <View style={{height:'auto',paddingHorizontal:15}}>
        <TouchableOpacity onPress={()=>setTermsAndCondition(!TermsAndCondition)} style={{flexDirection:'row',justifyContent:'center'}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Terms & Conditions</Text>
-        {TermsAndCondition && <View ><Image source={Imageassets.DownIcon}/></View>}  
-        {!TermsAndCondition&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+        {TermsAndCondition && <View ><Down/></View>}  
+        {!TermsAndCondition&& <View ><Up/></View>} 
        </TouchableOpacity>
        {TermsAndCondition && (
   <View style={{ gap: 5, paddingVertical: 5 }}>
@@ -190,8 +191,8 @@ const artistdata= [
       < View style={{height:'auto'}}>
        <TouchableOpacity onPress={()=>setArtistImage(!ArtistImage)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Artists</Text>
-        {ArtistImage && <View ><Image source={Imageassets.DownIcon}/></View>}  
-        {!ArtistImage&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+        {ArtistImage && <View ><Down/></View>}  
+        {!ArtistImage&& <View ><Up/></View>} 
        </TouchableOpacity>
        {ArtistImage &&
        
@@ -204,8 +205,8 @@ const artistdata= [
        <View style={{height:'auto',paddingHorizontal:15,}}>
        <TouchableOpacity onPress={()=>setShowManu(!ShowManu)} style={{flexDirection:'row',justifyContent:'center'}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Menu</Text>
-        {ShowManu && <View ><Image source={Imageassets.DownIcon}/></View>}  
-        {!ShowManu&& <View ><Image source={Imageassets.UpIcon}/></View>} 
+        {ShowManu && <View ><Down/></View>}  
+        {!ShowManu&& <View ><Up/></View>} 
        </TouchableOpacity>
        {ShowManu &&
        <View style={{marginBottom:10}}>
@@ -265,7 +266,7 @@ const artistdata= [
             <View  style={{width:110,height:24,borderRadius:4,borderColor:'rgba(255, 255, 255,0.25)',borderWidth:1,flexDirection:'row',justifyContent:'space-between',paddingHorizontal:7,alignItems:'center'}}>
                 <View><Text style={{color:'rgba(245, 237, 253, 1)',fontSize:10,fontWeight:400,paddingBottom:1.5}}>Get Direction</Text>
                 </View>
-                 <View><Image source={Imageassets.Direction} style={{height: 14, width:14 }} />
+                 <View><Direction/>
                 </View>
                </View>
                </View>
@@ -274,7 +275,7 @@ const artistdata= [
       <View style={{alignItems:'center',justifyContent:'center',backgroundColor: 'rgba(13, 13, 13, 0.8)', position:'absolute',bottom:0,width:'100%',height:76,borderTopWidth:1,borderColor:'rgba(71, 71, 71, 1)'}}>
             <View style={{height:45,paddingHorizontal:20,flexDirection:'row',justifyContent:'space-between',alignItems:'center',flex:1}}>
                <View style={{gap:8,height:45,flexDirection:'row',flex:1,alignItems:'center'}}>
-                 <Image source={Imageassets.Wallet} />
+                 <Wallet/>
                  <View style={{height:28,flexDirection:'row',justifyContent:'space-between',alignItems:'baseline'}}>
                  <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:22,}}>₹1000 </Text>
                  <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:18}}>Onwards</Text>

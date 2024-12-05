@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, TextInput, View } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { icons } from '../../assets//images/image';
+import SearchIcon from '../../assets/svg/SearchIcon.svg'
 
 type SearchProps = {
   SearchTitle: string;
@@ -22,7 +22,7 @@ const Search = (props: SearchProps) => {
           placeholderTextColor="white"
         />
         <View>
-          <Image source={icons.searchicon} style={styles.icon} />
+          <SearchIcon />
         </View>
       </View>
     </LinearGradient>

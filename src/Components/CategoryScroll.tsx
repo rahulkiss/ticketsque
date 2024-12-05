@@ -3,31 +3,35 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View, Image } from 'react-native';
 import { Imageassets } from '../../assets//images/image';
+import discount from '../../assets/svg/Discount.svg'
+import Travel from '../../assets/svg/Travel.svg'
+import entertainment from '../../assets/svg/entertainment.svg'
+import Music from '../../assets/svg/Music.svg'
+import club from '../../assets/svg/Club.svg'
 
 interface Category {
     id: string;
     name: string;
     icon: any; 
     count?: number; 
-    width: any;
-    height: any;
+
  
   }
   
   const data: Category[] = [
-    { id: '1', name: 'Discounts', icon: Imageassets.Categoryimg1, count: 20, width: 50,height: 50, },
-    { id: '2', name: 'Travel', icon: Imageassets.Categoryimg2,width: 36,height: 32, },
-    { id: '3', name: 'Entertainment', icon: Imageassets.Categoryimg3,width: 36,height: 36, },
-    { id: '4', name: 'Music', icon: Imageassets.Categoryimg4, count: 12, width: 26,height: 32},
-    { id: '5', name: 'Club & Nightlife', icon: Imageassets.Categoryimg5, count: 2 ,width: 36,height: 36,},
-    { id: '6', name: 'Travel', icon: Imageassets.Categoryimg2, count: 2 , width: 36,height: 32,},
+    { id: '1', name: 'Discounts',  icon: discount, count: 20,},
+    { id: '2', name: 'Travel', icon: Travel, },
+    { id: '3', name: 'Entertainment', icon:entertainment , },
+    { id: '4', name: 'Music', icon: Music , count: 12,},
+    { id: '5', name: 'Club & Nightlife', icon:club , count: 2,},
+    { id: '6', name: 'Travel', icon:Travel , count: 2},
   ];
   
   const CategoryScroll: React.FC = () => { 
     const renderItem = ({ item }: { item: Category }) => (
       <View style={styles.card}>
         <View style={styles.iconContainer}>
-          <Image source={item.icon} style={{width:item.width ,height:item.height,}} />
+          <item.icon/>
         </View>
         <Text style={styles.name}>{item.name}</Text>
         {item.count !== undefined && <Text style={styles.count}>({item.count})</Text>}

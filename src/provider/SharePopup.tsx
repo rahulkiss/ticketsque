@@ -10,6 +10,11 @@ import {
 } from 'react-native';
 import { Imageassets } from '../../assets//images/image';
 import Svg, { Path } from 'react-native-svg';
+import Whatsapp from '../../assets/svg/Whatsapp_logo.svg'
+import Facebook from '../../assets/svg/Facrbook_logo.svg'
+import Twitter from '../../assets/svg/Twitter_logo.svg'
+import Insta from '../../assets/svg/Insta_logo.svg'
+import Close from '../../assets/svg/CloseIcon.svg'
 
 type SharePopupProps ={
     Popup : any;
@@ -34,30 +39,30 @@ const SharePopup: React.FC<SharePopupProps> = ({Popup,setPopup}) => {
             <View style={{height:52.75,paddingHorizontal:10,marginHorizontal:8,justifyContent: 'space-between',flexDirection:'row',alignItems: 'center',borderBottomColor:'rgba(255, 255, 255, 0.25)',borderBottomWidth:0.6}}>
                 <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:20,fontWeight:800}}>Sharen Event</Text>
                 <TouchableOpacity onPress={()=>setPopup(false)}>
-                <Image source={Imageassets.Xicon}/>
+                  <Close/>
                 </TouchableOpacity>
             </View>
 
             <View style={{ height: 81, marginHorizontal: 10, flexDirection: 'row', justifyContent: 'space-evenly' }}>
   <TouchableOpacity style={{ height: 69, width: 53, justifyContent: 'center', alignItems: 'center',gap:7.5 }}>
-    <Image style={{ width: 46, height: 47.22 }} source={Imageassets.WhatsAppIcon} />
+    <Whatsapp/>
     <Text style={{ fontSize: 10, fontWeight: '500', color: 'rgba(245, 237, 253, 1)', textAlign: 'center' }}>WhatsApp</Text>
   </TouchableOpacity>
 
   <TouchableOpacity style={{ height: 69, width: 53, justifyContent: 'center', alignItems: 'center',gap:7.5 }}>
-    <Image style={{ width: 46, height: 47.22 }} source={Imageassets.FacebookIcon} />
+    <Facebook/>
     <Text style={{ fontSize: 10, fontWeight: '500', color: 'rgba(245, 237, 253, 1)', textAlign: 'center' }}>Facebook</Text>
   </TouchableOpacity>
 
   <TouchableOpacity style={{ height: 69, width: 53, justifyContent: 'center', alignItems: 'center',gap:7.5 }}>
     <View style={{ width: 46, height: 47.22 }}>
-      <Image style={{ width: 46, height: 42, alignSelf: 'center',margin:'auto' }} source={Imageassets.TwitterIcon} />
+      <Twitter />
     </View>
     <Text style={{ fontSize: 10, fontWeight: '500', color: 'rgba(245, 237, 253, 1)', textAlign: 'center' }}>Twitter</Text>
   </TouchableOpacity>
 
   <TouchableOpacity style={{ height: 69, width: 53, justifyContent: 'center', alignItems: 'center',gap:7.5 }}>
-    <Image style={{ width: 46, height: 47.22 }} source={Imageassets.InstaIcon} />
+    <Insta />
     <Text style={{ fontSize: 10, fontWeight: '500', color: 'rgba(245, 237, 253, 1)', textAlign: 'center' }}>Feed</Text>
   </TouchableOpacity>
 </View>

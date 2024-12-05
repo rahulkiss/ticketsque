@@ -1,8 +1,11 @@
 import { StyleSheet, Text, View,Image,ScrollView } from 'react-native'
 import React from 'react'
-import { icons } from '../../assets/images/image'
 import CustomButton from '../Components/CustomButton'
 import NameBar from '../provider/NameBar'
+import DownIcon from '../../assets/svg/DownIcon.svg'
+import Down from '../../assets/svg/downArrow.svg'
+import Up from '../../assets/svg/upArrow.svg'
+import Calender from '../../assets/svg/Calender.svg'
  
 type ReservationScreenprops ={
   navigation: any;
@@ -23,7 +26,7 @@ const ReservationScreen:React.FC<ReservationScreenprops> = ({navigation}) => {
           <View style={styles.card}>
             <View style={styles.package}>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:400}}>Select Outlet</Text>
-              <Image source={icons.down}/>
+              <DownIcon/>
             </View>  
           </View>  
           <View style={{gap:8}}>
@@ -68,7 +71,7 @@ const ReservationScreen:React.FC<ReservationScreenprops> = ({navigation}) => {
             <View style={styles.package}>
                   <View style={{width:'20%',paddingLeft:4}}>
                   <View style={styles.package}>
-                    <Image source={icons.Calender}/>
+                    <Calender/>
                     <Text style={{fontSize:20,fontWeight:600,color:'rgba(245, 237, 253, 1)'}}>25 Jun</Text>
                   </View>
                   </View>
@@ -95,7 +98,7 @@ const ReservationScreen:React.FC<ReservationScreenprops> = ({navigation}) => {
               <View style={{width:'45%'}}>
                 <View style={styles.package}>
                 <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:500}}>12:00PM to 1:30PM</Text>
-                    <Image source={icons.UpArrow}/>
+                    <Up/>
                 </View>
               </View>
             </View>
@@ -141,7 +144,7 @@ const ReservationScreen:React.FC<ReservationScreenprops> = ({navigation}) => {
               <View style={{width:'45%'}}>
                 <View style={styles.package}>
                 <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:500}}>12:00PM to 1:30PM</Text>
-                    <Image source={icons.UpArrow}/>
+                    <Down/>
                 </View>
               </View>
             </View>
@@ -157,7 +160,7 @@ const ReservationScreen:React.FC<ReservationScreenprops> = ({navigation}) => {
               <View style={{width:'45%'}}>
                 <View style={styles.package}>
                 <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:500}}>12:00PM to 1:30PM</Text>
-                    <Image source={icons.UpArrow}/>
+                    <Down/>
                 </View>
               </View>
             </View>

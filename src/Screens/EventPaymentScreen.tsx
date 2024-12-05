@@ -5,6 +5,8 @@ import { icons } from '../../assets/images/image'
 import CustomButton from '../Components/CustomButton'
 import EventAvailableScroll from '../Components/EventAvailableScroll'
 import CustomerDetailsPopup from '../provider/CustemerDetailsPopup'
+import BackButton from '../../assets/svg/BackButton.svg'
+import CheckBox from '../../assets/svg/CheckBox.svg'
 type EventPaymentScreenprops={
     navigation: any;
 }
@@ -20,7 +22,7 @@ const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
             <View style={[styles.maincontainer,{gap:16}]}>
                 <View style={[styles.card,{padding:20}]}>
                     <View style={{flexDirection:'row'}}>
-                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><Image source={icons.BackArrow}/></TouchableOpacity> 
+                    <TouchableOpacity onPress={()=>{ navigation.goBack();  }}><BackButton/></TouchableOpacity> 
                         <Text style={styles.Heading}>  Event Name</Text>
                     </View>
                     <Text style={styles.Text}>May 15 Thursday | Drave Koramangala  |  500 Onwards</Text>
@@ -153,9 +155,15 @@ const EventPaymentScreen:React.FC<EventPaymentScreenprops> = ({navigation}) => {
         </View>
                 </View>
                 <View style={{flexDirection:'row'}}>
+                    {/* <View style={{marginHorizontal:10}}>
+                        <CheckBox/>
+                    </View> */}
                     <View style={{marginHorizontal:10}}>
-                        <Image source={icons.CheckBox}/>
+                        <View style={{height:15,width:15,borderColor:'rgba(208, 162, 247, 1)',borderWidth:2}}>
+
+                        </View>
                     </View>
+                        
                     <Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:400}}>I agree to the </Text>
                     <TouchableOpacity onPress={()=>navigation.navigate('Tearms & Conditions')}><Text style={{color:'rgba(245, 237, 253, 1)',fontSize:14,fontWeight:700,textDecorationLine:'underline'}} >Terms & Conditions</Text></TouchableOpacity>   
                           
