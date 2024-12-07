@@ -5,38 +5,42 @@ import CustomButton from '../Components/CustomButton';
 import api from '../services/api.interceptor';
 import {EventsResponse} from '../interfaces/events.interfaces';
 import { AxiosResponse } from 'axios';
-import { useSelector, useDispatch } from 'react-redux';
-import { setUser, clearUser, updateUser } from '../Store/Actions/UserActions';
 import BackButton from "../../assets/svg/BackButton.svg";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type  LogInScreenProps= {
   navigation: any;
 };
 
-
 const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
     const [isLoader, setIsLoader] = useState(false);
-    const dispatch = useDispatch();
+    
     
     
     const handleButtonPress = () => {
       getUserData();
       console.log(phoneNumber)
-      dispatch(updateUser({phoneNo:phoneNumber}));
+      };
 
+      const storePhoneNo = async (value:any) => {
+        try {
+          await AsyncStorage.setItem('user-phonenumber', value);
+        } catch (e) {
+          console.log(e)
+        }
       };
 
       const getUserData = async () => {
         try {
           setIsLoader(true);
           const requestBody = {
-            "mobile":phoneNumber.trim()
+            "mobile":phoneNumber
         };
           const response = (await api.post('/service/accounts_service/v1/no_auth/customer',requestBody));
           setIsLoader(false);
           if(response?.data){
-            console.log("response?.data",response?.data);
+            storePhoneNo(phoneNumber);
             navigation.navigate('otpverifyscreen');
           }
         } catch (error) {
@@ -67,7 +71,7 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
         />
         
         <TextInput
-         onChangeText={handleInputChange}
+          onChangeText={handleInputChange}
           style={styles.inputNumber}
           placeholder="Enter your mobile Number"
           placeholderTextColor="#F5EDFD"

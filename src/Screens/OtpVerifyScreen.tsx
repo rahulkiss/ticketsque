@@ -2,11 +2,8 @@ import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import CustomButton from '../Components/CustomButton';
-import { Imageassets } from '../../assets//images/image';
-import { useSelector } from 'react-redux';
 import api from '../services/api.interceptor';
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import LineFade from '../../assets/svg/SingleLine .svg'
 import BackButton from "../../assets/svg/BackButton.svg";
 
@@ -18,7 +15,8 @@ type  OtpVerifyScreenProps= {
 const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
   const [phoneOtp, setPhoneOtp] = useState('');
   const [seconds, setSeconds] = useState(30);
-  const phoneNumber = useSelector((state: any) => state.user.phoneNo);
+  const [phoneNumber, setphoneNumber] = useState('');
+  
 
   useEffect(() => {
     if (seconds === 0) {
@@ -30,6 +28,25 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
     return () => clearInterval(interval);
   }, [seconds]);
 
+  const getPhoneNumber = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user-phonenumber');
+      if (value !== null) {
+        setphoneNumber(value)
+      }
+    } catch (e) {
+      console.log(e); 
+    }
+  };
+
+  const setUserData = async (userData:any) => {
+    try {
+      await AsyncStorage.setItem('user-details',userData.toString());
+      await AsyncStorage.setItem('auth-token',userData?.token);
+    } catch (e) {
+      console.log(e); 
+    }
+  };
 
   const getUserData = async () => {
     try {
@@ -37,10 +54,11 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
         "otp": phoneOtp.trim(),
         "user": phoneNumber.trim()
     };
+    console.log(requestBody,"resssdd");
       const response = (await api.post('/service/accounts_service/v1/no_auth/sign-in',requestBody));
      
       if(response?.data){
-        console.log("response?.data",response?.data)
+        await setUserData(response?.data?.payload);
         navigation.navigate('enterdetailscreen');
       }
     } catch (error) {
@@ -48,11 +66,13 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
     }
   };
 
-
+useEffect(()=>{
+  getPhoneNumber();
+},[])
 
   const handleInputChange = (text: string) => {
     setPhoneOtp(text);
-    console.log(phoneNumber)
+    
     };
 
   const handleButtonPress = () =>{
@@ -90,7 +110,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
       </View>
 
       <View style ={styles.timingcontainer}>
-        <Text style ={{color:'white',}}>00 : {seconds} Sce</Text>
+        <Text style ={{color:seconds == 0?'red':'white',}}>00 : {seconds} Sce</Text>
         <Text  style ={{color:'white',}}>Resend OTP ?</Text>
       </View>
 

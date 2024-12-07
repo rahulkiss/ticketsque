@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React,{useEffect, useState} from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LogInScreen from './src/Screens/LogInScreen';
@@ -15,7 +15,7 @@ import MyTickets from './src/Screens/MyTickets';
 import TicketDetailsScreen from './src/Screens/TicketDetailsScreen';
 import ReservationScreen from './src/Screens/ReservationScreen';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { StatusBar } from 'react-native';
+import { ActivityIndicator, Alert, StatusBar, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import TabBar from './src/provider/TabBar';
 import EventScreen from './src/Screens/EventScreen';
@@ -36,8 +36,10 @@ import PaymentPending from './src/Screens/PaymentPending';
 import SomethingWentWrong from './src/Screens/SomethingWentWrong';
 import SessionExpired from './src/Screens/SessionExpired';
 import ReservationSuccess from './src/Screens/ReservationSuccess';
- import { Provider } from 'react-redux';
-import { store } from './src/Store/Store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
+
 
 
 const Stack = createStackNavigator();
@@ -80,12 +82,42 @@ const Screens = () => (
 );
 
 export default function App() {
+  const [initialRoute, setInitialRoute] = useState(null); // Default to `null` to indicate loading
+  const [isLoading, setIsLoading] = useState(true); // Loading state to manage spinner
+ 
+  
+  useEffect(() => {
+    const checkAuthToken = async () => {
+      try {
+        const token = await AsyncStorage.getItem('auth-token');
+        setInitialRoute(token ? 'homescreen' : 'Loginscreen');
+      } catch (err) {
+        console.error('Error fetching token:', err);
+        setInitialRoute('Loginscreen'); // Fallback to login screen if an error occurs
+      } finally {
+        setIsLoading(false); // Stop showing the loader once the check is complete
+      }
+    };
+
+    checkAuthToken();
+  }, []);
+
+  if (isLoading) {
+    // Show a loader while determining the initial route
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#212121' }}>
+        <ActivityIndicator size="large" color="#FFFFFF" />
+      </View>
+    );
+  }else{
   return (
-    <Provider store={store}>
+  
+      
+ 
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
         <StatusBar barStyle="light-content" backgroundColor="#212121" />
-        <Stack.Navigator initialRouteName="homescreen" screenOptions={{
+        <Stack.Navigator initialRouteName={initialRoute ?? "Loginscreen"} screenOptions={{
           headerShown: false,
           cardStyle: { backgroundColor: 'black' },
           cardStyleInterpolator: ({ current }) => ({
@@ -117,12 +149,13 @@ export default function App() {
           <Stack.Screen name='went wrong' component={SomethingWentWrong} />
           <Stack.Screen name='session expired' component={SessionExpired} />
           <Stack.Screen name='reservationSuccess' component={ReservationSuccess} />
-
+          
 
           <Stack.Screen name="homescreen" component={Screens} />
         </Stack.Navigator>
       </NavigationContainer>
+      
     </GestureHandlerRootView>
-    </Provider>
   );
+}
 }

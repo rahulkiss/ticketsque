@@ -98,7 +98,7 @@ const FilterPopup: React.FC<FilterPopupProps> = ({ Popup, setPopup }) => {
             </View>
 
             <View style={styles.footer}>
-              <TouchableOpacity style={styles.cancelButton}>
+              <TouchableOpacity onPress={() => setPopup(false)} style={styles.cancelButton}>
                 <Text style={styles.cancelText}>Cancel</Text>
               </TouchableOpacity>
               <View style={styles.footerActions}>

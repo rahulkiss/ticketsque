@@ -13,12 +13,13 @@ type  ScrollBoxProps = {
 
 
   const ScrollBox: React.FC<ScrollBoxProps> = ({ Title, Color,view,padding,eventDetails }) => {
-
+   
+       
 
     return (
         <View style={styles.container}>
            
-            <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%'}}>
+            <View style={{flexDirection:'row',justifyContent:'space-between',paddingHorizontal:15,width:'100%',alignItems:'center'}}>
                     <Text style={{color:Color,fontSize:18,fontWeight:700}}>{Title}</Text>
                     <Text style={{color:'#F5EDFD',fontSize:14,fontWeight:400}}>{view}</Text>
                 </View>
@@ -41,20 +42,22 @@ type  ScrollBoxProps = {
                             }}
                         >
                             <Image
-                                source={items.image}
+                                 source={{uri:items.images?.[0]?.image_link}}
                                 style={{ height: 157, width: 157 }}
+                                resizeMode='contain'
                             />
+                            
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
                                 <Text  numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                    {items.title}
+                                    {/* {items.title} */}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                    {items.palce}
+                                    {/* {items.palce} */}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                   {items.date}
+                                   {/* {items.date} */}
                                 </Text>
                             </View>
                             <View

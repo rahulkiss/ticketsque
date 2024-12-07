@@ -6,23 +6,45 @@ import { Imageassets } from '../../assets//images/image'
 import NameBar from '../provider/NameBar'
 import api from '../services/api.interceptor';
 import {CityResponse} from '../interfaces/city.interfaces';
-import { useSelector, useDispatch } from 'react-redux';
-import { setUser, clearUser, updateUser } from '../Store/Actions/UserActions';
 import { useNavigation } from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import GetLocation from 'react-native-get-location'
+
+
+
 const SelectCity = () => {
     const [ShowNotFount,setShowNotFount]=useState(false)
     const [IsLoader,setIsLoader]=useState(false)
     const [cityDta,setcityDta]=useState([])
-    const dispatch = useDispatch();
     const navigator = useNavigation()
 
+    
+  const TrakLocation = () =>{
+
+    GetLocation.getCurrentPosition({
+        enableHighAccuracy: true,
+        timeout: 60000,
+    })
+    .then(location => {
+        console.log(location.latitude,location.longitude);
+        if(location){
+          getUserData(location.latitude,location.longitude);
+        }
+    })
+    .catch(error => {
+        const { code, message } = error;
+        console.warn(code, message);
+    })
+  }
+  
     useEffect(()=>{
-      getUserData();
+      getUserData(77.5504666,12.9763776);
     },[])
-    const getUserData = async () => {
+
+    const getUserData = async (lat:any,lang:any) => {
       try {
         setIsLoader(true);
-        const response = (await api.get<CityResponse[]>('/service/events_service/v1/no_auth/city/list?lng=77.5504666&lat=12.9763776'));
+        const response = (await api.get<CityResponse[]>(`/service/events_service/v1/no_auth/city/list?lng=${lat}&lat=${lang}`));
         setIsLoader(false);
         if(response?.data){
           console.log("response?.data",response?.data)
@@ -30,13 +52,23 @@ const SelectCity = () => {
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
-      }
-    };
-    const updateCity = (city) => {
-      dispatch(updateUser({city:city}));
+      }}
+
+    const updateCity = (city:any) => {
+      storeCity(city)
       navigator.navigate('homescreen')
     };
+    const storeCity = async (value:any) => {
+      try {
+        await AsyncStorage.setItem('user-city', value);
+      } catch (e) {
+        console.log(e)
+      }
+    };
 
+   
+
+    
   return (
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1}}>
             <View style={{marginTop:10}}>
@@ -45,7 +77,7 @@ const SelectCity = () => {
         <Search SearchTitle="Search  your City" />
     <View style={styles.container}>
 
-       <TouchableOpacity onPress={()=>{setShowNotFount(true)}} style={styles.Location}>
+       <TouchableOpacity onPress={TrakLocation} style={styles.Location}>
         <View style={{margin:10}}>
         <Image source={icons.locationicon} />
         </View>

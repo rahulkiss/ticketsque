@@ -17,7 +17,7 @@ const Profile:React.FC<Profileprops> = ({navigation}) => {
         };
   return (
     <>
-    <TopNavBar/>
+    <TopNavBar hidesearchNotify = {true} />
     <View style={{backgroundColor:'rgba(13, 13, 13, 1)',flex:1 }}>
         <View style={{margin:20,gap:15,marginTop:'10%'}}>
             <View style={styles.container}>
