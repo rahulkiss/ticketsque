@@ -12,6 +12,7 @@ type  VenueScrollBoxProps = {
 
  
   const VenueScrollBox: React.FC<VenueScrollBoxProps> = ({text,color,venueData}) => {
+    console.log('akash',venueData[0]?.images);
     
     const navigation = useNavigation();
    
@@ -35,7 +36,8 @@ type  VenueScrollBoxProps = {
             >
                 
                 {venueData.map((items,index) => (
-                    <TouchableOpacity  onPress={GoToDetails} key={index} style={styles.item}>
+                     items?.images?.[0]?.image_link &&
+                     ( <TouchableOpacity  onPress={GoToDetails} key={index} style={styles.item}>
                         <View
                             style={{
                                 justifyContent: 'center',
@@ -43,26 +45,27 @@ type  VenueScrollBoxProps = {
                                 paddingTop: 8,
                                 paddingHorizontal: 10,
                             }}
-                        >
+                        > 
+                            
                             <Image 
-                                source={items.image}
+                               source={{uri:items?.images?.[0]?.image_link}}
                                 style={{ height: 114, width:157  }}
                             />
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, height: 72, gap: 8 }}>
                                 <Text style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                  {items.title}
+                                  {/* {items.title} */}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                   {items.palce}
+                                   {/* {items.palce} */}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                  {items.eventNo}
+                                  {/* {items.eventNo} */}
                                 </Text>
                             </View>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity>)
                 ))}
             </ScrollView>
             </SafeAreaView>

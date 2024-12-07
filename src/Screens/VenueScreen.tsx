@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TopNavBar from '../provider/TopNavBar'
 import { ScrollView } from 'react-native-gesture-handler'
 import CarouselBar from '../provider/CarouselBar'
@@ -8,20 +8,36 @@ import FilterPopup from '../provider/FilterPopup'
 import { Imageassets } from '../../assets//images/image'
 import { useNavigation } from '@react-navigation/native'
 import Filter from '../../assets/svg/filter.svg'
-
+import api from '../services/api.interceptor'
 
 const VenueScreen = () => {
+  const [venueData, setVenueData] = useState([]);
    const navigation=useNavigation()
   const [Popup,setPopup] =useState(false)
   const ShowPopup = () =>{
     setPopup(true);
   }
-  const venueData = [
-    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
-    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
-    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
-    {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'}
-  ];
+
+  const GetVenueData = async()=>{
+    try{
+      const response = await api.get(`/service/accounts_service/v1/no_auth/venues/list`);
+      if (response){
+        console.log("test :", response.data._payload[0].images[0].image_link)
+        setVenueData(response.data._payload)
+        console.log('test34:',venueData)
+        
+      }
+
+    }
+    catch (error){
+      console.error('Error fetching user data:', error);
+    }
+  };
+  useEffect(() =>{
+      GetVenueData();
+  },[])
+
+  
   
   return (
     <>
