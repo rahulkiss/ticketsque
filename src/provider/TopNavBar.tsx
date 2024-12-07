@@ -1,22 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
- 
-import NotificationScreen from "../Screens/NotificationScreen";
-import { useSelector } from "react-redux";
 import Logo from '../../assets/svg/AppLogo.svg'
 import Location from'../../assets/svg/location.svg'
 import DownArrow from'../../assets/svg/downArrow.svg'
 import Search from'../../assets/svg/SearchIcon.svg'
 import BellIcon from'../../assets/svg/Notification.svg'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 type TopNavBarprops ={
   navigation?: any;
 }
 
 const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
+  const [City,setCity] = useState('')
   const navigator = useNavigation();
-  const seletedCity = useSelector((state: any) => state.user.city)
+
+  useEffect(()=>{
+    getCity()
+  },[])
+ 
   const ShowSearchScreen = () =>{
     navigator.navigate('Search')
   }
@@ -26,19 +30,31 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
   const ShowSelectCity = () =>{
     navigator.navigate('Select City')
   }
+  const getCity = async () => {
+    try {
+      const value = await AsyncStorage.getItem('user-city');
+      if (value !== null) {
+        setCity(value)
+      }
+    } catch (e) {
+      console.log(e); 
+    }
+  };
+
+   
 
   return (
     <View style={styles.container}>
      
-     <View style={{width:'80%', flexDirection: "row",gap:12}} >
+     <View style={{width:'50%', flexDirection: "row",gap:12}} >
       <TouchableOpacity style={styles.logoContainer}>
         <Logo/>
       </TouchableOpacity>
       
       <TouchableOpacity style={styles.locationContainer} onPress={ShowSelectCity}>
            <Location/>
-             <Text style={styles.locationText}>{seletedCity}</Text>
-             <DownArrow/>
+             <Text numberOfLines={1} ellipsizeMode="tail" style={styles.locationText}>{City.length == 0 ?'Bangaluru':City}</Text>
+            <DownArrow/>
       </TouchableOpacity>
            </View>
            
@@ -51,8 +67,8 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
         <TouchableOpacity onPress={ShowNotifyScreen} style={styles.iconButton} >
         <BellIcon/>
         </TouchableOpacity>
-       
       </View>
+
     </View>
   );
 };
@@ -93,7 +109,9 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "600",
     minWidth:10,
-    paddingLeft:2
+    maxWidth:160,
+    textAlign:'center'
+    
   },
   iconsContainer: {
     flex: 1,

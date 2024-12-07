@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TopNavBar from '../provider/TopNavBar'
 import CarouselBar from '../provider/CarouselBar'
 import CategoryScroll from '../Components/CategoryScroll'
@@ -8,6 +8,7 @@ import ScrollBox from '../Components/ScrollBox'
 import VenueScrollBox from '../Components/VenueScrollBox'
 import ArtistScrollBox from '../Components/ArtistScrollBox'
 import { Imageassets } from '../../assets//images/image'
+import api from '../services/api.interceptor'
 
 type HomeScreenProps = {
   navigation: any;
@@ -15,17 +16,15 @@ type HomeScreenProps = {
 
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
+const [EventData,setEventData] = useState([])
+const [EventTitle,setEventTitle] = useState('')
+
   const  DiscountData = 
   [{image:Imageassets.DiscountImg,discount:'10%',code:'NEWYEAR2025'},
     {image:Imageassets.PartyImage90,discount:'40%',code:'NEWYEAR2025'},
     {image:Imageassets.ArtistGalleryimg1,discount:'50%',code:'NEWYEAR2025'},
   ]  
-  const eventDetails = [
-    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...45',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
-    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
-    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'},
-    {title:'ElectroGroove Fusion Night Geater fun unlimited bre...',image:Imageassets.PartyImage,palce:'TOCA, Koramangala',date:' 24th March, 6:30',price:'1000'}
-];
+ 
 const venueData = [
   {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
   {title:'21st AMendement gaasto',image:Imageassets.PartyImage90,palce:'TOCA, Koramangala',eventNo:'Events 14'},
@@ -40,14 +39,32 @@ const artistdata= [
   
 ];
 
+useEffect(()=>{
+  getEventData()
+},[])
+const getEventData = async () => {
+  try {
+    // setIsLoader(true);
+    const response = (await api.get('/service/events_service/v1/no_auth/events/event_group/customer?location=Bengaluru'));
+    // setIsLoader(false);
+    if(response?.data){
+      console.log('response?.data',response?.data[0].events[0].images[0].image_link);
+      setEventTitle(response?.data?.[0]?.description)
+      setEventData(response?.data?.[0].events);
+    }
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+  }}
 
   const handleNavication = () => {
     navigation.navigate('artistdetailscreen')
         };
   
+
+
   return (
     <>
-    <TopNavBar/> 
+    <TopNavBar /> 
        
     <ScrollView showsVerticalScrollIndicator={false}  style={{ flex: 1,  backgroundColor: "black",height:'auto' }}>
       <View>
@@ -55,14 +72,14 @@ const artistdata= [
       </View>
      <CategoryScroll/>
 
-     <ScrollBox eventDetails={eventDetails} Title ='Featured Events' Color='#F5EDFD' view = 'View All' />
+     <ScrollBox eventDetails={EventData} Title ={EventTitle} Color='#F5EDFD' view ={EventTitle && 'View All'} />
      
       <View style={{height:180,gap:10,marginBottom:20}}>
       <Text style={{height:25,paddingHorizontal:15,color:'#F5EDFD',fontWeight:700,fontSize:18, width:'100%',}}>Discounts</Text>
       <CarouselBar carousal={'Discount'} carousalwidth={1} imageList={DiscountData} position={'absolute'} bottom={-3}/>
       </View>
 
-     <ScrollBox eventDetails={eventDetails} Title ='Event Group 1' Color='#D0A2F7' view = 'View All' />
+     <ScrollBox eventDetails={EventData} Title ='Event Group 1' Color='#D0A2F7' view = 'View All' />
 
     <VenueScrollBox venueData={venueData} text={'Top Venues'} color={'rgba(245, 237, 253, 1)'}/>
 
