@@ -32,6 +32,7 @@ type  ScrollBoxProps = {
             >
                 
                 {eventDetails.map((items,index) => (
+                    
                     <View key={index} style={[styles.item,{marginVertical:padding}]}>
                         <View
                             style={{
@@ -44,20 +45,20 @@ type  ScrollBoxProps = {
                             <Image
                                  source={{uri:items.images?.[0]?.image_link}}
                                 style={{ height: 157, width: 157 }}
-                                resizeMode='contain'
+                                resizeMode='cover'
                             />
                             
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
-                                <Text  numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                    {/* {items.title} */}
+                                <Text  numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600',height:32 }}>
+                                    {items.handle }
                                 </Text>
-                                <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                    {/* {items.palce} */}
+                                <Text   numberOfLines={1} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
+                                    {items.address && JSON.parse(items.address)?.location  }
                                 </Text>
-                                <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                   {/* {items.date} */}
+                                <Text  numberOfLines={1} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
+                                {items.event_start}
                                 </Text>
                             </View>
                             <View
@@ -78,7 +79,7 @@ type  ScrollBoxProps = {
                                         alignItems: 'baseline',
                                     }}
                                 >
-                                    <Text style={{ color: '#D0A2F7', fontSize: 12, fontWeight: '700' }}>₹{items.price}</Text>
+                                    <Text style={{ color: '#D0A2F7', fontSize: 12, fontWeight: '700' }}>₹{items.package_prices && items.package_prices[0]}</Text>
                                     <Text
                                         style={{
                                             color: '#D0A2F7',

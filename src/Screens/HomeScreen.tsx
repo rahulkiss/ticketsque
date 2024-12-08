@@ -18,6 +18,7 @@ type HomeScreenProps = {
 const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 const [EventData,setEventData] = useState([])
 const [EventTitle,setEventTitle] = useState('')
+const [SponserData,setSponserData] = useState([])
 
   const  DiscountData = 
   [{image:Imageassets.DiscountImg,discount:'10%',code:'NEWYEAR2025'},
@@ -41,7 +42,23 @@ const artistdata= [
 
 useEffect(()=>{
   getEventData()
+  getSponserData()
 },[])
+const getSponserData = async () => {
+  try {
+    // setIsLoader(true);
+    const response = (await api.get('/service/events_service/v1/no_auth/sponsored/events?location=Bengaluru'));
+    // setIsLoader(false);
+    if(response?.data){
+      console.log('responseRespons',response?.data?.[0]?.banner_images?.[0]);
+      setSponserData(response?.data);
+    }
+  } catch (error) {
+    console.error('Error fetching user data:', error);
+  }}
+
+
+
 const getEventData = async () => {
   try {
     // setIsLoader(true);
@@ -49,8 +66,8 @@ const getEventData = async () => {
     // setIsLoader(false);
     if(response?.data){
       console.log('response?.data',response?.data[0].events[0].images[0].image_link);
-      setEventTitle(response?.data?.[0]?.description)
-      setEventData(response?.data?.[0].events);
+      setEventTitle(response?.data?.[0]?.name)
+      setEventData(response?.data?.[0]?.events);
     }
   } catch (error) {
     console.error('Error fetching user data:', error);
@@ -68,7 +85,7 @@ const getEventData = async () => {
        
     <ScrollView showsVerticalScrollIndicator={false}  style={{ flex: 1,  backgroundColor: "black",height:'auto' }}>
       <View>
-        <CarouselBar carousal={'Home'} margintop={10} carousalwidth={1.5} imageList={[require("../../assets/images/Banner_1.png"),require("../../assets/images/Banner_2.png"),require("../../assets/images/Banner_3.png")]}/> 
+        <CarouselBar carousal={'Home'} margintop={10} carousalwidth={1.5} imageList={SponserData}/> 
       </View>
      <CategoryScroll/>
 

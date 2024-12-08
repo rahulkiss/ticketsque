@@ -130,8 +130,7 @@ const artistdata= [
       <View style={{height:'auto',paddingHorizontal:15}}>
        <TouchableOpacity  onPress={()=>setTermsAndCondition(!TermsAndCondition)} style={{flexDirection:'row',justifyContent:'center'}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Terms & Conditions</Text>
-        {TermsAndCondition && <View ><Down/></View>}  
-        {!TermsAndCondition&& <View ><Up/></View>} 
+         <View >{TermsAndCondition?<Down/>:<Up/>}</View>  
        </TouchableOpacity>
        {TermsAndCondition &&
        <View style={{gap:5,paddingVertical:5}}>
@@ -150,8 +149,7 @@ const artistdata= [
       < View style={{height:'auto',}}>
        <TouchableOpacity onPress={()=>setArtistImage(!ArtistImage)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Events</Text>
-        {ArtistImage && <View ><Down/></View>}  
-        {!ArtistImage&& <View><Up/></View>} 
+         <View >{ArtistImage?<Down/>:<Up/>}</View>  
        </TouchableOpacity>
        {ArtistImage &&
        
@@ -164,8 +162,7 @@ const artistdata= [
        <View style={{height:'auto'}}>
        <TouchableOpacity onPress={()=>setShowManu(!ShowManu)} style={{flexDirection:'row',justifyContent:'center',paddingHorizontal:15,}}>
         <Text  style={{color:'#F5EDFD',fontWeight:700,fontSize:18,flex:1}} >Menu</Text>
-        {ShowManu && <View ><Down/></View>}  
-        {!ShowManu&& <View ><Up/></View>} 
+        <View > {ShowManu?<Down/>:<Up/>}</View>
        </TouchableOpacity>
        {ShowManu &&
             <View >

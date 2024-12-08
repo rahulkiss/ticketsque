@@ -3,25 +3,26 @@ import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'rea
 import { Imageassets } from '../../assets//images/image';
 
 type EventDetailsProps ={
-    onPress : any
+    onPress : any;
+    eventDetails:any[];
 }
 
 
 
 
-  const EventDetails: React.FC<EventDetailsProps> = ({onPress}) => {
+  const EventDetails: React.FC<EventDetailsProps> = ({onPress,eventDetails}) => {
     
-    const items = [1,2,3,4,5,6,7,8]; 
+    
 
     return (
         <View style={styles.container}>
           
-            <View style={{flexDirection:'row',flexWrap:'wrap',justifyContent:'center',gap:12}}>
+            <View style={{flexDirection:'row',flexWrap:'wrap',gap:12}}>
             
                 
             
                  
-                {items.map((_, index) => (
+                {eventDetails.map((items,index) => (
                     <TouchableOpacity onPress={onPress}  key={index} style={styles.item}>
                         <View
                             style={{
@@ -31,21 +32,23 @@ type EventDetailsProps ={
                                 paddingHorizontal: 10,
                             }}
                         >
-                            <Image
-                                source={{uri: "https://tq-events-prod-public.s3.ap-south-1.amazonaws.com/public/67515173970bde764924349f/events/ENT-1/image/ENTERTAINMENT-2025/dj-near-me-tonight_1733385164795.jpg"}}
+                             <Image
+                                 source={{uri:items?.images?.[0]?.image_link}}
                                 style={{ height: 157, width: '100%' }}
+                                resizeMode='contain'
                             />
+                            
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
-                                <Text numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600', }}>
-                                    ElectroGroove Fusion Night Geater fun unlimited bre
+                                <Text numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
+                                   {items.handle}
                                 </Text>
-                                <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                    TOCA, Koramangala
+                                <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
+                                {JSON.parse(items.address)?.location  }
                                 </Text>
-                                <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                    24th March, 6:30
+                                <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
+                                {items.event_start}
                                 </Text>
                             </View>
                             <View
@@ -66,7 +69,7 @@ type EventDetailsProps ={
                                         alignItems: 'baseline',
                                     }}
                                 >
-                                    <Text style={{ color: '#D0A2F7', fontSize: 12, fontWeight: '700' }}>₹1000</Text>
+                                    <Text style={{ color: '#D0A2F7', fontSize: 12, fontWeight: '700' }}>₹{items.package_prices[0]}</Text>
                                     <Text
                                         style={{
                                             color: '#D0A2F7',
@@ -105,7 +108,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10, 
     },
     item: {
-        maxWidth: "48%",
+        width: "48%",
         height: 285, 
         backgroundColor: '#1B1B1B',
         borderRadius: 8,

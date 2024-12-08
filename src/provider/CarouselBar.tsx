@@ -30,7 +30,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
         scrollAnimationDuration={1500}
         onSnapToItem={(index) => setCurrentIndex(index)}
         defaultIndex={currentIndex}
-        renderItem={({ index }) => (
+        renderItem={({ item,index }) => (
           <>
          { carousal == 'Home' && 
          <View
@@ -40,7 +40,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
             }}
           >
             <View style={{  margin: 10, borderColor: '#474747', borderWidth: 0.1, borderRadius: 10, justifyContent: 'center' }}>
-              <Image source={imageList[index]} style={{ width: "100%", height: 300 }} resizeMode="contain" />
+              <Image source={{uri:item?.banner_images?.[0]}} style={{ width: "100%", height: 300 }} resizeMode='center' />
             </View>
           </View> }
 
