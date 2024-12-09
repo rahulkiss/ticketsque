@@ -15,8 +15,10 @@ type  EventScreenProps ={
 const EventScreen : React.FC<EventScreenProps>= ({navigation}) => {
   const [EventData,setEventData] = useState([])
 
-  const ViewDetails = () => {
-    navigation.navigate('singleeventdetail')
+  const ViewDetails = (data:any) => {
+    navigation.navigate('singleeventdetail', { eventData: data }); 
+       
+    
   };
   const [Popup,setPopup] =useState(false)
   const ShowPopup = () =>{
@@ -49,7 +51,7 @@ const EventScreen : React.FC<EventScreenProps>= ({navigation}) => {
      <Text   style={{color:'#F5EDFD',fontWeight:700,fontSize:20}}>Club & Nightlife Events in Bengaluru</Text>
      <EventDateFilter/>
 
-         <EventDetails eventDetails={EventData} onPress={ViewDetails}/>
+         <EventDetails eventDetails={EventData} ViewDetails ={(items)=>ViewDetails(items)}/>
   
 
     </ScrollView>

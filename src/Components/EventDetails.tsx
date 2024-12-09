@@ -3,14 +3,14 @@ import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'rea
 import { Imageassets } from '../../assets//images/image';
 
 type EventDetailsProps ={
-    onPress : any;
+    ViewDetails : (items:any) => void ;
     eventDetails:any[];
 }
 
 
 
 
-  const EventDetails: React.FC<EventDetailsProps> = ({onPress,eventDetails}) => {
+  const EventDetails: React.FC<EventDetailsProps> = ({ViewDetails,eventDetails}) => {
     
     
 
@@ -23,7 +23,7 @@ type EventDetailsProps ={
             
                  
                 {eventDetails.map((items,index) => (
-                    <TouchableOpacity onPress={onPress}  key={index} style={styles.item}>
+                    <TouchableOpacity onPress={()=> ViewDetails(items)}  key={index} style={styles.item}>
                         <View
                             style={{
                                 justifyContent: 'center',
@@ -42,7 +42,7 @@ type EventDetailsProps ={
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
                                 <Text numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                   {items.handle}
+                                   {items.name}
                                 </Text>
                                 <Text numberOfLines={1} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
                                 {JSON.parse(items.address)?.location  }

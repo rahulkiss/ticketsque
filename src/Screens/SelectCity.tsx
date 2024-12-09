@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,Image, TouchableOpacity, Alert, Platform } from 'react-native'
+import { StyleSheet, Text, View,Image, TouchableOpacity, Alert, Platform, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Search from '../Components/Search'
 import { icons } from '../../assets/images/image'
@@ -9,7 +9,6 @@ import {CityResponse} from '../interfaces/city.interfaces';
 import { useNavigation } from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import GetLocation from 'react-native-get-location';
-// import RNSettings from 'react-native-settings';\
 import {request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 
@@ -25,65 +24,60 @@ function SelectCity() {
 
 
   const TrakLocation = () => {
+    setIsLoader(true)
+    request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((status) => {
+      if(status === RESULTS.GRANTED){
 
     GetLocation.getCurrentPosition({
       enableHighAccuracy: true,
       timeout: 60000,
     })
       .then(location => {
-        
         if (location) {
-          // getUserData(location.latitude,location.longitude);
-          getUserData(location.latitude, location.longitude)
+          getUserData(location.latitude, location.longitude)    
         }
       })
       .catch(error => {
+        setIsLoader(false)
         const { code, message } = error
-
-        if (error) {
+        console.warn('Location permision:-', code, message)
+        if (code == 'UNAVAILABLE') {
           Alert.alert(
             'Location Required',
             'Please enable location services in your device settings.',
             [
               { text: 'Cancel', style: 'cancel' },
-              {
-                text: 'Open Settings',
-                onPress: () => { 
-                                      
-                }
-              },
+              {text: 'ok' },
             ]
           )
-
-          console.warn('Location permision:-', code, message)
         }
       })
+    }
+    
+  });
   }
 
   useEffect(() => {
-    request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then((status) => {
-      if(status === RESULTS.GRANTED){
-        TrakLocation();
-      }
-    });
-
     getUserData(77.5504666, 12.9763776)
   }, [])
+
 
   const getUserData = async (lat: any, lang: any) => {
     try {
       setIsLoader(true)
       const response = (await api.get<CityResponse[]>(`/service/events_service/v1/no_auth/city/list?lng=${lat}&lat=${lang}`))
-      setIsLoader(false)
+     
       if (response?.data) {
         console.log("response?.data", response?.data)
         setcityDta(response?.data ?? [])
       }
     } catch (error) {
       console.error('Error fetching user data:', error)
+      
+    } finally {
+      setIsLoader(false)
     }
   }
-
   const updateCity = (city: any) => {
     storeCity(city)
     navigator.navigate('homescreen')
@@ -123,6 +117,13 @@ function SelectCity() {
 
         <View style={{ height: 285, gap: 12 }}>
           <Text style={{ height: 25, fontWeight: 700, fontSize: 18, color: '#F5EDFD' }}>All Available Cities</Text>
+         { IsLoader &&
+
+      <View style={{marginTop:80}}>
+        <ActivityIndicator size="large" color="#D0A2F7" />
+      </View>
+    
+       }
           {cityDta?.length &&
             cityDta?.map((items, index) => (
               <TouchableOpacity onPress={() => updateCity(items.city)} key={index} style={styles.Cites}>

@@ -37,6 +37,7 @@ import SomethingWentWrong from './src/Screens/SomethingWentWrong';
 import SessionExpired from './src/Screens/SessionExpired';
 import ReservationSuccess from './src/Screens/ReservationSuccess';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import FlaseScreen from './src/provider/FlaseScreen';
 
 
 
@@ -90,7 +91,7 @@ export default function App() {
     const checkAuthToken = async () => {
       try {
         const token = await AsyncStorage.getItem('auth-token');
-        setInitialRoute(token ? 'homescreen' : 'Loginscreen');
+        setInitialRoute(token ? 'homescreen' : 'homescreen');
       } catch (err) {
         console.error('Error fetching token:', err);
         setInitialRoute('Loginscreen'); // Fallback to login screen if an error occurs
@@ -105,9 +106,10 @@ export default function App() {
   if (isLoading) {
     // Show a loader while determining the initial route
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#212121' }}>
-        <ActivityIndicator size="large" color="#FFFFFF" />
-      </View>
+      // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#212121' }}>
+      //   <ActivityIndicator size="large" color="#FFFFFF" />
+      // </View>
+      <FlaseScreen/>
     );
   }else{
   return (

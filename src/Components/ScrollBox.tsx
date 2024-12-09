@@ -52,7 +52,7 @@ type  ScrollBoxProps = {
                         <View>
                             <View style={{ paddingHorizontal: 10, paddingTop: 5, height: 74, gap: 7 }}>
                                 <Text  numberOfLines={2} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600',height:32 }}>
-                                    {items.handle }
+                                    {items.name}
                                 </Text>
                                 <Text   numberOfLines={1} ellipsizeMode="tail" style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
                                     {items.address && JSON.parse(items.address)?.location  }

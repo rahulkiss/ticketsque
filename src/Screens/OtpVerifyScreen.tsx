@@ -59,7 +59,7 @@ const OtpVerifyScreen: React.FC<OtpVerifyScreenProps> = ({ navigation }) => {
      
       if(response?.data){
         await setUserData(response?.data?.payload);
-        navigation.navigate('enterdetailscreen');
+        navigation.navigate('homescreen');
       }
     } catch (error) {
       console.error('Error fetching user data:', error);

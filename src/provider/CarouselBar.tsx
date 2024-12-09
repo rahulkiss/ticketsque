@@ -39,10 +39,11 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
               justifyContent: 'center',
             }}
           >
-            <View style={{  margin: 10, borderColor: '#474747', borderWidth: 0.1, borderRadius: 10, justifyContent: 'center' }}>
-              <Image source={{uri:item?.banner_images?.[0]}} style={{ width: "100%", height: 300 }} resizeMode='center' />
+            <View style={{  marginHorizontal: 20,borderColor: '#474747', borderWidth: 0.8, borderRadius: 10, justifyContent: 'center',}}>
+              <Image source={{uri:item?.banner_images?.[0]}} style={{ width: "100%",height:'100%', borderRadius: 10, }} resizeMode='cover' />
             </View>
-          </View> }
+           </View> 
+          }
 
           { carousal == 'Event'  &&
             <View style={{ maxHeight:364,paddingHorizontal:15,  backgroundColor: "black", justifyContent: 'center' }}>
@@ -77,6 +78,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
 
       />
       </View>
+      { imageList.length > 1 &&
       <View style={[styles.indicatorContainer,{position:position,bottom:bottom,backgroundColor:carousal=='Event'?'rgba(9, 9, 9, 1)':'rgba(212, 212, 212, 0.1)'}]}>
         {imageList.map((_, index) => (
            <LinearGradient
@@ -96,7 +98,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
           />
           </LinearGradient>
         ))}
-      </View>
+      </View>}
       
     </View>
   );
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor:"rgba(255, 255, 255, 0.25)",
     borderWidth:1,
-    marginTop:3,
+    marginTop:5,
    
   },
   indicator: {

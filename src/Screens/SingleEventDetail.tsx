@@ -1,5 +1,5 @@
 import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Imageassets } from '../../assets//images/image'
 import { ScrollView } from 'react-native-gesture-handler'
 import EventAvailableScroll from '../Components/EventAvailableScroll'
@@ -16,17 +16,24 @@ import Drava from '../../assets/svg/Drava.svg'
 import Down from '../../assets/svg/DropDown.svg'
 import Up from '../../assets/svg/Drop_Up.svg'
 import Wallet from '../../assets/svg/wallet.svg'
+import api from '../services/api.interceptor'
 
 
 
 
 
-const SingleEventDetail = () => {
+const SingleEventDetail = ({ route }: { route: any }) => {
    const [TermsAndCondition,setTermsAndCondition] = useState(false)
    const [ArtistImage,setArtistImage] = useState(true)
    const [ShowManu,setShowManu] = useState(true)
    const [Popup,setPopup]=useState(false)
+   const [EventDetails,setEventDetails]=useState([])
+
+
    const navigator = useNavigation();
+   const { eventData } = route.params;
+   const Address = JSON.parse(eventData?.address)
+  //  console.log('datas',Address);
    const  data = 
   [{image:Imageassets.PartyImage,},
     {image:Imageassets.ArtistGalleryimg1,},
@@ -56,8 +63,28 @@ const artistdata= [
   
    const GoToEventBooking = () =>{
      navigator.navigate('EventBooking')
+     
    }
-
+  useEffect(()=>{
+    getUserData()
+  },[])
+  
+  const getUserData = async () => {
+    if (eventData) {
+      try {
+        // setIsLoader(true)
+        const response = await api.get(`/service/events_service/v1/no_auth/customer/event/handle/${eventData.handle}?utm_source=events-page`);
+        // setIsLoader(false)
+        if (response?.data) {
+          console.log("eventDetails", response?.data);
+          setEventDetails(response?.data ?? []);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+  };
+      
   return (
     <View style={{flex:1,backgroundColor: "black" }}>
       <ScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: "black" }}>
@@ -68,12 +95,10 @@ const artistdata= [
            
         </View>
         <View style={{ maxHeight: 423, gap: 13, paddingHorizontal: 15, paddingTop: 15 }}>
-          <Text style={{ color: '#F5EDFD', fontWeight: 700, fontSize: 20 }}>Event Name</Text>
+          <Text style={{ color: '#F5EDFD', fontWeight: 700, fontSize: 20 }}>{eventData?.name}</Text>
 
           <View style={{height:42,flexDirection:'row',gap:12}}>
                             <Calender/>
-                        
-
             <View style={{justifyContent:'space-between'}}>
             <Text  style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>30/11/2024</Text>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>sun,3.45 PM Onwards</Text>
@@ -249,17 +274,18 @@ const artistdata= [
        <ScrollBox eventDetails={eventDetails} Title ='Other Events' Color='#F5EDFD' />
        <ScrollBox eventDetails={eventDetails} Title ='Discounts' Color='#F5EDFD' />
          
-       <View style={{height: 193, flex:1, borderRadius: 8, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#1B1B1B',alignItems:'center',justifyContent:'center',marginTop:5,marginHorizontal:15,gap:8,marginBottom:76}}>
-            <View style={{height: 121,width:330,gap:16}} >
+       <View style={{ flex:1, borderRadius: 8, borderWidth: 1, borderColor: 'rgba(255, 255, 255, 0.25)', backgroundColor: '#1B1B1B',alignItems:'center',justifyContent:'center',marginTop:5,marginHorizontal:15,gap:10,marginBottom:76}}>
+            <View style={{width:330,gap:8,marginTop:20}} >
               <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:18}}>Venue Details</Text>
-                <View>
-                <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}>The Big Baadshah,</Text>
-                <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}>88, 2nd Floor, Outer Ring Rd, near More</Text>
+                <View style={{paddingRight:50}}>
+                <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}>{Address?.location},</Text>
+                <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}>{Address?.address}</Text>
+                {/* <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}>88, 2nd Floor, Outer Ring Rd, near More</Text>
                 <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}> Supermarket, Marathahalli, Bengaluru, Karnataka </Text>
-                <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}>560037</Text>
+                <Text style={{color:'#F5EDFD',fontWeight:400,fontSize:14}}>560037</Text> */}
                 </View>
             </View>
-            <View style={{width:330}} >
+            <View style={{width:330,marginBottom:20}} >
             <View  style={{width:110,height:24,borderRadius:4,borderColor:'rgba(255, 255, 255,0.25)',borderWidth:1,flexDirection:'row',justifyContent:'space-between',paddingHorizontal:7,alignItems:'center'}}>
                 <View><Text style={{color:'rgba(245, 237, 253, 1)',fontSize:10,fontWeight:400,paddingBottom:1.5}}>Get Direction</Text>
                 </View>

@@ -9,6 +9,8 @@ import VenueScrollBox from '../Components/VenueScrollBox'
 import ArtistScrollBox from '../Components/ArtistScrollBox'
 import { Imageassets } from '../../assets//images/image'
 import api from '../services/api.interceptor'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import {request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 type HomeScreenProps = {
   navigation: any;
@@ -19,6 +21,10 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ navigation }) => {
 const [EventData,setEventData] = useState([])
 const [EventTitle,setEventTitle] = useState('')
 const [SponserData,setSponserData] = useState([])
+
+useEffect( () => {
+  request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION).then();
+},[])
 
   const  DiscountData = 
   [{image:Imageassets.DiscountImg,discount:'10%',code:'NEWYEAR2025'},
@@ -57,12 +63,11 @@ const getSponserData = async () => {
     console.error('Error fetching user data:', error);
   }}
 
-
-
 const getEventData = async () => {
+  const City = await AsyncStorage.getItem('user-city');
   try {
     // setIsLoader(true);
-    const response = (await api.get('/service/events_service/v1/no_auth/events/event_group/customer?location=Bengaluru'));
+    const response = (await api.get(`/service/events_service/v1/no_auth/events/event_group/customer?location=Bengaluru`));
     // setIsLoader(false);
     if(response?.data){
       console.log('response?.data',response?.data[0].events[0].images[0].image_link);
@@ -98,7 +103,7 @@ const getEventData = async () => {
 
      <ScrollBox eventDetails={EventData} Title ='Event Group 1' Color='#D0A2F7' view = 'View All' />
 
-    <VenueScrollBox venueData={venueData} text={'Top Venues'} color={'rgba(245, 237, 253, 1)'}/>
+    {/* <VenueScrollBox venueData={venueData} text={'Top Venues'} color={'rgba(245, 237, 253, 1)'}/> */}
 
      <ArtistScrollBox   artistdata={artistdata} onPress={handleNavication}   Title='Top Artists' Color='#F5EDFD' view='View All'/>
 
