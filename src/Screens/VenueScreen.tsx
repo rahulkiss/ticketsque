@@ -22,7 +22,7 @@ const VenueScreen = () => {
     try{
       const response = await api.get(`/service/accounts_service/v1/no_auth/venues/list`);
       if (response){
-        console.log("test :", response.data._payload[0].images[0].image_link)
+        // console.log("test :", response.data._payload)
         setVenueData(response.data._payload)
         console.log('test34:',venueData)
         
@@ -47,9 +47,9 @@ const VenueScreen = () => {
       <CarouselBar carousal={'Home'} margintop={10} carousalwidth={1.5} imageList={[require("../../assets/images/Banner_1.png"),require("../../assets/images/Banner_2.png"),require("../../assets/images/Banner_3.png")]}/> 
       </View>
      
-      <VenueScrollBox venueData={venueData}  text={'Top Venuns'} color={'rgba(208, 162, 247, 1)'}/>
-      <VenueScrollBox venueData={venueData} text={'Available for Reservation'} color={'rgba(208, 162, 247, 1)'}/>
-      <VenueScrollBox venueData={venueData} text={'Venun with Event'} color={'rgba(208, 162, 247, 1)'}/>
+      <VenueScrollBox venueData={venueData}   color={'rgba(208, 162, 247, 1)'}/>
+      <VenueScrollBox venueData={venueData} color={'rgba(208, 162, 247, 1)'}/>
+      <VenueScrollBox venueData={venueData}  color={'rgba(208, 162, 247, 1)'}/>
     </ScrollView>
     <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}>
       <Filter/></TouchableOpacity>

@@ -12,12 +12,12 @@ type  VenueScrollBoxProps = {
 
  
   const VenueScrollBox: React.FC<VenueScrollBoxProps> = ({text,color,venueData}) => {
-    console.log('akash',venueData[0]?.images);
+    console.log('akash',venueData[0]?.Info?.business?.name);
     
     const navigation = useNavigation();
    
-    const GoToDetails =()=>{
-        navigation.navigate('venudetailscreen')
+    const GoToDetails =(id)=>{
+        navigation.navigate('venudetailscreen',{details:id})
     }
 
     return (
@@ -37,7 +37,7 @@ type  VenueScrollBoxProps = {
                 
                 {venueData.map((items,index) => (
                      items?.images?.[0]?.image_link &&
-                     ( <TouchableOpacity  onPress={GoToDetails} key={index} style={styles.item}>
+                     ( <TouchableOpacity  onPress={()=>GoToDetails(items)} key={index} style={styles.item}>
                         <View
                             style={{
                                 justifyContent: 'center',
@@ -51,17 +51,19 @@ type  VenueScrollBoxProps = {
                                source={{uri:items?.images?.[0]?.image_link}}
                                 style={{ height: 114, width:157  }}
                             />
+                            
                         </View>
                         <View>
                             <View style={{ paddingHorizontal: 10, height: 72, gap: 8 }}>
-                                <Text style={{ color: '#F5EDFD', fontSize: 12, fontWeight: '600' }}>
-                                  {/* {items.title} */}
+                                <Text style={{ color: '#F5EDFD', fontSize: 14, fontWeight: '700' }}>
+                                  {items?.Info?.business?.name}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                   {/* {items.palce} */}
+                                   {items?.Info?.contact?.location}
+                                   ,{items?.Info?.contact?.city}
                                 </Text>
                                 <Text style={{ color: '#F5EDFD', fontSize: 10, fontWeight: '400' }}>
-                                  {/* {items.eventNo} */}
+                                  Events 14
                                 </Text>
                             </View>
                         </View>

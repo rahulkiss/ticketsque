@@ -1,4 +1,4 @@
-import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, View,useWindowDimensions } from 'react-native'
 import React, { useState } from 'react'
 import { Imageassets } from '../../assets//images/image'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -13,15 +13,20 @@ import CarouselBar from '../provider/CarouselBar'
 import Calender from '../../assets/svg/DateIcon.svg'
 import Location from '../../assets/svg/locationIcon.svg'
 import Direction from '../../assets/svg/GetDirections.svg'
-import Drava from '../../assets/svg/Drava.svg'
 import Down from '../../assets/svg/DropDown.svg'
 import Up from '../../assets/svg/Drop_Up.svg'
+import RenderHTML from 'react-native-render-html'
 
 
 
 
 
-const VenueDetailScreen = () => {
+const VenueDetailScreen = ({route}:{route:any}) => {
+
+  const {details}= route.params
+  const {width} = useWindowDimensions();
+  const sourcee =details?.description;
+  console.log('demo',sourcee)
    const [TermsAndCondition,setTermsAndCondition] = useState(false)
    const [ArtistImage,setArtistImage] = useState(true)
    const [ShowManu,setShowManu] = useState(true)
@@ -54,7 +59,7 @@ const artistdata= [
         <CarouselBar carousal={'Event'} imageList={data} position={'absolute'} bottom={10} bgcolor={'rgba(212, 212, 212, 0.1)'} carousalwidth={1}/>
         </View>
         <View style={{ maxHeight: 423, gap: 13, paddingHorizontal: 15, paddingTop: 15 }}>
-          <Text style={{ color: '#F5EDFD', fontWeight: 700, fontSize: 20 }}>Venue Name</Text>
+          <Text style={{ color: '#F5EDFD', fontWeight: 700, fontSize: 20 }}>{details?.Info?.business?.name}</Text>
 
           
              <View style={{height:42,flexDirection:'row',gap:12}}>
@@ -63,8 +68,8 @@ const artistdata= [
             </View>
             <View  style={{flexDirection:"row",justifyContent:'space-between',flex:1}}>
             <View style={{justifyContent:'space-between'}}>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>Happy Brew</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>Kormangala, Bengaluru.</Text>
+            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>{details?.Info?.business?.name}</Text>
+            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>{details?.Info?.contact?.location},{details?.Info?.contact?.city}</Text>
             </View>
             <View style={{height:42,justifyContent:"center",}}>
 
@@ -84,7 +89,7 @@ const artistdata= [
         </View>
 
             <View style={{justifyContent:'space-between'}}>
-            <Text  style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>20/01/2050</Text>
+            <Text  style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>{details?.start_time}-{details?.end_time}</Text>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>All Days</Text>
             </View>
 
@@ -94,7 +99,7 @@ const artistdata= [
 
        <View style={{paddingHorizontal:15,paddingVertical:20}}>
         <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:18,}}>Venue Details</Text>
-        <View style={{paddingTop:10,gap:5}}>
+        {/* <View style={{paddingTop:10,gap:5}}>
           <View style={{flexDirection:'row',gap:4}} >
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize: 20,lineHeight: 22,}}>•</Text>
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
@@ -121,7 +126,14 @@ const artistdata= [
             <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:14,flex:1}}>
             Chillout Lounge: Need a breather? Visit our chillout lounge area, where you can relax, recharge, and socialize with fellow music enthusiasts. Unwind while still being enveloped in the event's electrifying atmosphere.    </Text>     
               </View>
-        </View>
+        </View> */}
+        <RenderHTML
+         contentWidth={width} 
+         source={{html:sourcee}}
+         baseStyle={{
+          color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize: 14
+         }}
+        />
        </View>
        
 
