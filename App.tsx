@@ -83,20 +83,19 @@ const Screens = () => (
 );
 
 export default function App() {
-  const [initialRoute, setInitialRoute] = useState(null); // Default to `null` to indicate loading
-  const [isLoading, setIsLoading] = useState(true); // Loading state to manage spinner
- 
+  const [initialRoute, setInitialRoute] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); 
   
   useEffect(() => {
     const checkAuthToken = async () => {
       try {
         const token = await AsyncStorage.getItem('auth-token');
-        setInitialRoute(token ? 'homescreen' : 'homescreen');
+        setInitialRoute(token ? 'homescreen' : 'Loginscreen');
       } catch (err) {
         console.error('Error fetching token:', err);
-        setInitialRoute('Loginscreen'); // Fallback to login screen if an error occurs
+        setInitialRoute('Loginscreen'); 
       } finally {
-        setIsLoading(false); // Stop showing the loader once the check is complete
+        setIsLoading(false);
       }
     };
 
@@ -104,11 +103,9 @@ export default function App() {
   }, []);
 
   if (isLoading) {
-    // Show a loader while determining the initial route
+   
     return (
-      // <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#212121' }}>
-      //   <ActivityIndicator size="large" color="#FFFFFF" />
-      // </View>
+     
       <FlaseScreen/>
     );
   }else{

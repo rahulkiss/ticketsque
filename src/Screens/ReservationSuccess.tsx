@@ -4,9 +4,12 @@ import styles from '../../assets/css/style'
 import { gif } from '../../assets/gif/gifs'
 import { icons } from '../../assets/images/image'
 import Confirmed from '../../assets/svg/Complete.svg'
+import { useNavigation } from '@react-navigation/native'
 
 
 const ReservationSuccess = () => {
+
+  const navicator = useNavigation();
   
     const [Animation,setAnimation] =useState(true)
     setTimeout(()=>{
@@ -32,11 +35,11 @@ const ReservationSuccess = () => {
     </View>
         </View>
         <View style={{alignItems:'center'}}>
-                        <View style={[styles.slot,{paddingVertical:10,borderRadius:20,borderColor:'rgba(208, 162, 247, 1)',width:'50%',}]}>
-                            <TouchableOpacity style={{marginHorizontal:15}}>
+                        <TouchableOpacity onPress={()=>navicator.navigate("homescreen", { screen: "Venues" })} style={[styles.slot,{paddingVertical:10,borderRadius:20,borderColor:'rgba(208, 162, 247, 1)',width:'50%',}]}>
+                            <View style={{marginHorizontal:15}}>
                             <Text style={[styles.Heading,{fontSize:14,textAlign:'center',color:'rgba(208, 162, 247, 1)'}]}>Back to Venue Home</Text>
-                            </TouchableOpacity>
-                        </View>
+                            </View>
+                        </TouchableOpacity>
                     </View>
     </View>
 

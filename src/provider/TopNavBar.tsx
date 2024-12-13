@@ -10,10 +10,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 type TopNavBarprops ={
-  navigation?: any;
+  currentScreen? :any;
 }
 
-const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
+const TopNavBar: React.FC<TopNavBarprops>=(currentScreen) => {
   const [City,setCity] = useState('')
   const navigator = useNavigation();
 
@@ -28,7 +28,7 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
     navigator.navigate('Notifications')
   }
   const ShowSelectCity = () =>{
-    navigator.navigate('Select City')
+    navigator.navigate('Select City', {reatuenScreen : currentScreen})
   }
   const getCity = async () => {
     try {
@@ -47,7 +47,7 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
     <View style={styles.container}>
      
      <View style={{width:'50%', flexDirection: "row",gap:12}} >
-      <TouchableOpacity style={styles.logoContainer}>
+      <TouchableOpacity onPress={()=> navigator.navigate("homescreen", { screen: "Home" })} style={styles.logoContainer}>
         <Logo/>
       </TouchableOpacity>
       
@@ -59,7 +59,6 @@ const TopNavBar: React.FC<TopNavBarprops>=(navigation) => {
            </View>
            
       
-    
       <View style={styles.iconsContainer}>
         <TouchableOpacity onPress={ShowSearchScreen} style={styles.iconButton}>
         <Search/>

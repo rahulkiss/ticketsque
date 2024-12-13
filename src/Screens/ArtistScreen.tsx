@@ -24,7 +24,7 @@ const ArtistScreen: React.FC<ArtistScreenProps> = ({ navigation }) => {
         ];
   return (
     <>
-    <TopNavBar /> 
+    <TopNavBar currentScreen={'Artists'}  /> 
     <ScrollView  style={{ flex: 1,  backgroundColor: "black",height:'auto',paddingTop:10 }}>
      <ArtistScrollBox artistdata={artistdata} onPress={handleNavication}   Title='Top Artists' Color='#F5EDFD' view='View All'/>
      <ArtistScrollBox artistdata={artistdata} onPress={handleNavication}     Title='DJ' Color='#F5EDFD' view='View All'/>

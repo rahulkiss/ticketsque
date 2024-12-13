@@ -1,4 +1,4 @@
-import { Image, Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Image, Modal, StyleSheet, Text, TouchableOpacity, useWindowDimensions, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Imageassets } from '../../assets//images/image'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -17,7 +17,9 @@ import Down from '../../assets/svg/DropDown.svg'
 import Up from '../../assets/svg/Drop_Up.svg'
 import Wallet from '../../assets/svg/wallet.svg'
 import api from '../services/api.interceptor'
-
+import { RenderHTML } from 'react-native-render-html';
+import LinearGradient from 'react-native-linear-gradient'
+import { format } from 'date-fns';
 
 
 
@@ -27,13 +29,21 @@ const SingleEventDetail = ({ route }: { route: any }) => {
    const [ArtistImage,setArtistImage] = useState(true)
    const [ShowManu,setShowManu] = useState(true)
    const [Popup,setPopup]=useState(false)
-   const [EventDetails,setEventDetails]=useState([])
+  //  const [EventDetails,setEventDetails]=useState([])
+   const {width} = useWindowDimensions();
+ 
 
 
    const navigator = useNavigation();
    const { eventData } = route.params;
    const Address = JSON.parse(eventData?.address)
-  //  console.log('datas',Address);
+   console.log('datas',eventData);
+   const termsContent = JSON.parse(eventData.terms_and_conditions);
+  //  const htmlContent = convertJsonToHtml(termsContent);
+   console.log('termsContent',termsContent);
+   const formattedDate = format(new Date(eventData?.event_start), "EEE dd MMM hh:mm a");
+   console.log('formattedDate',formattedDate);
+
    const  data = 
   [{image:Imageassets.PartyImage,},
     {image:Imageassets.ArtistGalleryimg1,},
@@ -65,25 +75,26 @@ const artistdata= [
      navigator.navigate('EventBooking')
      
    }
-  useEffect(()=>{
-    getUserData()
-  },[])
+  // useEffect(()=>{
+  //   getUserData()
+  // },[])
   
-  const getUserData = async () => {
-    if (eventData) {
-      try {
-        // setIsLoader(true)
-        const response = await api.get(`/service/events_service/v1/no_auth/customer/event/handle/${eventData.handle}?utm_source=events-page`);
-        // setIsLoader(false)
-        if (response?.data) {
-          console.log("eventDetails", response?.data);
-          setEventDetails(response?.data ?? []);
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    }
-  };
+  // const getUserData = async () => {
+  //   if (eventData) {
+  //     try {
+  //       // setIsLoader(true)
+  //       const response = await api.get(`/service/events_service/v1/no_auth/customer/event/handle/${eventData.handle}?utm_source=events-page`);
+  //       // setIsLoader(false)
+  //       if (response?.data) {
+  //         console.log("eventDetails", response?.data);
+  //         setEventDetails(response?.data ?? []);
+  //       }
+  //     } catch (error) {
+  //       console.error('Error fetching user data:', error);
+  //     }
+  //   }
+  // };
+  
       
   return (
     <View style={{flex:1,backgroundColor: "black" }}>
@@ -100,17 +111,17 @@ const artistdata= [
           <View style={{height:42,flexDirection:'row',gap:12}}>
                             <Calender/>
             <View style={{justifyContent:'space-between'}}>
-            <Text  style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>30/11/2024</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>sun,3.45 PM Onwards</Text>
+            <Text  style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>{format(new Date(eventData?.event_start), "dd/MM/yyyy")}</Text>
+            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>{formattedDate} Onwards</Text>
             </View>
 
           </View>
              <View style={{height:42,flexDirection:'row',gap:12}}>
                 <Location/>
             <View  style={{flexDirection:"row",justifyContent:'space-between',flex:1}}>
-            <View style={{justifyContent:'space-between'}}>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>Happy Brew</Text>
-            <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>Kormangala, Bengaluru.</Text>
+            <View style={{justifyContent:'space-between',width:'55%'}}>
+            <Text  numberOfLines={1} ellipsizeMode="tail" style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>Happy Brew</Text>
+            <Text numberOfLines={1} ellipsizeMode="tail" style={{color:'rgba(245, 237, 253, 1)',fontWeight:500,fontSize:11}}>{Address?.location},{Address?.city}.</Text>
             </View>
             <View style={{height:42,justifyContent:"center",}}>
 
@@ -125,29 +136,46 @@ const artistdata= [
 
           <View style={{height:42,flexDirection:'row',gap:12}}>
               <Calender/>
-            <View style={{justifyContent:'center'}}>
-               <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>Artist Name</Text>
+              <View style={{justifyContent:'center'}}>
+               <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:700,fontSize:16}}>artist name</Text>
+               {/* {eventData?.event_artists?.[0].name || 'artist name'} */}
             </View>
           </View>
 
           
             <View style={{height:48,borderRadius:104,borderWidth:1,borderColor:'rgba(71, 71, 71, 1)', backgroundColor: '#D4D4D41A',flexDirection:'row',alignItems:'center',justifyContent:'space-between',paddingHorizontal:10}}>
 
-               <View style={{flexDirection:'row',width:177,height:22,alignItems:'center',gap:8}}>
-                <Drava/>
-                <Text style={{color:'rgba(245, 237, 253, 1)',height:22,fontWeight:800,fontSize:16,alignContent:'center',marginBottom:1 }}>DRAVA, Kormagala</Text>
+               <View style={{flexDirection:'row',width:'75%',height:22,alignItems:'center',gap:8}}>
+                <LinearGradient
+                       colors={['rgba(255, 255, 255, 0.35)', 'rgba(255, 255, 255, 0.08)']}
+                      start={{ x: 0, y: 0 }}
+                         end={{ x: 1, y: 1 }}
+               style={{borderRadius:50 ,padding:1.5 }}
+                             >
+                <Image source={{uri:eventData?.vendor_data?.logo?.image_link  }} style={{ width: 25,height:25, borderRadius: 50,}}/>
+                </LinearGradient>
+
+                <Text  numberOfLines={1} ellipsizeMode="tail"  style={{color:'rgba(245, 237, 253, 1)',height:22,fontWeight:800,fontSize:16,alignContent:'center',marginBottom:1 }}>{eventData.vendor_data.name} , {Address?.city}</Text>
                </View>
+
                <View style={{height:32,width:72,borderRadius:44,borderWidth:1,borderColor:'rgba(255, 255, 255, 0.25)',backgroundColor:'black',justifyContent:'center'}}>
-               <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:10,textAlign:'center'}}>View More</Text>      
+               <Text style={{color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize:10,textAlign:'center',}}>View More</Text>      
                </View>
+
             </View>
         </View>
 
 
 <View style={{ paddingHorizontal: 15, paddingVertical: 20 }}>
   <Text style={{ color: "#F5EDFD", fontWeight: 700, fontSize: 18 }}>Event Details</Text>
-  <View style={{ paddingTop: 20, gap: 5 }}>
-    {eventDetail.map((detail, index) => (
+  <View style={{ paddingTop: 20, }}>
+  <RenderHTML
+         contentWidth={width} 
+         source={{html:eventData.description}}
+         baseStyle={{
+          color:'rgba(245, 237, 253, 1)',fontWeight:400,fontSize: 14
+         }}/>
+    {/* {eventDetail.map((detail, index) => (
       <View key={index} style={{ flexDirection: "row", gap: 4 }}>
         <Text 
           style={{
@@ -167,10 +195,11 @@ const artistdata= [
             flex: 1,
           }}
         >
-          {detail}
+          {detail || 'No Details Available'}
+          
         </Text>
       </View>
-    ))}
+    ))} */}
   </View>
 </View>;
 
@@ -188,7 +217,8 @@ const artistdata= [
        </TouchableOpacity>
        {TermsAndCondition && (
   <View style={{ gap: 5, paddingVertical: 5 }}>
-    {[
+    
+    {/* {[
       "1.Age Restriction: You must be at least 21 years old to attend the ElectroGroove Fusion Night. Valid photo identification (driver's license, passport, or government-issued ID) is required for entry. No exceptions will be made.",
       "2.Ticketing: All ticket sales are final and non-refundable. Lost or stolen tickets will not be replaced. Tickets are valid only for the date and time indicated on the ticket.",
       "3.Entry and Security: Entry to the event is subject to security checks. Prohibited items include weapons, drugs, outside food and beverages, and any other items deemed unsafe or inappropriate by event security. The event organizers reserve the right to refuse entry to anyone for any reason.",
@@ -203,9 +233,9 @@ const artistdata= [
           flex: 1,
         }}
       >
-        {term}
+        {term || 'NOt Available'}
       </Text>
-    ))}
+    ))} */}
   </View>
 )}
 
@@ -300,7 +330,7 @@ const artistdata= [
                <View style={{gap:8,height:45,flexDirection:'row',flex:1,alignItems:'center'}}>
                  <Wallet/>
                  <View style={{height:28,flexDirection:'row',justifyContent:'space-between',alignItems:'baseline'}}>
-                 <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:22,}}>₹1000 </Text>
+                 <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:22,}}>₹{eventData.package_prices && eventData.package_prices[0]} </Text>
                  <Text style={{color:'#F5EDFD',fontWeight:700,fontSize:18}}>Onwards</Text>
                 </View>
                 </View>
@@ -319,3 +349,7 @@ const artistdata= [
 export default SingleEventDetail
 
 const styles = StyleSheet.create({})
+
+function convertJsonToHtml(termsContent: any) {
+  throw new Error('Function not implemented.')
+}

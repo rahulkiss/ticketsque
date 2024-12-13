@@ -37,7 +37,7 @@ const LogInScreen: React.FC<LogInScreenProps> = ({ navigation }) => {
           const requestBody = {
             "mobile":phoneNumber
         };
-          const response = (await api.post('/service/accounts_service/v1/no_auth/customer',requestBody));
+          const response = (await api.post('service/accounts_service/v1/no_auth/customer',requestBody));
           setIsLoader(false);
           if(response?.data){
             storePhoneNo(phoneNumber);

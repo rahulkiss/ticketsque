@@ -16,11 +16,12 @@ import {request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 
 
-function SelectCity() {
+function SelectCity({route}:{route:any}) {
   const [ShowNotFount, setShowNotFount] = useState(false)
   const [IsLoader, setIsLoader] = useState(false)
   const [cityDta, setcityDta] = useState([])
   const navigator = useNavigation()
+console.log('route',route?.params?.reatuenScreen?.currentScreen);
 
 
   const TrakLocation = () => {
@@ -80,7 +81,7 @@ function SelectCity() {
   }
   const updateCity = (city: any) => {
     storeCity(city)
-    navigator.navigate('homescreen')
+    navigator.navigate("homescreen", { screen: route?.params?.reatuenScreen?.currentScreen })
   }
   const storeCity = async (value: any) => {
     try {
@@ -124,10 +125,10 @@ function SelectCity() {
       </View>
     
        }
-          {cityDta?.length &&
+          {cityDta?.length !== 0 &&
             cityDta?.map((items, index) => (
               <TouchableOpacity onPress={() => updateCity(items.city)} key={index} style={styles.Cites}>
-                <Text style={{ color: '#D0A2F7', fontSize: 12, }}>{items.city}</Text>
+                <Text style={{ color: '#D0A2F7', fontSize: 12, }}>{items.city || "No City Available"}</Text>
               </TouchableOpacity>
             ))}
 

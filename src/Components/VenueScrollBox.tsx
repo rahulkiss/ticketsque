@@ -12,7 +12,7 @@ type  VenueScrollBoxProps = {
 
  
   const VenueScrollBox: React.FC<VenueScrollBoxProps> = ({text,color,venueData}) => {
-    console.log('akash',venueData[0]?.Info?.business?.name);
+   
     
     const navigation = useNavigation();
    

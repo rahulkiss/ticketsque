@@ -39,7 +39,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
               justifyContent: 'center',
             }}
           >
-            <View style={{  marginHorizontal: 20,borderColor: '#474747', borderWidth: 0.8, borderRadius: 10, justifyContent: 'center',}}>
+            <View style={{  marginHorizontal:'auto',borderColor: '#474747', borderWidth: 0.8, borderRadius: 10, justifyContent: 'center',height:247,width:361}}>
               <Image source={{uri:item?.banner_images?.[0]}} style={{ width: "100%",height:'100%', borderRadius: 10, }} resizeMode='cover' />
             </View>
            </View> 
@@ -78,6 +78,7 @@ const CarouselBar: React.FC<CarouselBarProps> = ({ imageList,bgcolor,bottom,caro
 
       />
       </View>
+      
       { imageList.length > 1 &&
       <View style={[styles.indicatorContainer,{position:position,bottom:bottom,backgroundColor:carousal=='Event'?'rgba(9, 9, 9, 1)':'rgba(212, 212, 212, 0.1)'}]}>
         {imageList.map((_, index) => (
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     borderColor:"rgba(255, 255, 255, 0.25)",
     borderWidth:1,
-    marginTop:5,
+    
    
   },
   indicator: {

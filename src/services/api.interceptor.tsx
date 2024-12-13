@@ -3,7 +3,7 @@ import axios, { AxiosInstance, AxiosResponse } from 'axios';
 
 // Create an Axios instance
 const api: AxiosInstance = axios.create({
-  baseURL: 'https://d2igd0kw1qfnt9.cloudfront.net',
+  baseURL: 'https://da4lck3conz5a.cloudfront.net',
   timeout: 10000, // Set a request timeout
 });
 

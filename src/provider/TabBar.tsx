@@ -47,7 +47,7 @@ const TabBar = ({ state, descriptors, navigation }:TabBar) => {
               target: route.key,
             });
           };
-  const getIcons = (value:string) =>{
+          const getIcons = (value:string) =>{
     switch (route.name) {
         case 'Home':
           return  isFocused ?<Svg width="25" height="25" viewBox="0 0 25 25" fill="none" >
@@ -108,7 +108,7 @@ const TabBar = ({ state, descriptors, navigation }:TabBar) => {
        
       }
       return  null;
-  }
+          };
           return (
             <TouchableOpacity
               key={index}

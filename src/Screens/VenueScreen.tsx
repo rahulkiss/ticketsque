@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View,Image } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View,Image, RefreshControl, ActivityIndicator } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import TopNavBar from '../provider/TopNavBar'
 import { ScrollView } from 'react-native-gesture-handler'
@@ -14,6 +14,9 @@ const VenueScreen = () => {
   const [venueData, setVenueData] = useState([]);
    const navigation=useNavigation()
   const [Popup,setPopup] =useState(false)
+  const [refreshing, setRefreshing] = useState(false);
+  const [IsLoader, setIsLoader] = useState(false);
+
   const ShowPopup = () =>{
     setPopup(true);
   }
@@ -25,6 +28,7 @@ const VenueScreen = () => {
         // console.log("test :", response.data._payload)
         setVenueData(response.data._payload)
         console.log('test34:',venueData)
+        setIsLoader(false)
         
       }
 
@@ -35,14 +39,26 @@ const VenueScreen = () => {
   };
   useEffect(() =>{
       GetVenueData();
+      setIsLoader(true)
   },[])
 
+  const onRefresh = async () => {
+    setRefreshing(true);
+    await GetVenueData();
+    setRefreshing(false);
+  };
   
   
   return (
     <>
-    <TopNavBar navigation={navigation}/> 
-    <ScrollView showsVerticalScrollIndicator={false}  style={{ flex: 1,  backgroundColor: "black",height:'auto' }}>
+    <TopNavBar currentScreen={'Venues'} /> 
+    <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex: 1,  backgroundColor: "black"}}
+     refreshControl={
+      <RefreshControl
+        refreshing={refreshing}
+        onRefresh={onRefresh}
+      />
+    }>
       <View>
       <CarouselBar carousal={'Home'} margintop={10} carousalwidth={1.5} imageList={[require("../../assets/images/Banner_1.png"),require("../../assets/images/Banner_2.png"),require("../../assets/images/Banner_3.png")]}/> 
       </View>
@@ -54,6 +70,13 @@ const VenueScreen = () => {
     <TouchableOpacity onPress={ShowPopup} style={{height:64,width:64,borderRadius:40,backgroundColor:'#D0A2F7',alignItems:'center',justifyContent:'center', position: 'absolute',bottom:25,right: 25,}}>
       <Filter/></TouchableOpacity>
     <FilterPopup Popup={Popup} setPopup={setPopup}/>
+    { IsLoader  &&
+    // && venueData.length !== 0
+<View style={{marginTop:54,position:'absolute',height:'100%',width:'100%',alignItems:'center',justifyContent:'center'}}>
+   <ActivityIndicator size="large" color="#D0A2F7" />
+</View>
+
+}
     </>
   )
 }
